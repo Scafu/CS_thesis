@@ -1,0 +1,120 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Document Metadata Schema",
+    "description": "Defines the structure for *.meta.yaml files.",
+    "type": "object",
+
+    "$defs": {
+        "authorizedUser": {
+            "description": "An authorized user who can author or verify.",
+            "type": "string",
+            "enum": [
+                "Matteo Mantoan",
+                "Francesco Marcon",
+                "Alessandro Mazzariol",
+                "Valerio Solito",
+                "Mario De Pasquale",
+                "Alessandro Contarini",
+                "Leonardo Preo"
+            ]
+        },
+        "toBeDefined": {
+            "description": "A constant value representing a not-yet-defined person",
+            "type": "string",
+            "const": "TBD"
+        }
+    },
+
+    "properties": {
+        "title": {
+            "description": "The official title of the document.",
+            "type": "string",
+            "minLength": 1
+        },
+        "changelog": {
+            "description": "A list of version history entries for the document.",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "oneOf": [
+                    {
+                        "description": "A regular changelog entry (x.y.z where (y,z) != (0,0)).",
+                        "type": "object",
+                        "properties": {
+                            "version": {
+                                "description": "The full SemVer version number (y or z must be non-zero).",
+                                "type": "string",
+                                "pattern": "^(0|[1-9]\\d*)\\.([1-9]\\d*\\.(0|[1-9]\\d*)|0\\.[1-9]\\d*)$"
+                            },
+                            "date": {
+                                "type": "string",
+                                "format": "date",
+                                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                                "description": "The date of the update (e.g., \"2025-10-19\")."
+                            },
+                            "authors": {
+                                "description": "The person (one or more) who contributed to this version.",
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/$defs/authorizedUser"
+                                },
+                                "minItems": 1,
+                                "uniqueItems": true
+                            },
+                            "verifier": {
+                                "description": "The person who verified and approved this version.",
+                                "oneOf": [
+                                    {
+                                        "comment": "Option 1: An authorized user from the list.",
+                                        "$ref": "#/$defs/authorizedUser"
+                                    },
+                                    {
+                                        "comment": "Option 2: The 'Not Assigned' placeholder string.",
+                                        "$ref": "#/$defs/toBeDefined"
+                                    }
+                                ]
+                            },
+                            "description": {
+                                "type": "string",
+                                "minLength": 1,
+                                "pattern": "^(?!.*\\.\\s*$)[\\s\\S]*$"
+                            }
+                        },
+                        "required": ["version", "date", "authors", "verifier", "description"],
+                        "additionalProperties": false
+                    },
+                    {
+                        "description": "An approvement changelog entry (x.0.0 where x != 0).",
+                        "type": "object",
+                        "properties": {
+                            "version": {
+                                "description": "The approvement version number (x.0.0 format where x >= 1).",
+                                "type": "string",
+                                "pattern": "^[1-9]\\d*\\.0\\.0$"
+                            },
+                            "date": {
+                                "type": "string",
+                                "format": "date",
+                                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                                "description": "The date of the approvement (e.g., \"2025-10-19\")."
+                            },
+                            "approver": {
+                                "description": "The person who approved this version.",
+                                "$ref": "#/$defs/authorizedUser"
+                            },
+                            "baseline": {
+                                "description": "The baseline type for this approvement.",
+                                "type": "string",
+                                "enum": ["Candidatura", "RTB", "PB"]
+                            }
+                        },
+                        "required": ["version", "date", "approver", "baseline"],
+                        "additionalProperties": false
+                    }
+                ]
+            }
+        }
+    },
+    "required": ["title", "changelog"],
+    "additionalProperties": false 
+}

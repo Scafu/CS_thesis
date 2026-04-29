@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=../../.schemas/uc.schema.yaml
+
+system: sim
+use_cases:
+  - id: avvia_misurazione
+    title: Avvio misurazione del piede
+    actors:
+      primary:
+        - sim-usr
+    preconditions:
+      - L'utente ha aperto il simulatore
+    postconditions:
+      - Il simulatore mostra il risultato della misurazione
+    trigger: L'utente avvia la procedura guidata
+    main_scenario:
+      - description: Il simulatore mostra le istruzioni per posizionare il piede
+      - description: L'utente posiziona il piede e interagisce con le guide mobili
+      - description: Il simulatore calcola la lunghezza del piede

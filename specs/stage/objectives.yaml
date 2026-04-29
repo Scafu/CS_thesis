@@ -1,0 +1,31 @@
+objectives:
+  - code: O-01
+    kind: mandatory
+    description: Apprendimento delle tecnologie di sviluppo come Flutter e Node.js con Fastify e versionamento del progetto con Git
+
+  - code: O-02
+    kind: mandatory
+    description: Analisi e studio delle tecniche di calibrazione dello schermo e di rilevazione della misura tramite interazione touch
+
+  - code: O-03
+    kind: mandatory
+    description: Sviluppo del motore di misurazione del piede con guide mobili e calcolo della lunghezza in centimetri basato sui PPI del dispositivo
+  - code: O-04
+    kind: mandatory
+    description: Sviluppo dell'interfaccia per il tutorial di misurazione e per la visualizzazione del risultato
+  - code: O-05
+    kind: mandatory
+    description: Sviluppo della persistenza locale delle misurazioni e dell'interfaccia per la consultazione dello storico
+  - code: D-01
+    kind: desirable
+    description: Integrazione dell'autenticazione utente tramite Auth0
+  - code: D-02
+    kind: desirable
+    description: Sviluppo di un'API backend per il salvataggio e il recupero delle misurazioni in cloud
+  - code: F-01
+    kind: facultative
+    description: Sviluppo di un'interfaccia per la visualizzazione grafica dell'andamento delle misurazioni nel tempo
+  - code: F-02
+    kind: facultative
+    description: Sincronizzazione automatica dei dati locali con il %s al ripristino della connessione
+    foreign: [backend]

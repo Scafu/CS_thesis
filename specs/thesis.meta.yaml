@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=../.schemas/meta.schema.json
+
+title: Tesi di laurea magistrale
+changelog:
+  - version: 0.1.0
+    date: 2026-04-26
+    authors:
+      - Alessandro Mazzariol
+    verifier: TBD
+    description: Impostazione iniziale della struttura documentale e degli schema

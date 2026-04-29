@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=../../.schemas/req.schema.yaml
+
+type: functional_sim
+requirements:
+  - id: calibrazione_schermo
+    priority: mandatory
+    description: Il simulatore deve guidare l'utente nella calibrazione dello schermo
+    sources:
+      - text: Documento di analisi iniziale dello stage
+
+  - id: misurazione_piede
+    priority: mandatory
+    description: Il simulatore deve calcolare la lunghezza del piede a partire dall'interazione touch e dai PPI del dispositivo
+    sources:
+      - text: Documento di analisi iniziale dello stage
+      - uc: avvia_misurazione

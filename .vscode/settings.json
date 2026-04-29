@@ -1,0 +1,16 @@
+{
+  "yaml.schemas": {
+    "./.schemas/req.schema.yaml": [
+      "specs/**/*.req.yaml"
+    ],
+    "./.schemas/uc.schema.yaml": [
+      "specs/**/*.uc.yaml"
+    ],
+    "./.schemas/test.schema.yaml": [
+      "specs/**/*.test.yaml"
+    ],
+    "./.schemas/meta.schema.json": [
+      "specs/**/*.meta.yaml"
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=../../.schemas/test.schema.yaml
+
+type: system
+tests:
+  - id: verifica_misurazione_base
+    description: Verifica che il simulatore produca una misurazione finale dopo la procedura guidata
+    requirements:
+      - misurazione_piede
+    status: not_implemented
