@@ -1,26 +1,56 @@
 name: Build and deploy
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v4
+      - name: Install Hunspell
+        run: sudo apt-get update && sudo apt-get install -y hunspell hunspell-it hunspell-en-us
+      - name: Validate spellcheck script
+        run: bash -n scripts/spellcheck.sh
+      - name: Hunspell spellcheck
+        run: bash scripts/spellcheck.sh
       - name: Typst compile
-        run: typst c thesis.typ --pdf-standard a-3b
+        run: typst compile thesis.typ thesis.pdf --pdf-standard a-3b
+      - name: Prepare Pages bundle
+        run: |
+          mkdir -p dist
+          cp thesis.pdf dist/thesis.pdf
+          cat <<'EOF' > dist/index.html
+          <!DOCTYPE html>
+          <html lang="it">
+            <head>
+              <meta charset="utf-8" />
+              <meta http-equiv="refresh" content="0; url=./thesis.pdf" />
+              <title>Tesi</title>
+            </head>
+            <body>
+              <p>Apri il PDF della tesi: <a href="./thesis.pdf">thesis.pdf</a></p>
+            </body>
+          </html>
+          EOF
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: PDF
-          path: thesis.pdf
+          path: dist/
   deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     permissions:
-      contents: write
       pages: write
       id-token: write
     environment:
@@ -32,7 +62,7 @@ jobs:
         with:
           name: PDF
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: "."
       - name: Deploy to GitHub Pages
