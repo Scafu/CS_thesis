@@ -36,3 +36,25 @@ ignore_patterns:
 #    USO: Brand, nomi di prodotti e casi particolari.
 # -------------------------------------------------------------------------
 accepted_words:
+  # Parole tecniche
+  - onboarding
+  - auth
+  - backend
+  - webapp
+
+  # Funzioni
+  - glpl
+  - deduplicate
+
+  # Tecnologie
+  - Fastify
+  # estensioni
+  - pdf
+  - csv
+  - json
+  - yaml
+  - js
+
+  # Falsi positivi
+  - refactorizzazione
+  - multipiattaforma

@@ -26,20 +26,49 @@ for dict in it_IT en_US; do
   fi
 done
 
-TMP_INPUT="$(mktemp)"
 TMP_ACCEPTED="$(mktemp)"
-TMP_WORDS="$(mktemp)"
-TMP_OUTPUT="$(mktemp)"
-trap 'rm -f "${TMP_INPUT}" "${TMP_ACCEPTED}" "${TMP_WORDS}" "${TMP_OUTPUT}"' EXIT
+trap 'rm -f "${TMP_ACCEPTED}"' EXIT
 
-for path in "${INCLUDE_PATHS[@]}"; do
-  if [[ -f "${path}" ]]; then
-    printf '%s\0' "${path}"
-  elif [[ -d "${path}" ]]; then
-    find "${path}" -type f \( -name '*.typ' -o -name '*.md' \) -print0
-  fi
-done |
-while IFS= read -r -d '' file; do
+is_lowercase() {
+  local s="$1"
+  [[ "$s" == "${s,,}" && "$s" != "${s^^}" ]]
+}
+
+is_uppercase() {
+  local s="$1"
+  [[ "$s" == "${s^^}" && "$s" != "${s,,}" ]]
+}
+
+is_capitalized() {
+  local s="$1"
+  local first="${s:0:1}"
+  local rest="${s:1}"
+  [[ "${#s}" -ge 2 ]] || return 1
+  [[ "$first" == "${first^^}" && "$first" != "${first,,}" && "$rest" == "${rest,,}" ]]
+}
+
+is_accepted_word() {
+  local word="$1"
+  local allowed
+
+  for allowed in "${ACCEPTED_WORDS[@]:-}"; do
+    if is_lowercase "$allowed"; then
+      [[ "${word,,}" == "$allowed" ]] && return 0
+    elif is_uppercase "$allowed"; then
+      [[ "$word" == "$allowed" ]] && return 0
+    elif is_capitalized "$allowed"; then
+      [[ "$word" == "$allowed" || "$word" == "${allowed^^}" ]] && return 0
+    else
+      [[ "$word" == "$allowed" ]] && return 0
+    fi
+  done
+
+  return 1
+}
+
+preprocess_file() {
+  local file="$1"
+
   perl -0pe '
     s/\x{2019}/'\''/g;
     s/\x{201C}|\x{201D}/"/g;
@@ -64,23 +93,14 @@ while IFS= read -r -d '' file; do
     s/\b(UC|UCS)\d*\b/ /g;
     s/\bv\d+\b/ /g;
     s/(?<=[[:alpha:]])(PASS|FAIL)\b/ /g;
+    s/\b(?:[dlmnst]|un|all|dall|nell|sull|quest|quell|l)'\''([[:alpha:]]+)/$1/gi;
+    s/(?<=\s)'\''([[:alpha:]]+)/$1/g;
     s/\b[[:alpha:]]*[A-Z][[:alpha:]]*\b/ /g;
     s/\b[[:alpha:]]{1,3}\b/ /g;
     s/[^[:alpha:][:space:]'\''àèéìíîòóùÀÈÉÌÍÎÒÓÙ]/ /g;
     s/\s+/ /g;
-  ' "${file}" >> "${TMP_INPUT}"
-  printf '\n' >> "${TMP_INPUT}"
-done
-
-if [[ "${USE_LOCAL_DICTS}" == true ]]; then
-  HUNSPELL_CMD=(env "DICPATH=${HUNSPELL_DIR}" hunspell -d "${HUNSPELL_DICTS}" -l)
-else
-  HUNSPELL_CMD=(hunspell -d "${HUNSPELL_DICTS}" -l)
-fi
-
-"${HUNSPELL_CMD[@]}" < "${TMP_INPUT}" |
-  awk 'length($0) > 1' |
-  sort -u > "${TMP_WORDS}"
+  ' "${file}"
+}
 
 if [[ -f "${IGNORE_FILE}" ]]; then
   awk '
@@ -105,57 +125,53 @@ if [[ -f "${IGNORE_FILE}" ]]; then
       }
     }
   ' "${IGNORE_FILE}" > "${TMP_ACCEPTED}"
-
-  awk '
-    function is_lowercase(s) {
-      return s == tolower(s) && s != toupper(s)
-    }
-    function is_uppercase(s) {
-      return s == toupper(s) && s != tolower(s)
-    }
-    function is_capitalized(s, first, rest) {
-      if (length(s) < 2) {
-        return 0
-      }
-      first = substr(s, 1, 1)
-      rest = substr(s, 2)
-      return first == toupper(first) && first != tolower(first) && rest == tolower(rest)
-    }
-    FNR == NR {
-      accepted[++n] = $0
-      next
-    }
-    {
-      word = $0
-      for (i = 1; i <= n; i++) {
-        allowed = accepted[i]
-        if (is_lowercase(allowed)) {
-          if (tolower(word) == allowed) {
-            next
-          }
-        } else if (is_uppercase(allowed)) {
-          if (word == allowed) {
-            next
-          }
-        } else if (is_capitalized(allowed)) {
-          if (word == allowed || word == toupper(allowed)) {
-            next
-          }
-        } else {
-          if (word == allowed) {
-            next
-          }
-        }
-      }
-      print word
-    }
-  ' "${TMP_ACCEPTED}" "${TMP_WORDS}" > "${TMP_OUTPUT}"
 else
-  cp "${TMP_WORDS}" "${TMP_OUTPUT}"
+  : > "${TMP_ACCEPTED}"
 fi
 
-if [[ -s "${TMP_OUTPUT}" ]]; then
-  cat "${TMP_OUTPUT}"
+mapfile -t ACCEPTED_WORDS < "${TMP_ACCEPTED}"
+
+if [[ "${USE_LOCAL_DICTS}" == true ]]; then
+  HUNSPELL_CMD=(env "DICPATH=${HUNSPELL_DIR}" hunspell -d "${HUNSPELL_DICTS}" -l)
+else
+  HUNSPELL_CMD=(hunspell -d "${HUNSPELL_DICTS}" -l)
+fi
+
+had_errors=0
+
+while IFS= read -r -d '' file; do
+  file_words="$(mktemp)"
+  file_errors="$(mktemp)"
+
+  preprocess_file "${file}" |
+    "${HUNSPELL_CMD[@]}" |
+    awk 'length($0) > 1' |
+    sort -u > "${file_words}"
+
+  while IFS= read -r word; do
+    if ! is_accepted_word "$word"; then
+      printf '%s\n' "$word" >> "${file_errors}"
+    fi
+  done < "${file_words}"
+
+  if [[ -s "${file_errors}" ]]; then
+    had_errors=1
+    printf '%s\n' "${file#${ROOT_DIR}/}"
+    sed 's/^/  - /' "${file_errors}"
+  fi
+
+  rm -f "${file_words}" "${file_errors}"
+done < <(
+  for path in "${INCLUDE_PATHS[@]}"; do
+    if [[ -f "${path}" ]]; then
+      printf '%s\0' "${path}"
+    elif [[ -d "${path}" ]]; then
+      find "${path}" -type f \( -name '*.typ' -o -name '*.md' \) -print0
+    fi
+  done
+)
+
+if [[ "${had_errors}" -eq 1 ]]; then
   exit 1
 fi
 

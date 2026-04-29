@@ -11,7 +11,7 @@
 #text(24pt, weight: "semibold", acknowledgements)
 #v(3em)
 #text(style: "italic")[
-  In primo luogo, desidero rigraziare al Professoressa #myProf, relatrice della presente tesi, per la costante
+  In primo luogo, desidero ringraziare al Professoressa #myProf, relatrice della presente tesi, per la costante
   disponibilità e prezioso supporto fornito durante l'intero percorso di stesura.
   #v(1em)
   Un ringraziamento speciale va alla mia famiglia per il loro sostegno incondizionato e per aver creduto in me,
