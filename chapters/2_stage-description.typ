@@ -2,15 +2,20 @@
   gl, glpl, obj-link, objectives-data, prod-link, products-data, render-objectives, render-products,
 )
 #import "../config/variables.typ": myTutor
-#pagebreak(to: "odd")
 = Descrizione stage<cap:descrizione-stage>
 #text(style: "italic", [
-  In questo capitolo approfondisco i vari aspetti legati allo stage, come, gli obiettivi, prodotti attesi, la
-  pianificazione in dettaglio e l'analisi dei rischi.
+  Questo capitolo descrive nel dettaglio il progetto di stage svolto presso Wavelop Srl, presentandone gli obiettivi, i
+  prodotti attesi, la pianificazione delle attività, l'analisi dei rischi e gli obiettivi personali perseguiti durante
+  l'esperienza formativa.
 ])
 #v(1em)
 == Obiettivi <sez-obiettivi>
-Si farà riferimento agli obiettivi secondo le seguenti notazioni:
+All'inizio di ogni periodo di stage, Wavelop Srl definisce un insieme di obiettivi da perseguire. Tali obiettivi hanno
+una duplice finalità: permettere al tirocinante di comprendere gli aspetti su cui focalizzare maggiormente il proprio
+lavoro e fornire all'azienda criteri utili alla valutazione delle attività svolte, anche in vista di un eventuale
+inserimento lavorativo.
+
+Nel presente documento gli obiettivi verranno identificati secondo le seguenti convenzioni:
 - *O* per gli obiettivi obbligatori, vincolanti in quanto obiettivo primario richiesto dal committente;
 - *D* per gli obiettivi desiderabili, non vincolanti o strettamente necessari, ma dal riconoscibile valore aggiunto;
 - *F* per gli obiettivi facoltativi, rappresentanti valore aggiunto non strettamente competitivo.
@@ -18,19 +23,24 @@ Le sigle saranno seguite da una coppia sequenziale di numeri, identificativo del
 
 #render-objectives(objectives-data)
 == Prodotti attesi <sez-prodotti-attesi>
-Per ogni prodotto atteso elencato di seguito si intende come versione minima attesa il completamento degli obiettivi
-citati e come versione massima tutti gli obiettivi citati nella @sez-obiettivi.
+Oltre agli obiettivi definiti, Wavelop Srl individua anche una serie di prodotti attesi, con lo scopo di descrivere in
+modo concreto i risultati da conseguire al termine dello stage. Per ciascun prodotto attesso riportato di seguito, il
+livello minimo previsto corrisponde al completamente degli obiettivi indicati, mentre il livello massimo comprende il
+conseguimento di tutti gli obiettivi citati nella @sez-obiettivi.
 
 #render-products(products-data)
 
 == Pianificazione del lavoro
-Lo stage prevedeva un impiego di 300-320 ore, distribuite nei mesi di maggio-giugno, 8 ore al giorno, ibrido, quindi con
-presenza in sede alternata a giorni di lavoro da remoto.
+Lo stage prevedeva un impegno complessivo compreso tra 300 e 320 ore, distribuite nei mesi di maggio e giugno, con una
+media di otto ore lavorative giornaliere. L'attività è stata svolta in modalità ibrida, alternando giornate in presenza
+presso la sede aziendale a giornate di lavoro da remoto.
 === Pianificazione Settimanale
-Durante lo stage è stato deciso di far partire la pianificazione degli _sprint_ di una settimana di durata, a partire
-dalla terza settimana. A termine di ogni sprint è previsto un incontro con gli stakeholder per una revisione e un
-allineamento sui risultati raggiunti, con l'aggiunta di definizione delle task per lo sprint successivo. Per ogni
-periodo di lavoro è associato un riferimento ai prodotti attesi specificati nella @sez-prodotti-attesi.
+A partire dalla terza settimana, la pianificazione del lavoro è stata organizzata tramite sprint della durata di una
+settimana. Al termine di ciascuno sprint era previsto un incontro con gli stakeholder finalizzato alla revisione dei
+risultati raggiunti, all'allineamento sullo stato di avanzamento del progetto e alla definizione delle attività previste
+per il periodo successivo.
+
+Per ogni periodo di lavoro è associato un riferimento ai prodotti attesi specificati nella @sez-prodotti-attesi.
 #v(0.8em)
 - *Prima Settimana* (40 ore): #prod-link("PA-01"), #prod-link("PA-02")
   #v(0.8em)
@@ -44,6 +54,7 @@ periodo di lavoro è associato un riferimento ai prodotti attesi specificati nel
 - *Seconda Settimana* (40 ore): #prod-link("PA-01"), #prod-link("PA-02")
   #v(0.8em)
   - Analisi dei requisiti;
+  - Idealizzazione di _Flow_ e _Wireframe_ dell'applicazione;
   - Progettazione architetturale (Struttura app Flutter, modello dati locale, definizione API backend).
 #v(0.8em)
 - *Terza Settimana* (40 ore): #prod-link("PA-02")
@@ -51,28 +62,9 @@ periodo di lavoro è associato un riferimento ai prodotti attesi specificati nel
   - Progettazione architetturale;
   - Analisi e definizione storie per il backlog dello Sprint successivo assieme al referente.
 #v(0.8em)
-- *Quarta Settimana* (40 ore): #prod-link("PA-03")
+- *Quarta Settimana* - *Settima Settimana* (160 ore): #prod-link("PA-03"), eventuale #prod-link("PA-04")
   #v(0.8em)
-  - Sviluppo tramite la metodologia #gl("TDD") delle storie assegnate (motore di misurazione, interfaccia touch con
-    guide mobili);
-  - Stesura documentazione.
-#v(0.8em)
-- *Quinta Settimana* (40 ore): #prod-link("PA-03")
-  #v(0.8em)
-  - Sviluppo tramite la metodologia del _TDD_ delle storie assegnate (storico misurazioni locale, tutorial misurazione);
-  - Stesura documentazione.
-#v(0.8em)
-- *Sesta Settimana* (40 ore): #prod-link("PA-03")
-  #v(0.8em)
-  - Sviluppo tramite la metodologia del _TDD_ delle storie assegnate (integrazione autenticazione tramite _Auth0_, #gl(
-      "API",
-    ) _backend_ per il salvataggio misurazioni);
-  - Stesura documentazione.
-#v(0.8em)
-- *Settima Settimana* (40 ore): #prod-link("PA-03"), eventuale #prod-link("PA-04")
-  #v(0.8em)
-  - Sviluppo tramite la metodologia del _TDD_ delle storie assegnate (sincronizzazione dati con il _backend_, gestione
-    profilo bambino);
+  - Sviluppo tramite la metodologia del #gl("TDD") delle storie assegnate durante gli sprint.
   - Stesura documentazione.
 #v(0.8em)
 - *Ottava Settimana* (40 ore): #prod-link("PA-03"), eventuale #prod-link("PA-04"), #prod-link("PA-05")
@@ -102,33 +94,38 @@ In questa fase iniziale sono stati identificati i seguenti rischi divisi in tre 
 tecnologici e personali.
 
 === Rischi organizzativi
-I rischi organizzativi riguardano principalmente la gestione del prodotto tra i vari stakeholder coinvolti.
+Rischi relativi alla stime ed all'assegnazione delle attività ad un determinato sprint. Questa tipologia di rischio può
+essere mitigata attraverso le _sprint review_, in cui si analizzano i risultati raggiunti e si pianificano le attività
+per lo _sprint_ successivo oppure si aggiustano le attività non completate.
+
 ==== Mancato rispetto delle scadenze stabilite
 - *Descrizione*: Durante lo sviluppo del prodotto possono verificarsi ritardi rispetto al conseguimento delle task
   fissate, comportando un prolungamento dei tempi di completamento delle task e nel peggiore dei casi un ritardo nella
   data di consegna finale del prodotto.
 - *Mitigazione*: Eventuali ritardi dovranno essere comunicati tempestivamente e motivati, cercando di mitigare l'impatto
-  sulle task successive. Qualora il ritardo mettesse a rischio la data di consegna finale, si valuterà la possibilità di
-  rivedere il piano di lavoro, rivedendo le task da completare e le relative scadenze.
+  sulle task successive. Nelle sprint review questo ritardo sarà oggetto di discussione per capire se è necessario
+  rivedere la pianificazione delle attività successive.
 - *Probabilità*: Media - Bassa
 - *Impatto prestazionale*: Alto
 
 
 === Rischi tecnologici
-I rischi tecnologici riguardano principalmente le difficoltà tecniche che potrebbero emergere durante lo sviluppo del
-prodotto.
+Rischi relativi alle tecnologie da implementare e le prassi da utilizzare nel processo di sviluppo. Questo tipo di
+rischio può essere mitigato attraverso colloquio con il tutor aziendale oppure attraverso gli _stand up meeting_
+giornalieri, in cui si discute dell'andamento ed eventuali difficoltà riscontrate.
+
 ==== Errori di programmazione
 - *Descrizione*: Risulta altamente improbabile che il prodotto finale sia privo di bug o errori di programmazione, che
   potrebbero compromettere il corretto funzionamento dello stesso.
 - *Mitigazione*: Sarà necessario implementare un sistema di testing e debugging efficace, al fine di limitare al minimo
-  la presenza di bug e garantire il funzionamento corretto del prodotto nella sua interezza. attività, verrà richiesto
-  il supporto dell’Azienda proponente.
+  la presenza di bug e garantire il funzionamento corretto del prodotto nella sua interezza.
 - *Probabilità*: Media - Alta
 - *Impatto prestazionale*: Medio
 
 === Rischi personali
-I rischi personali riguardano principalmente le difficoltà personali che potrebbero emergere durante lo sviluppo del
-prodotto.
+Rischi relativi a fattori personali che potrebbero causare rallentamenti o interruzioni temporanee del lavoro. Questo
+tipo di rischio può essere mitigato attraverso una comunicazione chiara e tempestiva con il tutor aziendale, in modo da
+poter ripianificare il lavoro per limitare i danni.
 ==== Indisponibilità temporanee
 - *Descrizione*: Durante lo sviluppo potrebbero esserci indisponibilità temporanee, causando un rallentamento momentaneo
   del lavoro.
@@ -136,3 +133,29 @@ prodotto.
   recuperare il tempo perso una volta rientrati.
 - *Probabilità*: Bassa
 - *Impatto prestazionale*: Medio
+
+== Obiettivi personali
+Di seguito sono riportati gli obiettivi personali che mi hanno spinto a scegliere questo progetto di stage presso
+Wavelop Srl:
+
+- *Azienda di piccole dimensioni e giovane*: essendo un'azienda di piccole dimensioni, Wavelop Srl offre l'opportunità
+  di essere coinvolti a 360 gradi in tutte le fasi del processo di sviluppo, favorendo la comunicazione tra tutti i
+  membri del team, senza trascurare il tirocinante, considerandolo a tutti gli effetti un membro del team stesso.
+
+- *Metodologie Agili*: l'adozione di metodologie agili, in particolare _Scrum_ e _user stories_, hanno rappresentato un
+  fattore chiave nella scelta del progetto, in quanto mi hanno permesso di lavorare con uno stimolo costante, favorendo
+  l'apprendimento continuo e come crescita personale i confronti con i colleghi e con il tutor aziendale.
+
+- *Stesso percorso di studi universitari*: il fatto che l'intero team derivi dallo stesso percorso di studi universitari
+  ha permesso a Wavelop Srl di creare un progetto di stage molto in linea con le mie esigenze formative e di tempistica
+  richieste dall'Ateneo.
+
+- *Possibilità di inserimento in azienda*: aver fatto colloqui diretti con i fondatori dell'azienda e aver avuto la
+  possibilità di confrontarmi con loro, ha rappresentato un fattore determinante nella valutazione di un possibile
+  inserimento lavorativo, in quanto Wavelop Srl sia un'azienda con l'obiettivo principale di apprendere e far crescere i
+  propri dipendenti, rispetto ad il mero profitto economico.
+
+- *Possibilità di validare le conoscenze pregresse*: il progetto proposto dall'azienda mi ha dato la possibilità di
+  validare le conoscenze che avevo già acquisito prima di iniziare lo stage. In particolare nella fase di progettazione,
+  ho potuto mettere in pratica le conoscenze acquisite durante il corso di Ingegneria del Software, lasciando spazio
+  però anche alla sperimentazione e all'apprendimento di nuovi concetti fondamentali.

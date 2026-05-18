@@ -31,19 +31,39 @@ calzature per l'infanzia. In particolare lo stage richiede:
 - Analisi e sviluppo dell'interfaccia utente in Flutter, con particolare attenzione alla User Experience (UX) e
   all'accessibilità rivolta a un pubblico non tecnico.
 
-== Organizzazione del testo
+== Way of Working e strumenti utilizzati
+L'azienda Wavelop Srl adotta una metodologia di sviluppo detta _Agile_, cioè un approccio che suddivide il lavoro in
+fasi, dando la priorità alla consegna e al miglioramento continuo del prodotto. Questa metodologia favorisce la
+comunicazione aperta, lavoro di squadra e la flessibilità, permettendo di adattarsi rapidamente ai cambiamenti e alle
+esigenze del cliente. In particolare l'azienda utilizza il framework _Scrum_, che prevede la suddivisione del lavoro in
+cicli iterativi di sviluppo chiamati _sprint_, questo framework prevede che il team di sviluppo siano divisi in team
+_Scrum_, ciascuno autogestito con l'obiettivo di consegnare un incremento di prodotto funzionante alla fine di ogni
+_sprint_.
+#figure(caption: "Processo Scrum, tratto da: What is Scrum?, Scrum.org.")[#image(
+  "../images/scrum-framework.png",
+  width: 80%,
+)]
 
-=== Struttura del documento
+== Organizzazione del testo
+Al fine di presentare in modo chiaro e strutturato il progetto di stage, il documento è stato organizzato nei setuenti
+capitoli:
 / #link(<cap:descrizione-stage>)[Il secondo capitolo]: descrive in dettaglio lo stage, le competenze da apprendere, i
   vincoli, la pianificazione e l'organizzazione del lavoro con la conseguente analisi dei rischi.
 / #link(<cap:analisi-requisiti>)[Il terzo capitolo]: descrive il progetto da un punto di vista analitico, descrivendo i
   casi d'uso e i relativi requisiti.
+/ #link(<cap:progettazione-e-codifica>)[Il quarto capitolo]: descrive il progetto da un punto di vista progettuale,
+  illustrando le scelte architetturali, la progettazione dell'interfaccia utente e le tecnologie adottate.
+/ #link(<cap:conclusioni>)[Il quinto capitolo]: descrive il progetto da un punto di vista implementativo, illustrando le
+  fasi di sviluppo, le difficoltà incontrate e i risultati ottenuti.
 === Convenzioni tipografiche
 Durante la stesura del testo ho scelto di adottare le seguenti convenzioni tipografiche:
 
 //Preferenze personali modificabili a discrezione tua o del relatore
-- Gli acronimi, le abbreviazioni e i termini di uso non comune menzionati vengono definiti nel #link(<glossary>)[glossario], situato alla fine del documento (#link(<glossary>)[p. #context counter(page).at(<glossary>).at(0)]);
-- Per la prima occorrenza dei termini riportati nel glossario viene utilizzata la seguente nomenclatura:
+- Gli acronimi, le abbreviazioni e i termini di uso non comune menzionati vengono definiti nel #link(
+    <glossary>,
+  )[glossario], situato alla fine del documento (#link(<glossary>)[p. #context counter(page).at(<glossary>).at(0)]);
+- Per la prima occorrenza dei termini riportati nel glossario viene utilizzata la seguente nomenclatura: Parola#sub[g]
+
 
 - I termini in lingua straniera non di uso comune o facenti parti del gergo tecnico sono evidenziati con il carattere
   _corsivo_;
@@ -53,4 +73,10 @@ Durante la stesura del testo ho scelto di adottare le seguenti convenzioni tipog
     #context counter(page).at(<bibliography>).at(0)]) saranno affiancate dal rispettivo numero identificativo, es.
   $[1]$;
 - I blocchi di codice sono rappresentati nel seguente modo
+#v(0.5em)
+```Dart
+main() {
+  print("Hello, World!");
+}
+```
 #linebreak()

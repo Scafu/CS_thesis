@@ -2,7 +2,7 @@
 #import "../config/variables.typ": myAY, myDegree, myDepartment, myFaculty, myMatricola, myName, myProf, myTitle, myUni
 #import "../config/constants.typ": ID, academicYear, supervisor, undergraduate
 
-#set page(numbering: none)
+#set page(numbering: none, header: none, footer: none)
 
 #grid(
   columns: auto,

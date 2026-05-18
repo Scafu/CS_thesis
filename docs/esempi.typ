@@ -2,7 +2,6 @@
 #import "../config/variables.typ": myTutor
 #import "@preview/codly:1.3.0": *
 #import "@preview/chronos:0.2.1"
-#pagebreak(to: "odd")
 
 = Esempi
 #text(style: "italic", [

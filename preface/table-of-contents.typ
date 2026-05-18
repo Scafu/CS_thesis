@@ -1,6 +1,4 @@
 #import "../config/constants.typ": figuresList, sourceCodeList, tablesList
-#pagebreak(to: "odd")
-#set page(numbering: "i")
 
 #[
   #show outline.entry.where(level: 1): it => {

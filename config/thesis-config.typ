@@ -5,8 +5,93 @@
 #import "@preview/codly-languages:0.1.8": *
 #import "../config/constants.typ": appendix, chapter
 #import "../appendix/glossary/terms.typ": glossary-terms
+#import "@preview/hydra:0.6.2": hydra
 
 // This file sets up the properties of the document and the libraries used
+
+#let frontmatter-style(body) = {
+  set page(
+    numbering: "i",
+    number-align: bottom + center,
+    header: none,
+  )
+  body
+}
+
+#let frontmatter-blank-page() = {
+  pagebreak()
+  set page(header: none, footer: none, numbering: none)
+  pagebreak()
+}
+
+#let chapter-header() = hydra(1, skip-starting: false, display: (_, it) => {
+  upper(emph("Capitolo"))
+  " "
+
+  if it.numbering == none {
+    upper(emph(it.body))
+  } else {
+    numbering(it.numbering, ..counter(heading).at(it.location()))
+    ". "
+    upper(emph(it.body))
+  }
+})
+
+#let subchapter-header() = hydra(2, skip-starting: false, display: (_, it) => {
+  if it.numbering == none {
+    upper(emph(it.body))
+  } else {
+    numbering(it.numbering, ..counter(heading).at(it.location()))
+    ". "
+    upper(emph(it.body))
+  }
+})
+
+#let has-h1-on-page() = {
+  query(heading.where(level: 1)).any(h => h.location().page() == here().page())
+}
+
+#let page-number() = {
+  numbering("1", counter(page).get().at(0))
+}
+
+#let mainmatter-style(body) = {
+  counter(page).update(1)
+
+  set page(
+    numbering: none,
+
+    header: context {
+      if has-h1-on-page() {
+        none
+      } else if calc.odd(here().page()) [
+        #page-number()
+        #h(1fr)
+        #chapter-header()
+      ] else [
+        #subchapter-header()
+        #h(1fr)
+        #page-number()
+      ]
+    },
+
+    footer: context {
+      if has-h1-on-page() {
+        align(center, page-number())
+      } else {
+        none
+      }
+    },
+  )
+
+  body
+}
+
+#let blank-page() = {
+  pagebreak()
+  set page(header: none, footer: none, numbering: none)
+  pagebreak()
+}
 
 #let config(
   myAuthor: "Alessandro Mazzariol",
@@ -23,23 +108,17 @@
   codly(languages: codly-languages, zebra-fill: gray.lighten(90%))
 
   // LaTeX look https://typst.app/docs/guides/guide-for-latex-users#latex-look
-  set page(margin: 1.20in, numbering: myNumbering, number-align: center)
-  set par(
-    leading: 0.55em,
-    spacing: 0.55em,
-    justify: true,
+  set page(
+    paper: "a4",
+    margin: 1.20in,
   )
-  set text(font: "New Computer Modern", lang: myLang)
+
   set heading(numbering: myNumbering)
-  set figure(numbering: n => {
-    let chapter = counter(heading).get().at(0)
-    numbering("1.1", chapter, n)
-  })
-  show raw: set text(font: "DejaVu Sans Mono", size: 10pt)
-  set par(spacing: 0.55em)
-  show heading: set block(above: 2em, below: 1.4em)
   show heading.where(level: 1): it => {
+    pagebreak(weak: true)
+
     counter(figure).update(0)
+
     stack(
       spacing: 2em,
       if it.numbering == "A.1" {
@@ -52,36 +131,62 @@
     )
   }
 
+  set par(
+    leading: 0.55em,
+    spacing: 0.55em,
+    justify: true,
+  )
+
+  set text(font: "New Computer Modern", lang: myLang)
+
+  set figure(numbering: n => {
+    let chapter = counter(heading).get().at(0)
+    numbering("1.1", chapter, n)
+  })
+
+  show raw: set text(font: "DejaVu Sans Mono", size: 10pt)
+  set par(spacing: 0.55em)
+
+  show heading: set block(above: 2em, below: 1.4em)
+
   // Custom styling
   set list(marker: (sym.bullet, sym.dash))
+  set enum(spacing: 1em)
   set table(inset: 10pt)
   set table(
     fill: (x, y) => {
       if calc.even(y) {
         gray.lighten(70%)
-      } else { white }
+      } else {
+        white
+      }
     },
   )
+
   show figure: it => {
     v(1em)
     it
     v(1em)
   }
+
   show figure: set block(breakable: true)
+
   let foreign(body) = text(style: "italic")[#body]
+
   // Il comando sotto lo tengo commentato perché altrimenti può succedere che l'immagine e la sua caption finiscano in due pagine diverse.
-  // Per questo motivo ogni tabella deve essere racchiusa in un blocco di codice #{ } o di contenuto #[ ] per isolarne le regole. (se trovate un modo migliore aprite una pr :D )
-  //show figure: set block(breakable: true)
+  // Per questo motivo ogni tabella deve essere racchiusa in un blocco di codice #{ } o di contenuto #[ ] per isolarne le regole.
+  // show figure: set block(breakable: true)
 
   // Glossary bootstrap and setup
   show: make-glossary
   register-glossary(glossary-terms)
+
   body
 }
 
-// Creare delle funzioni wrapper di Glossarium è l'unica soluzione che ho trovato per personalizzare l'aspetto del testo (Sono anche più corte).
+// Creare delle funzioni wrapper di Glossarium è l'unica soluzione che ho trovato per personalizzare l'aspetto del testo.
 // L'unica alternativa è al seguente link ma funziona solo se usi Glossarium con le ref ad esempio '@TERMINE'
-// https://forum.typst.app/t/how-do-you-apply-a-style-to-glossarium-references-that-is-different-to-other-reference-types/2089?u=ogre
+// https://forum.typst.app/t/how-do-you-apply-a-style-to-glossarium-references-that-is-different-to-other-reference-types/2089
 #let glossary-style(body) = {
   text(rgb("#227ae5"), body + sub[G])
 }
@@ -120,10 +225,12 @@
 )
 
 #let objectives-data = yaml("../specs/stage/objectives.yaml")
+
 #let obj-label(code) = label("obj-" + code)
 #let obj-link(code) = link(obj-label(code))[
   #text(fill: rgb("#227ae5"))[#code]
 ]
+
 #let prod-label(code) = label("prod-" + code)
 #let prod-link(code) = link(prod-label(code))[
   #text(fill: rgb("#227ae5"))[#code]
@@ -133,7 +240,7 @@
   caption: "Tabella obiettivi stage",
   table(
     columns: (0.18fr, 1fr),
-    align: (left, left),
+    align: (center, left),
     table.header([*Codice*], [*Descrizione*]),
     ..data
       .objectives
@@ -144,6 +251,7 @@
       .flatten(),
   ),
 )
+
 #let products-data = yaml("../specs/stage/products.yaml")
 
 #let render-foreign-text(text, foreign-terms) = {
@@ -163,8 +271,8 @@
 #let render-products(data) = figure(
   caption: "Tabella prodotti attesi",
   table(
-    columns: (0.25fr, 1fr, 0.35fr),
-    align: (left, left, left),
+    columns: (0.25fr, 1fr, 0.27fr),
+    align: (center, left, center),
     table.header([*Codice*], [*Descrizione*], [*Obiettivo*]),
     ..data
       .products

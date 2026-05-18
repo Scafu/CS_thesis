@@ -12,3 +12,10 @@
   url: https://arxiv.org/abs/2303.15715
   serial-number:
     arxiv: '2303.15715'
+'def-user-stories':
+  type: book
+  title: User Stories Applied for Agile Software Development
+  author:
+  - Mike Cohn
+  page-total: 291
+  date: 2004

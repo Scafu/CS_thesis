@@ -1,9 +1,7 @@
 #import "../config/constants.typ": abstract
 #import "../config/variables.typ": *
-#import "../config/thesis-config.typ": glossary-style
 #import "@preview/codly:1.3.0": *
 #import "@preview/codly-languages:0.1.8": *
-#pagebreak(to: "odd")
 #v(4em)
 
 #text(24pt, weight: "semibold", abstract)

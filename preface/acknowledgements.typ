@@ -1,7 +1,6 @@
 #import "../config/variables.typ": *
 #import "../config/constants.typ": acknowledgements
 
-#pagebreak(to: "odd")
 #align(right, [
   «If you are not embarassed by the first version of your product, you've launched too late.»
   #v(6pt)
