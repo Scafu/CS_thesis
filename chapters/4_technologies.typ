@@ -1,0 +1,1 @@
+= Tecnologie utilizzate <cap:tecnologie>

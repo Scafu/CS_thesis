@@ -2,10 +2,10 @@
   gl, glpl, obj-link, objectives-data, prod-link, products-data, render-objectives, render-products,
 )
 #import "../config/variables.typ": myTutor
-= Descrizione stage<cap:descrizione-stage>
+= Descrizione stage <cap:descrizione-stage>
 #text(style: "italic", [
   Questo capitolo descrive nel dettaglio il progetto di stage svolto presso Wavelop Srl, presentandone gli obiettivi, i
-  prodotti attesi, la pianificazione delle attività, l'analisi dei rischi e gli obiettivi personali perseguiti durante
+  prodotti attesi, l'analisi dei rischi e gli obiettivi personali perseguiti durante
   l'esperienza formativa.
 ])
 #v(1em)
@@ -30,65 +30,27 @@ conseguimento di tutti gli obiettivi citati nella @sez-obiettivi.
 
 #render-products(products-data)
 
-== Pianificazione del lavoro
-Lo stage prevedeva un impegno complessivo compreso tra 300 e 320 ore, distribuite nei mesi di maggio e giugno, con una
-media di otto ore lavorative giornaliere. L'attività è stata svolta in modalità ibrida, alternando giornate in presenza
-presso la sede aziendale a giornate di lavoro da remoto.
-=== Pianificazione Settimanale
-A partire dalla terza settimana, la pianificazione del lavoro è stata organizzata tramite sprint della durata di una
-settimana. Al termine di ciascuno sprint era previsto un incontro con gli stakeholder finalizzato alla revisione dei
-risultati raggiunti, all'allineamento sullo stato di avanzamento del progetto e alla definizione delle attività previste
-per il periodo successivo.
+== Metodologia di lavoro <sez-metodologia-lavoro>
+=== Metodologie Agili
+All'interno di Wavelop Srl viene adottata la metodologia _Agile_, un approccio allo sviluppo software basato sulla suddivisione del lavoro in fasi iterative e incrementali, con l'obiettivo di favorire il miglioramento continuo del prodotto finale.
+Questo approccio consente di avere una maggiore flessibilità nella gestione delle attività, permettendo di adattare la pianificazione alle esigenze che emergono durante lo sviluppo del prodotto. Per far si che questo approccio possa risultare efficace, è necessario che l'intero team condivida la stessa visione, orientata alla collaborazione, all'autogestione, alla partecipazione attiva all'organizzazione e alla definizione delle modalità di lavoro.
+#figure(caption: "Scrum Flow, tratto da What is Scrum? di Scrum.org")[#image(
+  "../images/scrum-framework.png",
+  width: 90%,
+)]<fig:scrum-flow>
+L'utilizzo di _Scrum_ parte tutto dalla creazione di un _backlog_ del prodotto, ovvero una lista di attività che il team deve svolgere. Questa lista viene sempre rivista, è infatti una lista dinamica che si adatta in base alle esigenze e alle conoscenze che mano a mano aumentano del team. In questa lista vengono definite le _user stories_ di cui si rimanda la loro definizione alla @cap:user-stories.
+Dopo aver creato la lista di requisiti, _user stories_ e altre attività, si passa alla pianificazione del periodo di lavoro chiamato _sprint_, che ha una durata di una o più settimane, in questa fase si spostano le attività dal _backlog_ creato in precedenza a quello legato al singolo _sprint_, successivamente si passa alla fase di sviluppo vero e proprio, nel quale il team collaborare per consegnare l'incremento di prodotto definito come risultato atteso dallo _sprint_. Per garantire un continuo miglioramento e sincronizzazione tra i membri del team, all'interno del periodo di sprint ci sono degli incontri giornalieri chiamati _stand up meeting_, in cui si discute in piedi riguardo a circa cosa si è fatto, cosa si farà e se ci sono eventuali difficoltà. Prendendo ad esempio Wavelop Srl, effettua questa riunione ogni giorno alle 9:15, permettendo quindi che il resto della giornata sia dedicata allo sviluppo vero e proprio. Al termine dello sprint vi è il _DoD_ e successivamente la _sprint review_, in cui si documenta e si discute riguardo a cosa ha funzionato e cosa no all'interno dello sprint, che può essere dallo sviluppo, fino al rapporto tra i membri del team, oppure la comunicazione con il cliente.
+Oltre a _Scrum_, Wavelop Srl adotta anche l'approccio con _Kanban_, che è una bacheca visiva dove le attività sono rappresentate come card che si spostano da uno stato all'altro, ad esempio da "da fare" a "in corso" o "in verifica", permettendo un flusso di attività in arrivo continuo.
 
-Per ogni periodo di lavoro è associato un riferimento ai prodotti attesi specificati nella @sez-prodotti-attesi.
-#v(0.8em)
-- *Prima Settimana* (40 ore): #prod-link("PA-01"), #prod-link("PA-02")
-  #v(0.8em)
-  - Incontro con gli stakeholder per definire i dettagli del progetto, per discutere requisiti e richieste relativamente
-    all'applicazione da sviluppare;
-  - Introduzione alla Cultura Aziendale;
-  - Formazione sulle tecnologie adottate (_Flutter_, _Node.js_ con _Fastify_, _Auth0_);
-  - Presa visione dell'infrastruttura esistente e assegnazione dei relativi strumenti necessari;
-  - Analisi dei requisiti.
-#v(0.8em)
-- *Seconda Settimana* (40 ore): #prod-link("PA-01"), #prod-link("PA-02")
-  #v(0.8em)
-  - Analisi dei requisiti;
-  - Idealizzazione di _Flow_ e _Wireframe_ dell'applicazione;
-  - Progettazione architetturale (Struttura app Flutter, modello dati locale, definizione API backend).
-#v(0.8em)
-- *Terza Settimana* (40 ore): #prod-link("PA-02")
-  #v(0.8em)
-  - Progettazione architetturale;
-  - Analisi e definizione storie per il backlog dello Sprint successivo assieme al referente.
-#v(0.8em)
-- *Quarta Settimana* - *Settima Settimana* (160 ore): #prod-link("PA-03"), eventuale #prod-link("PA-04")
-  #v(0.8em)
-  - Sviluppo tramite la metodologia del #gl("TDD") delle storie assegnate durante gli sprint.
-  - Stesura documentazione.
-#v(0.8em)
-- *Ottava Settimana* (40 ore): #prod-link("PA-03"), eventuale #prod-link("PA-04"), #prod-link("PA-05")
-  #v(0.8em)
-  - Sviluppo tramite la metodologia del TDD delle storie assegnate (rifinitura #gl("UI"), gestione casi limite);
-  - Collaudo finale e incontro finale con gli stakeholder;
-  - Stesura documentazione.
-#v(0.8em)
-
-=== Bilancio complessivo
-
-#figure(caption: "Tabella ore complessive", table(
-  columns: (1fr, 0.5fr, 0.5fr),
-  align: left,
-  table.header([*Attività*], [*Settimana*], [*Ore di lavoro*]),
-  [Comprensione sistema e obiettivi], [1], [20],
-  [Analisi dei requisiti], [1-2], [40],
-  [Progettazione], [2-3], [50],
-  [Implementazione], [4-8], [112],
-  [Test e validazione], [4-8], [68],
-  [Documentazione], [2-8], [10],
-  table.cell(colspan: 2)[Totale], [300],
-))
-
+=== Test driven development
+Oltre alle metodologie agili, discusse in precedenza, Wavelop Srl adotta anche l'approccio di sviluppo _Test Driven Development_ (TDD). Questo approccio prevede, prima di scrivere alcuna riga di codice, la scrittura di test che servono per definire il comportamento atteso da quella particolare funzionalità che si andrà a sviluppare.
+Sviluppando seguendo questo approccio, costringe lo sviluppatore rallentare, convalidare e perfezionare il codice in cicli di feedback più brevi. Anche se potrebbe inizialmente sembrare controintuitivo, questo approccio rafforza la relazione tra codice, test e design, portando ad un risparmio di tempo a lungo termine, in quanto eventuali errori vengono identificati subito, evitando che questi possano diventare più grandi nel corso dello sviluppo. Questo approccio porta quindi ad un miglioramento della qualità e leggibilità del codice, portando alla formazione di flussi di lavoro che portano a codice stabile e di alta qualità a livello di unità.
+#figure(caption: "Le 5 fasi del TDD, tratto da IBM Developer")[#image(
+  "../images/tdd.png",
+  width: 90%,
+)]<fig:tdd>
+Come si può vedere dalla @fig:tdd, il processo di sviluppo basato su test può essere racchiuso in 5 passaggi che si ripetono ciclicamente.
+1. *Scrivere test di unità*: prima di passare a scrivere codice 
 == Analisi dei rischi
 In questa fase iniziale sono stati identificati i seguenti rischi divisi in tre aree principali, organizzativi,
 tecnologici e personali.

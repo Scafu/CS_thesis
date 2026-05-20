@@ -150,7 +150,7 @@
   show heading: set block(above: 2em, below: 1.4em)
 
   // Custom styling
-  set list(marker: (sym.bullet, sym.dash))
+  set list(marker: (sym.bullet, sym.dash), spacing: 1em)
   set enum(spacing: 1em)
   set table(inset: 10pt)
   set table(
