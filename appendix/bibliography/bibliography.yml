@@ -19,3 +19,34 @@
   - Mike Cohn
   page-total: 291
   date: 2004
+'tdd':
+  type: article
+  title: What is test-driven development (TDD)?
+  author: 
+  - Josh Schneider
+  - Ian Smalley
+  url: https://www.ibm.com/think/topics/test-driven-development
+  parent:
+    type: blog
+    title: IBM Think
+    url: https://www.ibm.com/think
+'dart':
+  type: web
+  title: Documentazione ufficiale di Dart
+  author: Google
+  url: https://dart.dev/docs
+'flutter':
+  type: web
+  title: Documentazione ufficiale di Flutter
+  author: Google
+  url: https://flutter.dev/docs
+'nodejs':
+  type: web
+  title: Documentazione ufficiale di Node JS
+  author: Node JS Foundation
+  url: https://nodejs.org/en/docs
+'fastify':
+  type: web
+  title: Documentazione ufficiale di Fastify
+  author: Fastify
+  url: https://www.fastify.io/docs/latest/

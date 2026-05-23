@@ -1,25 +1,29 @@
-#import "../config/thesis-config.typ": glpl
+#import "../config/thesis-config.typ": (
+  glpl, obj-link, objectives-data, prod-link, products-data, render-objectives, render-products,
+)
 #import "data/requirements_list.typ": *
 
 = Analisi dei requisiti<cap:analisi-requisiti>
 
 #text(style: "italic", [
-  In questo capitolo effettuo l'analisi degli utenti, sviluppo le user stories e compongo la lista dei requisiti
-  dividendoli per tipologia e necessità.
+  In questo capitolo viene effettuata l'analisi degli utenti, sviluppo delle user stories e la lista degli obiettivi e
+  dei prodotti attesi al termine dello stage.
 ])
-#v(1em)
 
 == Analisi degli utenti
 La figura ... illustra la gerarchia degli attori che interagiscono con il sistema, dopo un analisi dello scopo e delle
 funzionalità dell'applicazione, ho individuato due attori principali:
 #v(0.5em)
-- *Guest*: rappresenta un utente non autenticato che può accedere alla piattaforma senza effettuare il login, ha un
+- *_Guest_*: rappresenta un utente non autenticato che può accedere alla piattaforma senza effettuare il login, ha un
   accesso limitato alle funzionalità di misurazione e di calcolo percentile, ma non può accedere alla gestione dei dati
   e tutto quello concerne le informazioni sanitarie nell'applicazione.
 - *Utente autenticato*: rappresenta un utente che ha effettuato il login e ha accesso completo alle funzionalità
   dell'applicazione.
+#v(0.5em)
 Al momento del termine dello stage, non stati nè individuati nè implementati differenze di permessi tra gli utenti
 autenticati, non si preclude però la possibilità di questa cosa in futuro. \
+
+
 
 == User stories<cap:user-stories>
 Al posto dei casi d'uso, per l'analisi dei requisiti e delle funzionalità del progetto di stage, ho scelto di adottare
@@ -50,8 +54,13 @@ consegnato codice funzionante. Le _user stories_ iniziali vengono solitamente sc
 ma possono essere definite in qualsiasi momento del ciclo di sviluppo. Successivamente si procede con la stima della
 grandezza di ogni storia e si stabilisce una durata fissa per le iterazioni, generalmente compresa tra una e quattro
 settimane. Questa durata rimane costante per l'intera durata del progetto. Al termine di ogni iterazione, il team di
-sviluppo è responsabile di consegnare codice funzionante per alcuni aspetti del prodotto finale @def-user-stories[pp.
-  8-10]. \ \ I vantaggi principali dell'utilizzo delle _user stories_ @def-user-stories[pp. 13-14] sono:
+sviluppo è responsabile di consegnare codice funzionante per alcuni aspetti del prodotto finale #cite(
+  <def-user-stories>,
+  supplement: [pp. 8-10],
+). \ \ I vantaggi principali dell'utilizzo delle _user stories_ #cite(
+  <def-user-stories>,
+  supplement: [pp. 13-14],
+) sono:
 #v(0.5em)
 - *Mettono il focus sulla comunicazione verbale*: lo scopo delle _user stories_ è quello di scrivere frasi semplici che
   fungono da promemoria per le conversazioni che devono avvenire con il cliente, dunque sono importanti perché
@@ -110,8 +119,8 @@ Di seguito vengono riportate le _user stories_ relative alle principali funziona
   #let t = [#v(0.8em) *Task:*]
 
   #heading(numbering: none, level: 3)[Epic 1. Schermate]
-  ==== Tutorial per la misurazione<us:tutorial-misurazione>
-  #d Come utente *Guest/Autenticato*, alla prima misurazione voglio poter visualizzare un tutorial.
+  ==== _Tutorial_ per la misurazione<us:tutorial-misurazione>
+  #d Come utente *_Guest_/Autenticato*, alla prima misurazione voglio poter visualizzare un tutorial.
   #t
   1. Implementazione pagine a step del tutorial.
   2. Implementazione bottone per saltare il tutorial.
@@ -120,9 +129,8 @@ Di seguito vengono riportate le _user stories_ relative alle principali funziona
   5. Implementazione salvataggio presa visione del tutorial.
   #p 2
 
-
   ==== Schermata di misurazione del piede<us:schermata-misurazione-piede>
-  #d Come utente *Guest/Autenticato* che si trova nella pagina di misurazione voglio poter misurare correttamente il
+  #d Come utente *_Guest_/Autenticato* che si trova nella pagina di misurazione voglio poter misurare correttamente il
   piede del bambino, muovendo le linee guida oppure inserendo manualmente la misura.
   #t
   1. Implementazione pagina di misurazione del piede.
@@ -132,14 +140,14 @@ Di seguito vengono riportate le _user stories_ relative alle principali funziona
   #p 3
 
   ==== Schermata di calcolo percentile e risultati<us:schermata-calcolo-percentile>
-  #d Come utente *Guest/Autenticato*, voglio poter dalla schermata Home accedere a quella di calcolo percentile,
+  #d Come utente *_Guest_/Autenticato*, voglio poter dalla schermata Home accedere a quella di calcolo percentile,
   inserire i dati necessari e visualizzare i risultati.
   #t
   1. Implementazione schermata di calcolo percentile.
-  2. Implementazione From per l'inserimento dei dati necessari al calcolo del percentile.
+  2. Implementazione _Form_ per l'inserimento dei dati necessari al calcolo del percentile.
   3. Implementazione grafici per la visualizzazione dei risultati del calcolo percentile.
   4. Implementazione consiglio dell'esperto.
-  5. Implementazione logica di routing per accedere alla schermata di calcolo percentile dalla Home.
+  5. Implementazione logica di _routing_ per accedere alla schermata di calcolo percentile dalla Home.
   #p 3
 
   ==== Schermata di informazioni sanitarie<us:schermata-informazioni-sanitarie>
@@ -150,7 +158,8 @@ Di seguito vengono riportate le _user stories_ relative alle principali funziona
   2. Implementazione consigli sulle calzature adatte.
   3. Implementazione consigli sullo sviluppo motorio.
   4. Implementazione segnali di attenzione riguardo alla crescita del bambino.
-  5. Implementazione logica di routing per accedere alla schermata di informazioni sanitarie dalla barra di navigazione.
+  5. Implementazione logica di _routing_ per accedere alla schermata di informazioni sanitarie dalla barra di
+    navigazione.
   6. Implementazione salvataggio informazioni come nota del diario di un bambino registrato.
   #p 2
 
@@ -162,31 +171,43 @@ Di seguito vengono riportate le _user stories_ relative alle principali funziona
   2. Implementazione visualizzazione misurazioni del piede/calcolo percentile effettuate in formato tabellare.
   3. Implementazione visualizzazione misurazione del piede/calcolo percentile effettuate in formato grafico.
   4. Implementazione visualizzazione note aggiuntive salvate.
-  5. Implementazione logica di routing per accedere alla schermata del diario del bambino dalla Home.
-  6. Implementazione recupero dati dal database locale/remoto.
+  5. Implementazione logica di _routing_ per accedere alla schermata del diario del bambino dalla _Home_.
+  6. Implementazione recupero dati dal _database_ locale/remoto.
   #p 5
 
   ==== Schermata contatti<us:schermata-contatti>
-  #d Come utente *Guest/Autenticato*, voglio poter vedere quali esperti ci sono nella mia zona o in base ad un indirizzo
-  che inserisco.
+  #d Come utente *_Guest_/Autenticato*, voglio poter vedere quali esperti ci sono nella mia zona o in base ad un
+  indirizzo che inserisco.
   #t
   1. Implementazione schermata contatti.
   2. Implementazione form di inserimento zona/indirizzo.
   3. Implementazione visualizzazione lista card con i contatti degli esperti.
-  4. Implementazione calcolo distanza tramite dati nel database.
-  5. Implementazione logica di routing per accedere alla schermata contatti dalla barra di navigazione.
+  4. Implementazione calcolo distanza tramite dati nel _database_.
+  5. Implementazione logica di _routing_ per accedere alla schermata contatti dalla barra di navigazione.
   #p 3
 
-  ==== Schermata risultato misurazione - Utente Guest<us:schermata-risultato-misurazione-guest>
-  #d Come utente *Guest*, voglio poter visualizzare una schermata con il risultato ottenuto dalla misurazione/calcolo
-  appena effettuato.
+  ==== Schermata _Home_<us:schermata-home>
+  #d Come utente *_Guest_/Autenticato*, voglio poter visualizzare una schermata _Home_ con le funzionalità principali
+  dell'applicazione e accedere alle altre schermate.
   #t
-  1. Implementazione schermata risultato misurazione/calcolo percentile.
-  2. Implementazione sfocature dati con richiesta di registrazione/login per visualizzare i dati completi.
-  3. Implementazione ritorno del risultato e reset dopo la chiusura della schermata.
-  #p 3
+  1. Implementazione schermata _Home_.
+  2. Implementazione logica di _routing_ per accedere alle altre schermate.
+  3. Implementazione visualizzazione funzionalità principali dell'applicazione.
+  4. Implementazione sezioni sfocata con richiesta di registrazione/login per visualizzare i dati completi.
+  #p 2
 
-  ==== Gestione Bambini registrati<us:gestione-bambini-registrati>
+  ==== Schermata iniziale o _Splash Screen_<us:splash-screen>
+  #d Come utente *_Guest_/Autenticato*, voglio poter visualizzare una schermata iniziale con il logo dell'applicazione
+  durante il caricamento dell'applicazione.
+  #t
+  1. Implementazione schermata iniziale o _Splash Screen_.
+  2. Implementazione visualizzazione logo dell'applicazione.
+  3. Implementazione logica di _routing_ per accedere alla schermata _Home_ dopo un breve periodo di tempo.
+  #p 1
+
+  #heading(numbering: none, level: 3)[Epic 2. Account]
+
+  ==== Gestione Bambini<us:gestione-bambini-registrati>
   #d Come utente *Autenticato*, voglio poter gestire più bambini all’interno della piattaforma, avendo dati gestiti per
   ognuno di essi.
   #t
@@ -194,11 +215,35 @@ Di seguito vengono riportate le _user stories_ relative alle principali funziona
   2. Implementazione logica di registrazione e rimozione bambino.
   3. Implementazione multi-tenancy per gestire i dati di più bambini in modo separato.
   4. Implementazione operazioni CRUD sui dati di ogni bambino.
+  5. Implementazione logica di _routing_ per accedere alla sezione di registrazione tramite pulsante nella schermata
+    _Home_.
+  6. Implementazione _Form_ per l'inserimento dei dati necessari alla registrazione di un bambino.
   #p 5
 
-  #heading(numbering: none, level: 3)[Epic 2. Misurazione]
+  ==== Implementazione autenticazione Auth0<us:autenticazione-auth0>
+  #d Come utente *_Guest_*, voglio poter registrarmi e accedere alla piattaforma tramite autenticazione Auth0.
+  #t
+  1. Implementazione autenticazione tramite Auth0.
+  2. Implementazione logica di registrazione e login tramite Auth0.
+  3. Implementazione logica di logout tramite Auth0.
+  4. Implementazione logica di gestione sessione utente.
+  5. Implementazione logica di protezione delle rotte per le funzionalità riservate agli utenti autenticati.
+  #p 2
+
+  ==== Eliminazione account e dati<us:eliminazione-account-dati>
+  #d Come utente *Autenticato*, voglio poter eliminare il mio account e tutti i dati associati alla piattaforma.
+  #t
+  1. Implementazione logica di eliminazione account utente.
+  2. Implementazione logica di eliminazione dati associati all'account utente.
+  3. Implementazione logica di conferma dell'eliminazione account e dati.
+  4. Implementazione reset dell'applicazione dopo l'eliminazione account e dati.
+  5. Implementazione pulsanti e messaggi di conferma per l'eliminazione account e dati.
+  6. Implementazione logica per elimnare diari di bambini registrati a scelta dell'utente.
+  #p 3
+
+  #heading(numbering: none, level: 3)[Epic 3. Misurazione]
   ==== Motore di misurazione del piede<us:motore-misurazione-piede>
-  #d Come utente *Guest/Autenticato*, voglio poter misurare il piede tramite l’applicazione.
+  #d Come utente *_Guest_/Autenticato*, voglio poter misurare il piede tramite l’applicazione.
   #t
   1. Implementazione motore di misurazione del piede.
   2. Implementazione conversione da pixel a centimetri.
@@ -207,105 +252,44 @@ Di seguito vengono riportate le _user stories_ relative alle principali funziona
   #p 5
 
   ==== Calcolo Percentile<us:calcolo-percentile>
-  #d Come utente *Guest/Autenticato*, voglio poter calcolare il percentile all'interno dell'applicazione.
+  #d Come utente *_Guest_/Autenticato*, voglio poter calcolare il percentile all'interno dell'applicazione.
   #t
   1. Implementazione motore di calcolo percentile.
   2. Implementazione salvataggio dati in database locale/remoto.
   #p 5
+
+  #heading(numbering: none, level: 3)[Epic 4. Impostazioni]
+  ==== Impostazioni dell'applicazione<us:impostazioni-app>
+  #d Come utente *_Guest_/Autenticato*, voglio poter accedere alla sezione di impostazioni dell'applicazione per
+  personalizzare alcune funzionalità e preferenze.
+  #t
+  1. Implementazione schermata di impostazioni dell'applicazione.
+  2. Implementazione cambio tema dell'applicazione.
+  3. Implementazione cambio lingua dell'applicazione.
+  4. Implementazione salvataggio preferenze dell'utente in database locale/remoto.
+  5. Implementazione logica di _routing_ per accedere alla sezione di impostazioni tramite pulsante nella barra di
+    navigazione.
+  6. Implementazione internazionalizzazione dell'applicazione per supportare più lingue.
+  #p 2
 ]
 
+== Gli obiettivi dello stage<cap:obiettivi-stage>
+All'inizio di ogni periodo di stage, Wavelop Srl definisce un insieme di obiettivi da perseguire. Tali obiettivi hanno
+una duplice finalità: permettere al tirocinante di comprendere gli aspetti su cui focalizzare maggiormente il proprio
+lavoro e fornire all'azienda criteri utili alla valutazione delle attività svolte, anche in vista di un eventuale
+inserimento lavorativo.
 
-== Tracciamento dei requisiti
-Ad ogni requisito è associato un codice costruito in base alle sue caratteristiche:
-#v(1em)
-#align(center)[*(F/Q/C)(M/D/O)R*]
-#v(1em)
-#set list(marker: none)
-- F (_Functional_): definisce una funzione di un sistema o dei suoi componenti;
-- Q (_Qualitative_): rappresentano come il sistema deve essere per soddisfare i requisiti dello stakeholder;
-- C (_Constraint_): rappresentano dei vincoli o dei limiti che il sistema deve rispettare;
-#v(0.5em)
-- M (_Mandatory_): irrinunciabili per qualcuno degli stakeholder;
-- D (_Desirable_): non strettamente necessari ma a valore aggiunto riconoscibile;
-- O (_Optional_): relativamente utili oppure contrattabili anche in fasi avanzate del progetto;
-#v(0.3em)
-- R (_Requirement_): requisito
-#v(1em)
-In @tab:requisiti-funzionali, @tab:requisiti-qualitativi e @tab:requisiti-vincolo sono riassunti i requisiti e il loro
-tracciamento con gli use case delineati in fase di analisi.
-#[
-  #show figure: set block(breakable: true)
-  #set table(
-    align: (center + horizon, left + horizon, center + horizon),
-    columns: (auto, 5fr, 1.5fr),
-  )
-  #v(1em)
-  #figure(
-    table(
-      table.header([*Codice*], [*Descrizione*], [*Fonti*]),
-      ..getFR().flatten()
-    ),
-    caption: "Tracciamento dei requisti funzionali.",
-  )
-  <tab:requisiti-funzionali>
+Nel presente documento gli obiettivi verranno identificati secondo le seguenti convenzioni:
+- *O* per gli obiettivi obbligatori, vincolanti in quanto obiettivo primario richiesto dal committente;
+- *D* per gli obiettivi desiderabili, non vincolanti o strettamente necessari, ma dal riconoscibile valore aggiunto;
+- *F* per gli obiettivi facoltativi, rappresentanti valore aggiunto non strettamente competitivo.
+Le sigle saranno seguite da una coppia sequenziale di numeri, identificativo dell'obiettivo.
 
-  #v(2em)
-  #figure(
-    table(
-      align: (center + horizon, left + horizon, center + horizon),
-      table.header([*Codice*], [*Descrizione*], [*Fonti*]),
-      ..getQR().flatten()
-    ),
-    caption: "Tracciamento dei requisti di qualità.",
-  )
-  <tab:requisiti-qualitativi>
+#render-objectives(objectives-data)
+== Prodotti attesi <sez-prodotti-attesi>
+Oltre agli obiettivi definiti, Wavelop Srl individua anche una serie di prodotti attesi, con lo scopo di descrivere in
+modo concreto i risultati da conseguire al termine dello stage. Per ciascun prodotto attesso riportato di seguito, il
+livello minimo previsto corrisponde al completamente degli obiettivi indicati, mentre il livello massimo comprende il
+conseguimento di tutti gli obiettivi citati nella sezione precedente.
 
-  #v(2em)
-  #figure(
-    table(
-      align: (center + horizon, left + horizon, center + horizon),
-      table.header([*Codice*], [*Descrizione*], [*Fonti*]),
-      ..getCR().flatten()
-    ),
-    caption: "Tracciamento dei requisti di vincolo.",
-  )
-  <tab:requisiti-vincolo>
-
-  #v(2em)
-  Di seguito, nella @tab:riepilogo-requisiti ho inserito il riepilogo dei requisiti, suddivisi per tipologia e
-  necessità.
-  #v(1em)
-  #show figure: set block(breakable: false)
-  #figure(
-    table(
-      columns: (auto, 1fr, 1fr, auto, auto),
-      table.header([*Tipo*], [*Mandatory*], [*Desirable*], [*Optional*], [*Somma*]),
-      [Functional],
-      [#getFR(getLen: true).at(0)],
-      [#getFR(getLen: true).at(1)],
-      [#getFR(getLen: true).at(2)],
-      [#getFR(getLen: true).sum()],
-
-      [Qualitative],
-      [#getQR(getLen: true).at(0)],
-      [#getQR(getLen: true).at(1)],
-      [#getQR(getLen: true).at(2)],
-      [#getQR(getLen: true).sum()],
-
-      [Constraint],
-      [#getCR(getLen: true).at(0)],
-      [#getCR(getLen: true).at(1)],
-      [#getCR(getLen: true).at(2)],
-      [#getCR(getLen: true).sum()],
-
-      [*Totale*],
-      [*#{ getFR(getLen: true).at(0) + getQR(getLen: true).at(0) + getCR(getLen: true).at(0) }*],
-      [*#{ getFR(getLen: true).at(1) + getQR(getLen: true).at(1) + getCR(getLen: true).at(1) }*],
-      [*#{ getFR(getLen: true).at(2) + getQR(getLen: true).at(2) + getCR(getLen: true).at(2) }*],
-      [*#{ getFR(getLen: true).sum() + getQR(getLen: true).sum() + getCR(getLen: true).sum() }*],
-
-      align: (center + horizon),
-    ),
-    caption: "Riepilogo dei requisiti.",
-  )<tab:riepilogo-requisiti>
-]
+#render-products(products-data)

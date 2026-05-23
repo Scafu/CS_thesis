@@ -47,7 +47,8 @@ accepted_words:
   - deduplicate
 
   # Tecnologie
-  - Fastify
+  - fastify
+  - kanban
   # estensioni
   - pdf
   - csv
@@ -58,3 +59,12 @@ accepted_words:
   # Falsi positivi
   - refactorizzazione
   - multipiattaforma
+  - prototipazione
+  - controintuitivo
+  - ripianificare
+  - configura
+  - rifattorizzato
+  
+
+  # Azienda
+  - wavelop

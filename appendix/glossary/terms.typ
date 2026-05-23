@@ -1,11 +1,11 @@
 #let glossary-terms = (
   (
-    key: "ci",
+    key: "CI",
     short: [CI],
     long: [Continuous integration],
-    description: [Pratica di programmazione che prevede la frequente integrazione del codice prodotto verso il ramo
-      principale del repository Git. Generalmente prima di poter fare questa integrazione il sistema esegue dei test
-      automatici (compilazione, unità, ecc...).],
+    description: [Pratica volta ad automatizzare l'integrazione di cambiamenti al codice sorgente da parte di più
+      sviluppatori in un singolo progetto software. Consente di unire frequentemente il lavoro di tutti in unico luogo,
+      in cui si andranno ad eseguire test automatici.],
   ),
   (
     key: "PPI",
@@ -37,5 +37,30 @@
     description: [Interfaccia utente, ovvero l'insieme degli elementi grafici e interattivi attraverso cui un utente
       interagisce con un'applicazione o un sistema. La UI include componenti come pulsanti, menu, finestre e altri
       elementi visivi che facilitano l'uso e la navigazione dell'applicazione.],
+  ),
+  (
+    key: "DoD",
+    short: [DoD],
+    long: [Definition of Done],
+    description: [In Scrum, la Definition of Done è un insieme di criteri che definiscono quando un'attività o un
+      incremento di lavoro è considerato completo. Questi criteri possono includere aspetti come la scrittura di test,
+      la documentazione, la revisione del codice e altri requisiti specifici del progetto. La DoD aiuta a garantire che
+      il lavoro consegnato sia di alta qualità e pronto per essere rilasciato.],
+  ),
+  (
+    key: "JIT",
+    short: [JIT],
+    long: [Just-In-Time],
+    description: [Compilazione di codice sorgente durante l'esecuzione di un programma, anzichè prima. Il compilatore
+      JIT traduce più comunemente codice numerico in codice macchina, che viene eseguito direttamente.
+    ],
+  ),
+  (
+    key: "AOT",
+    short: [AOT],
+    long: [Ahead-Of-Time],
+    description: [Compilazione di codice sorgente di un linguaggio di programmazione di alto livello in un linguaggio a
+      basso livello prima dell'esecuzione di un programma, riducendo la mole di lavoro da svolgere durante l'esecuzione
+      e migliorando le prestazioni.],
   ),
 )

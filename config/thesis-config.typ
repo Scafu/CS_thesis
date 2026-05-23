@@ -6,6 +6,7 @@
 #import "../config/constants.typ": appendix, chapter
 #import "../appendix/glossary/terms.typ": glossary-terms
 #import "@preview/hydra:0.6.2": hydra
+#import "@preview/retrofit:0.2.0": backrefs
 
 // This file sets up the properties of the document and the libraries used
 
@@ -165,10 +166,11 @@
 
   show figure: it => {
     v(1em)
-    it
+    it.body
+    v(1em)
+    it.caption
     v(1em)
   }
-
   show figure: set block(breakable: true)
 
   let foreign(body) = text(style: "italic")[#body]
@@ -180,6 +182,17 @@
   // Glossary bootstrap and setup
   show: make-glossary
   register-glossary(glossary-terms)
+
+
+  show: backrefs.with(
+    format: links => [
+      #text(black)[(cit. a p. ]
+      #text(blue)[#links.join(", ")]
+      #text(black)[)]
+    ],
+    read: path => read("../appendix/bibliography/" + path),
+  )
+
 
   body
 }
@@ -240,7 +253,7 @@
   caption: "Tabella obiettivi stage",
   table(
     columns: (0.18fr, 1fr),
-    align: (center, left),
+    align: (left, left),
     table.header([*Codice*], [*Descrizione*]),
     ..data
       .objectives
@@ -272,7 +285,7 @@
   caption: "Tabella prodotti attesi",
   table(
     columns: (0.25fr, 1fr, 0.27fr),
-    align: (center, left, center),
+    align: (left, left, left),
     table.header([*Codice*], [*Descrizione*], [*Obiettivo*]),
     ..data
       .products
