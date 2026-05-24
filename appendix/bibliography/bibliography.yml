@@ -50,3 +50,9 @@
   title: Documentazione ufficiale di Fastify
   author: Fastify
   url: https://www.fastify.io/docs/latest/
+'clean-architecture':
+  type: book
+  title: "Clean Architecture: A Craftsman's Guide to Software Structure and Design"
+  author: Robert C. Martin
+  page-total: 432
+  date: 2017
