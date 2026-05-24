@@ -82,10 +82,15 @@ Durante la stesura del testo sono state adottate le seguenti convenzioni tipogra
 - Le citazioni ad un libro o ad una risorsa presente nella Bibliografia (p. #link(<bibliography>)[#context (
     counter(page).at(<bibliography>).at(0)
   )]) saranno in formato _IEEE_ affiancate dal rispettivo numero identificativo, es. $[1]$;
-- I blocchi di codice sono rappresentati nel seguente modo
-#v(1em)
-```Dart
-void main() {
-  print("Hello, World!");
-}
-```
+- I blocchi di codice sono rappresentati nel seguente modo:
+
+#figure(
+  ```Dart
+  void main() {
+    print("Hello, World!");
+  }
+  ```,
+  caption: "Esempio di blocco di codice in Dart",
+  kind: raw,
+)
+

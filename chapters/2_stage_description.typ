@@ -102,45 +102,52 @@ In questa fase iniziale sono stati identificati i seguenti rischi divisi in tre 
 tecnologici e personali.
 
 === Rischi organizzativi
-Rischi relativi alle stime e all'assegnazione delle attività ad un determinato sprint. Questa tipologia di rischio può
-essere mitigata attraverso le _sprint review_, in cui si analizzano i risultati raggiunti e si pianificano le attività
-per lo _sprint_ successivo oppure si aggiustano le attività non completate.
-
-==== Mancato rispetto delle scadenze stabilite
-- *Descrizione*: Durante lo sviluppo del prodotto possono verificarsi ritardi rispetto al conseguimento delle task
+#highlight("I rischi organizzativi sono ")rischi relativi alle stime e all'assegnazione delle attività ad un determinato
+sprint. Questa tipologia di rischio può essere mitigata attraverso le _sprint review_, in cui si analizzano i risultati
+raggiunti e si pianificano le attività per lo _sprint_ successivo oppure si aggiustano le attività non completate.
+#v(1em)
+*1. Mancato rispetto delle scadenze stabilite*
+#v(1em)
+#highlight([
+  *Descrizione:* durante lo sviluppo del prodotto possono verificarsi ritardi rispetto al conseguimento delle task
   fissate, comportando un prolungamento dei tempi di completamento delle task e nel peggiore dei casi un ritardo nella
   data di consegna finale del prodotto.
-- *Mitigazione*: Eventuali ritardi dovranno essere comunicati tempestivamente e motivati, cercando di mitigare l'impatto
+
+  *Mitigazione:* eventuali ritardi dovranno essere comunicati tempestivamente e motivati, cercando di mitigare l'impatto
   sulle task successive. Nelle sprint review questo ritardo sarà oggetto di discussione per capire se è necessario
   rivedere la pianificazione delle attività successive.
-- *Probabilità*: Media - Bassa
-- *Impatto prestazionale*: Alto
+])
 
 
 === Rischi tecnologici
-Rischi relativi alle tecnologie da implementare e le prassi da utilizzare nel processo di sviluppo. Questo tipo di
-rischio può essere mitigato attraverso colloquio con il tutor aziendale oppure attraverso gli _stand up meeting_
-giornalieri, in cui si discute dell'andamento ed eventuali difficoltà riscontrate.
-
-==== Errori di programmazione
-- *Descrizione*: Risulta altamente improbabile che il prodotto finale sia privo di bug o errori di programmazione, che
+#highlight("I rischi tecnologici sono rischi") relativi alle tecnologie da implementare e le prassi da utilizzare nel
+processo di sviluppo. Questo tipo di rischio può essere mitigato attraverso colloquio con il tutor aziendale oppure
+attraverso gli _stand up meeting_ giornalieri, in cui si discute dell'andamento ed eventuali difficoltà riscontrate.
+#v(1em)
+*1. Errori di programmazione*
+#v(1em)
+#highlight([
+  *Descrizione*: Risulta altamente improbabile che il prodotto finale sia privo di bug o errori di programmazione, che
   potrebbero compromettere il corretto funzionamento dello stesso.
-- *Mitigazione*: Sarà necessario implementare un sistema di testing e debugging efficace, al fine di limitare al minimo
+
+  *Mitigazione*: Sarà necessario implementare un sistema di testing e debugging efficace, al fine di limitare al minimo
   la presenza di bug e garantire il funzionamento corretto del prodotto nella sua interezza.
-- *Probabilità*: Media - Alta
-- *Impatto prestazionale*: Medio
+])
 
 === Rischi personali
-Rischi relativi a fattori personali che potrebbero causare rallentamenti o interruzioni temporanee del lavoro. Questo
-tipo di rischio può essere mitigato attraverso una comunicazione chiara e tempestiva con il tutor aziendale, in modo da
-poter ripianificare il lavoro per limitare i danni.
-==== Indisponibilità temporanee
-- *Descrizione*: Durante lo sviluppo potrebbero esserci indisponibilità temporanee, causando un rallentamento momentaneo
+#highlight("I rischi personali sono ") rischi relativi a fattori che interessano l'individuo e che potrebbero causare
+rallentamenti o interruzioni temporanee del lavoro. Questo tipo di rischio può essere mitigato attraverso una
+comunicazione chiara e tempestiva con il tutor aziendale, in modo da poter ripianificare il lavoro per limitare i danni.
+#v(1em)
+*1. Indisponibilità temporanee*
+#v(1em)
+#highlight([
+  *Descrizione:* Durante lo sviluppo potrebbero esserci indisponibilità temporanee, causando un rallentamento momentaneo
   del lavoro.
-- *Mitigazione*: In caso di assenze temporanee, sarà necessario comunicare tempestivamente la situazione, cercando di
+
+  *Mitigazione:* In caso di assenze temporanee, sarà necessario comunicare tempestivamente la situazione, cercando di
   recuperare il tempo perso una volta rientrati.
-- *Probabilità*: Bassa
-- *Impatto prestazionale*: Medio
+])
 
 == Obiettivi personali
 Di seguito sono riportati gli obiettivi personali che mi hanno spinto a scegliere questo progetto di stage presso
@@ -156,7 +163,7 @@ Wavelop Srl:
 
 - *Stesso percorso di studi universitari*: la condivisione dello stesso percorso di studi universitari dell'intero team
   di sviluppo, ha permesso a Wavelop Srl di strutturare il progetto di stage strettamente allineato alle esigenze
-  formative e alle tempistiche richieste dall'Ateneo.
+  formative e alle tempistiche richieste dal corso di laurea.
 
 - *Possibilità di inserimento in azienda*: lo svolgimento di colloqui diretti con i fondatori dell'azienda e la
   possibilità di confronto aperto hanno costituito elementi fondamentali per la scelta del progetto e nella valutazione
