@@ -7,12 +7,6 @@
 ])
 
 == Dart
-#figure(
-  caption: "Logo di Dart",
-)[#image(
-  "../images/dart-logo.png",
-  width: 40%,
-)]
 _Dart_ #cite(<dart>) è un linguaggio di programmazione _open-source_ sviluppato da _Google_, progettato con l'obiettivo
 di ottimizzare lo sviluppo per piattaforme multiple. È un linguaggio fortemente tipizzato e _type safe_, il sistema di
 tipi interno utilizza verifiche statiche per garantire la coerenza tra i valori e tipi delle variabili a partire dalla
@@ -34,11 +28,9 @@ Questo approccio rende il codice _Dart_ più robusto, leggibile e sicuro perchè
 compilazione.
 
 Come mostrato in @dart-image, il _toolchain_ di compilazione di _Dart_ è progettato per supportare scenari di sviluppo e
-rilascio diversi, adattandosi alla piattaforma di destinazione. #figure(
-  caption: "Pipeline di compilazione di Dart",
-)[#image(
-  "../images/Dart-platforms.png",
-)]<dart-image>
+rilascio diversi, adattandosi alla piattaforma di destinazione. #figure(caption: [Pipeline di compilazione di Dart#[\ #text()[Fonte dell'immagine: #cite(<dart>)]]<no-index>])[
+  #image("../images/Dart-platforms.png")
+]<dart-image>
 Dart può dunque essere utilizzato per sviluppare applicazioni su due principali categorie di piattaforme:
 #v(0.5em)
 - *Piattaforme native*: _Dart_ dispone di una macchina virtuale (VM) con compilatore _just-in-time_ (#gl("JIT")),
@@ -48,12 +40,6 @@ Dart può dunque essere utilizzato per sviluppare applicazioni su due principali
   direttamente in _WebAssembly_, un formato binario supportato da tutti i tipi di browser.
 
 == Flutter
-#figure(
-  caption: "Logo di Flutter",
-)[#image(
-  "../images/flutter-logo.png",
-  width: 50%,
-)]
 _Flutter_ #cite(<flutter>) è un _toolkit UI_ open-source sviluppato da _Google_, progettato per favorire il massimo
 riutilizzo del codice tra diversi sistemi operativi, garantendo al contempo compatibilità diretta dell'applicazione con
 i servizi nativi della piattaforma di destinazione. L'architettura di _Flutter_ si basa su una serie di librerie
@@ -65,12 +51,6 @@ che offre una funzionalità chiamata _hot reload_, che consente agli sviluppator
 cambiamenti apportati al codice sorgente senza dover ricompilare l'intera applicazione.
 
 == Node JS
-#figure(
-  caption: "Logo di Node JS",
-)[#image(
-  "../images/nodejs-logo.png",
-  width: 30%,
-)]
 _Node JS_ #cite(<nodejs>) è un ambiente di runtime _JavaScript_ _open-source_ e multipiattaforma, progettato per
 eseguire codice lato server al di fuori del contesto browser. Si basa su un'architettura orientata agli eventi in cui la
 quasi totalità delle librerie native esegue operazioni modo asincrono rendendo _Node JS_ particolarmente adatto per lo
@@ -79,12 +59,6 @@ reale. Il suo _manager_ di pacchetti ufficale ospita milioni di librerie pronte 
 ha contribuito a rendere _Node JS_ una delle tecnologie più popolari nel panorama dello sviluppo web.
 
 == Fastify
-#figure(
-  caption: "Logo di Fastify",
-)[#image(
-  "../images/fastify-logo.png",
-  width: 40%,
-)]
 _Fastify_ #cite(<fastify>) è un framework web per _Node JS_ ideato e sviluppato dai programmatori italiani Matteo
 Collina e Tomas Della Vedova. Il framework è stato concepito con l'obiettivo fondamentale di offrire un'eccellente
 esperienza di sviluppo senza scendere a compromessi di _performance_, grazie a una potente architettura basata su

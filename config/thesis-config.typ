@@ -94,6 +94,8 @@
   pagebreak()
 }
 
+#let fig-source(body) = body
+
 #let config(
   myAuthor: "Alessandro Mazzariol",
   myTitle: "Titolo",
@@ -163,6 +165,7 @@
       }
     },
   )
+
 
   show figure: it => {
     v(1em)

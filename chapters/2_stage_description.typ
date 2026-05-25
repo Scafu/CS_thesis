@@ -14,7 +14,7 @@ prodotto finale. Questa metodologia garantisce una maggiore flessibilità nella 
 adattare tempestivamente la pianificazione alle esigenze che emergono durante lo sviluppo del prodotto. Affinché tale
 approccio risulti efficace, è fondamentale che l'intero team condivida la stessa visione, orientata alla collaborazione,
 all'autogestione e alla partecipazione attiva sia nella progettazione sia nella definizione delle modalità di lavoro.
-#figure(caption: "Scrum Flow, tratto da What is Scrum? di Scrum.org")[#image(
+#figure(caption: "Framework Scrum")[#image(
   "../images/scrum-framework.png",
   width: 90%,
 )]<fig:scrum-flow>

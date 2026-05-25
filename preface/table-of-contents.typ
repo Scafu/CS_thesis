@@ -13,10 +13,15 @@
 
 #v(8em)
 
-#outline(
-  title: figuresList,
-  target: figure.where(kind: image),
-)
+#[
+  // Nasconde nell'indice tutto ciò che ha la label <no-index>
+  #show <no-index>: none
+
+  #outline(
+    title: figuresList,
+    target: figure.where(kind: image),
+  )
+]
 
 #v(8em)
 

@@ -32,9 +32,9 @@
     url: https://www.ibm.com/think
 'dart':
   type: web
-  title: Documentazione ufficiale di Dart
+  title: Panoramica di Dart
   author: Google
-  url: https://dart.dev/docs
+  url: https://dart.dev/overview
 'flutter':
   type: web
   title: Documentazione ufficiale di Flutter
