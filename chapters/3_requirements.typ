@@ -26,45 +26,50 @@ autenticati, non si preclude però la possibilità di questa cosa in futuro. \
 
 
 == User stories<cap:user-stories>
-Al posto dei casi d'uso, per l'analisi dei requisiti e delle funzionalità del progetto di stage, ho scelto di adottare
-le user stories. Questa scelta è motivata dal fatto che queste rappresentano uno degli strumenti principali utilizzati
-nelle metodologie agili, approccio seguito da Wavelop Srl per la gestione e sviluppo dei propri progetti software.
-
-Una _user story_ consiste in una descrizione generale e informale di una funzionalità o di un requisito software,
-scritta dal punto di vista dell'utente finale. L'obiettivo principale è quello di evidenziare il valore che una
-funzionalità o un requisito può portare all'utilizzatore finale del sistema. Ogni _user story_ è composta da tre
+Al posto dei casi d'uso tradizionali, per l'analisi dei requisiti delle funzionalità del progetto di stage, è stato
+deciso di adottare le _user stories_. Questa scelta è motivata dal fatto che rappresentano uno degli strumenti
+principali utilizzati nelle metodologie _Agile_, approccio seguito da Wavelop Srl.
+#v(0.5em)
+Una _user story_ consiste in una breve descrizione generale e informale di una funzionalità o di un requisito software,
+scritta dal punto di vista dell'utente finale. L'obiettivo principale di questi strumenti è quello di evidenziare il
+valore che una funzionalità o un requisito può portare all'utilizzatore del sistema. Ogni _user story_ è composta da tre
 aspetti:
 #v(1em)
-1. *Carta*: descrizione scritta della storia usata come riferimento per la pianificazione e come promemoria;
-2. *Conversazione*: discussione riguardo alla storia che serve per chiarire i dettagli della storia;
-3. *Conferma*: test che definiscono i criteri per cui una user story è considerata completa e
-soddisfatta.
+1. *Carta*: descrizione sintetica scritta della funzionalità, utilizzata come riferimento durante la pianificazione e
+  come promemoria;
+2. *Conversazione*: confronto tra le parti coinvolte per chiarire i dettagli della storia;
+3. *Conferma*: insieme di test o criteri di accettazione che determinano quando la storia può essere considerata
+  completata.
 #v(1em)
 Nonostante la loro efficacia, le _user stories_ presentano un'elevata astrazione e, se non adeguatamente definite,
-possono portare ad ambiguità e incomprensioni nel team di sviluppo. Per questo motivo, nelle prime fasi dell'analisi è
-importante definire la grandezza e la profondità delle _user stories_ per evitare i problemi sopra citati. Più _user
-stories_ possono essere raggruppate in _epic_, che rappresenta un insieme di funzionalità correlate che condividono un
-obiettivo comune. Si preferisce pertanto definire storie più piccole e specifiche, piuttosto che poche storie grandi e
-generiche così da facilitare la divisione del lavoro e la pianificazione. Un progetto che utilizza le _user stories_,
-definito _story-driven_, presenta un ritmo di sviluppo differente rispetto a un progetto tradizionale. In particolare,
-il cliente viene coinvolto durante l'intero ciclo di sviluppo del software, approccio che trova riscontro nei principi
-della metodologia _Agile_. \ \
-Il lavoro viene organizzato in iterazioni o _sprint_, cicli di sviluppo a tempo fisso al termine dei quali viene
-consegnato codice funzionante. Le _user stories_ iniziali vengono solitamente scritte durante un workshop collaborativo,
-ma possono essere definite in qualsiasi momento del ciclo di sviluppo. Successivamente si procede con la stima della
-grandezza di ogni storia e si stabilisce una durata fissa per le iterazioni, generalmente compresa tra una e quattro
-settimane. Questa durata rimane costante per l'intera durata del progetto. Al termine di ogni iterazione, il team di
-sviluppo è responsabile di consegnare codice funzionante per alcuni aspetti del prodotto finale #cite(
+possono portare ad ambiguità e incomprensioni all'interno delteam di sviluppo. Per questo motivo, nelle fasi iniziali
+dell'analisi è importante definire la grandezza e il livello di dettaglio delle _user stories_. Più _user stories_
+correlate possono essere raggruppate in _epic_, ovvero un insieme di funzionalità che condividono un obiettivo comune.
+Generalmente si preferisce definire storie piccole e specifiche, piuttosto che poche storie grandi e generiche così da
+facilitare la divisione del lavoro e la pianificazione.
+#v(0.5em)
+Un progetto basato sulle _user stories_, definito _story-driven_, segue un ritmo di sviluppo differente rispetto ai
+modelli tradizionali. In particolare, il cliente viene coinvolto durante l'intero ciclo di sviluppo del software, in
+linea con i principi della metodologia _Agile_. Il lavoro viene organizzato in iterazioni dette _sprint_, ovvero cicli
+di sviluppo a durata fissa al termine dei quali viene consegnato codice funzionante.
+#v(0.5em)
+Le _user stories_ iniziali vengono solitamente definite durante un workshop collaborativo, ma possono essere aggiunte o
+modificate in qualsiasi momento del ciclo di sviluppo. Successivamente si procede con la stima della complessità di ogni
+storia e si stabilisce una durata fissa per le iterazioni, generalmente compresa tra una e quattro settimane e rimane
+costante per l'intera durata del progetto. Al termine di ogni iterazione, il team di sviluppo è responsabile di
+consegnare codice funzionante per alcuni aspetti del prodotto finale #cite(
   <def-user-stories>,
   supplement: [pp. 8-10],
-). \ \ I vantaggi principali dell'utilizzo delle _user stories_ #cite(
+).
+#v(0.5em)
+I vantaggi principali dell'utilizzo delle _user stories_ #cite(
   <def-user-stories>,
   supplement: [pp. 13-14],
 ) sono:
-#v(0.5em)
-- *Mettono il focus sulla comunicazione verbale*: lo scopo delle _user stories_ è quello di scrivere frasi semplici che
-  fungono da promemoria per le conversazioni che devono avvenire con il cliente, dunque sono importanti perché
-  facilitano la comunicazione.
+#v(1em)
+- *Mettono il focus sulla comunicazione verbale*: le _user stories_ hanno lo scopo di rappresentare in modo sintetico
+  una funzionalità fungendo da supporto alle conversazioni tra cliente e team di sviluppo e favorando quindi la
+  comunicazione tra le parti.
 - *Comprensibili da entrambe le parti*: le _user stories_ essendo scritte in un linguaggio semplice e non tecnico, sono
   facilmente comprensibili sia dal team di sviluppo che dal cliente, mostrando in modo chiaro il valore della
   funzionalità o del requisito descritto.

@@ -14,7 +14,7 @@ prodotto finale. Questa metodologia garantisce una maggiore flessibilità nella 
 adattare tempestivamente la pianificazione alle esigenze che emergono durante lo sviluppo del prodotto. Affinché tale
 approccio risulti efficace, è fondamentale che l'intero team condivida la stessa visione, orientata alla collaborazione,
 all'autogestione e alla partecipazione attiva sia nella progettazione sia nella definizione delle modalità di lavoro.
-#figure(caption: "Framework Scrum")[#image(
+#figure(caption: [#highlight("Framework Scrum")])[#image(
   "../images/scrum-framework.png",
   width: 90%,
 )]<fig:scrum-flow>
@@ -66,10 +66,10 @@ Come mostrato nella @fig:tdd, il processo di sviluppo basato sui test prevede 5 
   funzionalità successiva, ripetendo l'intero ciclo.
 
 #figure(
-  caption: "Le 5 fasi del TDD, tratto da IBM Think",
+  caption: [#highlight("Le 5 fasi del TDD")],
 )[#image(
   "../images/tdd.png",
-  width: 110%,
+  width: 70%,
 )]<fig:tdd>
 
 ==== Vantaggi e problematiche
@@ -98,13 +98,14 @@ Di contro, l'adozione del TDD porta con sé alcune problematiche non trascurabil
 Durante lo stage, lo sviluppo si è svolto seguendo questo approccio laddove possibile, cercando di bilanciare i benefici
 e le criticità sopra elencate, con l'obiettivo di ottenere un prodotto finale di qualità e mantenibile nel tempo.
 == Analisi dei rischi
-In questa fase iniziale sono stati identificati i seguenti rischi divisi in tre aree principali, organizzativi,
-tecnologici e personali.
+In questa fase iniziale, i rischi identificati sono stati suddivisi in tre aree principali: organizzativi, tecnologici e
+personali.
 
 === Rischi organizzativi
-#highlight("I rischi organizzativi sono ")rischi relativi alle stime e all'assegnazione delle attività ad un determinato
-sprint. Questa tipologia di rischio può essere mitigata attraverso le _sprint review_, in cui si analizzano i risultati
-raggiunti e si pianificano le attività per lo _sprint_ successivo oppure si aggiustano le attività non completate.
+#highlight("I rischi organizzativi sono ")legati alle stime e all'assegnazione delle attività all'interno di un
+determinato sprint. Questa tipologia di criticità può essere mitigata attraverso le _sprint review_, durante le quali si
+analizzano i risultati raggiunti, si pianificano le attività per lo _sprint_ successivo e si ricalibrano quelle non
+completate.
 #v(1em)
 *1. Mancato rispetto delle scadenze stabilite*
 #v(1em)
@@ -120,38 +121,38 @@ raggiunti e si pianificano le attività per lo _sprint_ successivo oppure si agg
 
 
 === Rischi tecnologici
-#highlight("I rischi tecnologici sono rischi") relativi alle tecnologie da implementare e le prassi da utilizzare nel
-processo di sviluppo. Questo tipo di rischio può essere mitigato attraverso colloquio con il tutor aziendale oppure
+#highlight("I rischi tecnologici sono relativi alle tecnologie da adottare e alle prassi") da seguire nel processo di
+sviluppo. Tali problematiche possono essere mitigate attraverso un confronto continuo con il tutor aziendale oppure
 attraverso gli _stand up meeting_ giornalieri, in cui si discute dell'andamento ed eventuali difficoltà riscontrate.
 #v(1em)
 *1. Errori di programmazione*
 #v(1em)
 #highlight([
-  *Descrizione*: Risulta altamente improbabile che il prodotto finale sia privo di bug o errori di programmazione, che
+  *Descrizione*: risulta altamente improbabile che il prodotto finale sia privo di bug o errori di programmazione, che
   potrebbero compromettere il corretto funzionamento dello stesso.
 
-  *Mitigazione*: Sarà necessario implementare un sistema di testing e debugging efficace, al fine di limitare al minimo
+  *Mitigazione*: sarà necessario implementare un sistema di testing e debugging efficace, al fine di limitare al minimo
   la presenza di bug e garantire il funzionamento corretto del prodotto nella sua interezza.
 ])
 
 === Rischi personali
-#highlight("I rischi personali sono ") rischi relativi a fattori che interessano l'individuo e che potrebbero causare
-rallentamenti o interruzioni temporanee del lavoro. Questo tipo di rischio può essere mitigato attraverso una
-comunicazione chiara e tempestiva con il tutor aziendale, in modo da poter ripianificare il lavoro per limitare i danni.
+#highlight("I rischi personali sono  criticità legate ")a imprevisti individuali che potrebbero causare rallentamenti o
+interruzioni temporanee del lavoro. Questa categoria di rischio può essere gestita attraverso una comunicazione chiara e
+tempestiva con il tutor aziendale, in modo da poter ripianificare il lavoro per limitare i danni.
 #v(1em)
 *1. Indisponibilità temporanee*
 #v(1em)
 #highlight([
-  *Descrizione:* Durante lo sviluppo potrebbero esserci indisponibilità temporanee, causando un rallentamento momentaneo
+  *Descrizione:* durante lo sviluppo potrebbero esserci indisponibilità temporanee, causando un rallentamento momentaneo
   del lavoro.
 
-  *Mitigazione:* In caso di assenze temporanee, sarà necessario comunicare tempestivamente la situazione, cercando di
+  *Mitigazione:* in caso di assenze temporanee, sarà necessario comunicare tempestivamente la situazione, cercando di
   recuperare il tempo perso una volta rientrati.
 ])
 
 == Obiettivi personali
-Di seguito sono riportati gli obiettivi personali che mi hanno spinto a scegliere questo progetto di stage presso
-Wavelop Srl:
+Di seguito sono riportati gli obiettivi personali che hanno portato a scegliere questo progetto di stage presso Wavelop
+Srl:
 #v(1em)
 - *Azienda di piccole dimensioni e giovane*: essendo un'azienda di piccole dimensioni, Wavelop Srl offre l'opportunità
   di essere coinvolti a 360 gradi in tutte le fasi del processo di sviluppo, favorendo la comunicazione tra tutti i
