@@ -57,23 +57,17 @@ Le _user stories_ iniziali vengono solitamente definite durante un workshop coll
 modificate in qualsiasi momento del ciclo di sviluppo. Successivamente si procede con la stima della complessità di ogni
 storia e si stabilisce una durata fissa per le iterazioni, generalmente compresa tra una e quattro settimane e rimane
 costante per l'intera durata del progetto. Al termine di ogni iterazione, il team di sviluppo è responsabile di
-consegnare codice funzionante per alcuni aspetti del prodotto finale #cite(
-  <def-user-stories>,
-  supplement: [pp. 8-10],
-).
+consegnare codice funzionante per alcuni aspetti del prodotto finale #cite(<def-user-stories>, supplement: [pp. 8-10]).
 #v(0.5em)
-I vantaggi principali dell'utilizzo delle _user stories_ #cite(
-  <def-user-stories>,
-  supplement: [pp. 13-14],
-) sono:
+I vantaggi principali dell'utilizzo delle _user stories_ #cite(<def-user-stories>, supplement: [pp. 13-14]) sono:
 #v(1em)
 - *Mettono il focus sulla comunicazione verbale*: le _user stories_ hanno lo scopo di rappresentare in modo sintetico
   una funzionalità fungendo da supporto alle conversazioni tra cliente e team di sviluppo e favorando quindi la
   comunicazione tra le parti.
-- *Comprensibili da entrambe le parti*: le _user stories_ essendo scritte in un linguaggio semplice e non tecnico, sono
-  facilmente comprensibili sia dal team di sviluppo che dal cliente, mostrando in modo chiaro il valore della
+- *Comprensibili da entrambe le parti*: le _user stories_ essendo scritte in un linguaggio semplice e non tecnico, risultano
+  facilmente comprensibili sia dal cliente sia dal team di sviluppo, mettendo in evidenza il valore della
   funzionalità o del requisito descritto.
-- *Dimensione adatta ad ogni pianificazione*: le _user stories_ hanno dimensioni adattabili e questo permette al team di
+- *Dimensione adatta alla pianificazione*: le _user stories_ hanno dimensioni adattabili e questo permette al team di
   pianificare il lavoro in base alle proprie capacità e necessità.
 - *Funzionano per lo sviluppo iterativo*: le _user stories_ non devono essere scritte tutte all'inizio del progetto, ma
   possono essere modificate e aggiunte in qualsiasi momento, questo permette al software di evolversi attraverso
@@ -84,17 +78,13 @@ I vantaggi principali dell'utilizzo delle _user stories_ #cite(
   comunicazione verbale e ripetuta nel tempo, permettono una crescita sostanziale della conoscenza tra le parti,
   facilitando la comprensione reciproca e la collaborazione.
 #v(0.5em)
-== Definizione e sviluppo delle user stories
-Durante lo stage, ho utilizzato le _user stories_ per definire i requisiti e delineare le funzionalità da implementare.
-Inizialmente ho definito una lista di tutte le _user stories_ che ritenevo necessarie per soddisfare le esigenze del
-cliente, organizzandole in _epic_ in base alla loro area di implementazione. Durante l'attività di progettazione prima
-di iniziare lo sviluppo, c'è stata una fase di discussione con il tutor aziendale per definire più dettagli possibili,
-toccando tutti gli aspetti, dal design dell'applicazione, alla _user experience_.
-
+== Sviluppo delle user stories
+Nelle prime fasi dell'analisi dei requisiti, è stata definitia una lista di _user stories_ ritenute necessarie per soddisfare le esigenze del
+cliente, organizzandole successivamente in _epic_ in base alla loro area di implementazione.
+#v(0.5em)
 A ciascuna _user story_ è stato associato un punteggio di complessità, utilizzato per la pianificazione del lavoro
-durante le iterazioni. La valutazione seguiva la sequenza di Fibonacci, con valore pari a 13 per le storie che
-richiedevano un'intera iterazione per essere completate.
-
+durante le iterazioni. La stima della complessità seguiva la sequenza di Fibonacci; il valore 13 rappresentava il livello massimo di complessità gestibile all'interno di una singola iterazione.
+#v(0.5em)
 Ogni _user story_ seguiva la seguente struttura:
 #v(0.5em)
 

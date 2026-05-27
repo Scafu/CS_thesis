@@ -2,8 +2,7 @@
 
 = Tecnologie utilizzate <cap:tecnologie>
 #text(style: "italic", [
-  In questo capitolo effettuo l'analisi degli utenti, sviluppo le user stories e compongo la lista dei requisiti
-  dividendoli per tipologia e necessità.
+  In questo capitolo viene effettuata una panoramica delle tecnologie adottate per il progetto, con particolare attenzione agli aspetti principali che le caratterizzano.
 ])
 
 == Dart
@@ -36,19 +35,22 @@ Dart può dunque essere utilizzato per sviluppare applicazioni su due principali
 - *Piattaforme native*: _Dart_ dispone di una macchina virtuale (VM) con compilatore _just-in-time_ (#gl("JIT")),
   utilizzato principalmente in fase di sviluppo e di un compilatore _ahead-of-time_ (#gl("AOT")) per la produzione, che
   genera codice macchina nativo altamente ottimizzato, garantendo particolari prestazioni elevate.
-- *Piattaforme web*: oltre alle piattaforme native _Dart_ può essere convertito in JavaScript oppure compilato
-  direttamente in _WebAssembly_, un formato binario supportato da tutti i tipi di browser.
-
+- *Piattaforme web*: oltre alle piattaforme native _Dart_ può essere convertito in _JavaScript_ oppure compilato
+  direttamente in _WebAssembly_, un formato binario supportato da tutti i tipi di _browser_.
+#v(0.5em)
+Sono queste le caratteristiche che hanno reso _Dart_ una scelta ideale per lo sviluppo del progetto.
 == Flutter
 _Flutter_ #cite(<flutter>) è un _toolkit UI_ open-source sviluppato da _Google_, progettato per favorire il massimo
 riutilizzo del codice tra diversi sistemi operativi, garantendo al contempo compatibilità diretta dell'applicazione con
 i servizi nativi della piattaforma di destinazione. L'architettura di _Flutter_ si basa su una serie di librerie
-indipendenti e stratificato, ciascun livello dipende strettamente da quello sottostante, rendendo ogni componente del
+indipendenti e stratificate, ciascun livello dipende strettamente da quello sottostante, rendendo ogni componente del
 livello più alto opzionale e facilmente sostituibile. Data la sua natura di essere uno strumento per la creazione di
 elementi grafici, _Flutter_ dà la possibilità agli sviluppatori di poter creare i propri componenti personalizzati,
 senza dipendere necessariamente da quelli predefiniti. Il linguaggio di programmazione utilizzato da _Flutter_ è _Dart_,
-che offre una funzionalità chiamata _hot reload_, che consente agli sviluppatori di vedere in modo immediato i
+che offre una funzionalità chiamata _hot reload_, dando la possibilità agli sviluppatori di vedere in modo immediato i
 cambiamenti apportati al codice sorgente senza dover ricompilare l'intera applicazione.
+#v(0.5em)
+Per il progetto questa funzionalità è stata particolarmente utile nella fase della progettazione delle componenti, questo perchè rendeva i test visivi più rapidi e immediati, permettendo di iterare più velocemente sul design dell'applicazione.
 
 == Node JS
 _Node JS_ #cite(<nodejs>) è un ambiente di runtime _JavaScript_ _open-source_ e multipiattaforma, progettato per
