@@ -24,14 +24,14 @@
     // Titolo
     #align(center, text(18pt, hyphenate: false, weight: "semibold", myTitle))
     #v(10pt)
-    #align(center, highlight(text(12pt, weight: "light", style: "italic", myDegree)))
+    #align(center, text(12pt, weight: "light", style: "italic", myDegree))
     #v(40pt)
 
     // Relatore e laureando
     #columns()[
       #align(left, text(12pt, weight: 400, style: "italic", supervisor))
       #v(5pt)
-      #align(left, highlight(text(11pt, myProf)))
+      #align(left, text(11pt, myProf))
       #colbreak()
       #align(right, text(12pt, weight: 400, style: "italic", undergraduate))
       #v(5pt)

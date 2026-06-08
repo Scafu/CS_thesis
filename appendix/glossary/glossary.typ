@@ -3,7 +3,7 @@
 #import "../../config/thesis-config.typ": print-glossary
 
 
-#pagebreak(to: "odd")
+
 #heading(numbering: none, glossary) <glossary>
 #show link: set text(blue)
 #show par: set par(spacing: 1em)

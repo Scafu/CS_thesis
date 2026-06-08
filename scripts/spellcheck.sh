@@ -95,6 +95,8 @@ preprocess_file() {
     s/(?<=[[:alpha:]])(PASS|FAIL)\b/ /g;
     s/\b(?:[dlmnst]|un|all|dall|nell|sull|quest|quell|l)'\''([[:alpha:]]+)/$1/gi;
     s/(?<=\s)'\''([[:alpha:]]+)/$1/g;
+    # Rimuovi tutte le sequenze attorniate da underscore (es: _test-driven-development_)
+    s/_[^_]+_/ /g;
     s/\b[[:alpha:]]*[A-Z][[:alpha:]]*\b/ /g;
     s/\b[[:alpha:]]{1,3}\b/ /g;
     s/[^[:alpha:][:space:]'\''àèéìíîòóùÀÈÉÌÍÎÒÓÙ]/ /g;
@@ -139,9 +141,51 @@ fi
 
 had_errors=0
 
+
+# Funzione per rilevare parole inglesi non attorniate da _
+detect_english_words() {
+  # Estrai tutte le parole candidate (non attorniate da _)
+  local words_file it_miss_file en_miss_file
+  words_file="$(mktemp)"
+  it_miss_file="$(mktemp)"
+  en_miss_file="$(mktemp)"
+  grep -oE '\b[a-zA-Z]{4,}\b' "$1" | grep -vE '^_.*_$' | sort -u > "$words_file"
+
+  # Usa hunspell in batch
+  if [[ "${USE_LOCAL_DICTS}" == true ]]; then
+    env "DICPATH=${HUNSPELL_DIR}" hunspell -d it_IT -l < "$words_file" > "$it_miss_file"
+    env "DICPATH=${HUNSPELL_DIR}" hunspell -d en_US -l < "$words_file" > "$en_miss_file"
+  else
+    hunspell -d it_IT -l < "$words_file" > "$it_miss_file"
+    hunspell -d en_US -l < "$words_file" > "$en_miss_file"
+  fi
+
+
+  # Parole che mancano in italiano ma sono corrette in inglese
+  # Escludi quelle presenti in ACCEPTED_WORDS
+  grep -Fxf "$it_miss_file" "$words_file" | grep -Fvxf "$en_miss_file" | while read -r word; do
+    skip=0
+    for allowed in "${ACCEPTED_WORDS[@]:-}"; do
+      if [[ "$word" == "$allowed" ]]; then
+        skip=1
+        break
+      fi
+    done
+    if [[ $skip -eq 0 ]]; then
+      printf '%s\n' "$word"
+    fi
+  done
+
+  rm -f "$words_file" "$it_miss_file" "$en_miss_file"
+}
+
+had_errors=0
+had_english=0
+
 while IFS= read -r -d '' file; do
   file_words="$(mktemp)"
   file_errors="$(mktemp)"
+  file_english="$(mktemp)"
 
   preprocess_file "${file}" |
     "${HUNSPELL_CMD[@]}" |
@@ -154,13 +198,23 @@ while IFS= read -r -d '' file; do
     fi
   done < "${file_words}"
 
+  # Rileva parole inglesi non attorniate da _
+  preprocess_file "${file}" > "${file_english}"
+  ENGLISH_WORDS=$(detect_english_words "${file_english}")
+
   if [[ -s "${file_errors}" ]]; then
     had_errors=1
-    printf '%s\n' "${file#${ROOT_DIR}/}"
+    printf 'Errori grammatica italiana in: %s\n' "${file#${ROOT_DIR}/}"
     sed 's/^/  - /' "${file_errors}"
   fi
 
-  rm -f "${file_words}" "${file_errors}"
+  if [[ -n "$ENGLISH_WORDS" ]]; then
+    had_english=1
+    printf 'Parole inglesi non attorniate da _ in: %s\n' "${file#${ROOT_DIR}/}"
+    echo "$ENGLISH_WORDS" | sed 's/^/  - /'
+  fi
+
+  rm -f "${file_words}" "${file_errors}" "${file_english}"
 done < <(
   for path in "${INCLUDE_PATHS[@]}"; do
     if [[ -f "${path}" ]]; then
@@ -171,8 +225,8 @@ done < <(
   done
 )
 
-if [[ "${had_errors}" -eq 1 ]]; then
+if [[ "${had_errors}" -eq 1 || "${had_english}" -eq 1 ]]; then
   exit 1
 fi
 
-echo "Spellcheck completato senza errori."
+echo "Spellcheck completato senza errori di grammatica italiana o parole inglesi."

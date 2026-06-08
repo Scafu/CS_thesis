@@ -176,8 +176,6 @@
   }
   show figure: set block(breakable: true)
 
-  let foreign(body) = text(style: "italic")[#body]
-
   // Il comando sotto lo tengo commentato perché altrimenti può succedere che l'immagine e la sua caption finiscano in due pagine diverse.
   // Per questo motivo ogni tabella deve essere racchiusa in un blocco di codice #{ } o di contenuto #[ ] per isolarne le regole.
   // show figure: set block(breakable: true)
@@ -240,11 +238,52 @@
   link(url, text(style: "italic", body)) + footnote(link(url))
 )
 
+#let foreign(body) = text(style: "italic")[#body]
+
 #let objectives-data = yaml("../specs/stage/objectives.yaml")
 
-#let obj-label(code) = label("obj-" + code)
-#let obj-link(code) = link(obj-label(code))[
-  #text(fill: rgb("#227ae5"))[#code]
+#let objective-prefix(kind) = {
+  if kind == "mandatory" {
+    "O"
+  } else if kind == "desirable" {
+    "D"
+  } else if kind == "facultative" {
+    "F"
+  }
+}
+
+#let pad-objective-number(number) = {
+  if number < 10 {
+    "0" + str(number)
+  } else {
+    str(number)
+  }
+}
+
+#let objective-code(objectives, index) = {
+  let objective = objectives.at(index)
+  let count = 0
+
+  for (i, current) in objectives.enumerate() {
+    if i <= index and current.kind == objective.kind {
+      count += 1
+    }
+  }
+
+  objective-prefix(objective.kind) + "-" + pad-objective-number(count)
+}
+
+#let objective-index-by-id(id) = {
+  for (i, objective) in objectives-data.objectives.enumerate() {
+    if objective.id == id {
+      return i
+    }
+  }
+}
+
+#let obj-label(id) = label("obj-" + id)
+#let obj-link(id) = link(obj-label(id))[
+  #text(fill: rgb("#227ae5"))[#objective-code(objectives-data.objectives, objective-index-by-id(id))]
 ]
 
 #let prod-label(code) = label("prod-" + code)
@@ -252,37 +291,84 @@
   #text(fill: rgb("#227ae5"))[#code]
 ]
 
-#let render-objectives(data) = figure(
-  caption: "Tabella obiettivi stage",
-  table(
-    columns: (0.18fr, 1fr),
-    align: (left, left),
-    table.header([*Codice*], [*Descrizione*]),
-    ..data
-      .objectives
-      .map(obj => (
-        [#metadata(none) #obj-label(obj.code) #obj.code],
-        [#par(justify: false)[#obj.description]],
-      ))
-      .flatten(),
-  ),
-)
+#let us-label(id) = label("us:" + id)
+#let us-link(id) = link(us-label(id))[
+  #text(fill: rgb("#227ae5"))[#ref(us-label(id))]
+]
 
-#let products-data = yaml("../specs/stage/products.yaml")
+#let render-source(source) = {
+  if type(source) == str {
+    source
+  } else if type(source) == dictionary {
+    if "us" in source {
+      us-link(source.us)
+    } else if "text" in source {
+      source.text
+    }
+  } else if type(source) == array {
+    for (i, item) in source.enumerate() [
+      #if i > 0 [#linebreak()]
+      #sym.bullet #h(0.4em)#render-source(item)
+    ]
+  }
+}
 
-#let render-foreign-text(text, foreign-terms) = {
+#let render-rich-text(text, terms) = {
   let parts = text.split("%s")
-  let result = []
+  let result = ()
 
   for (i, part) in parts.enumerate() {
     result.push(part)
-    if i < foreign-terms.len() {
-      result.push(foreign(foreign-terms.at(i)))
+
+    if i < terms.len() {
+      let term = terms.at(i)
+
+      if term.kind == "foreign" {
+        result.push(foreign(term.text))
+      } else if term.kind == "glossary" {
+        result.push(gl(term.key))
+      } else if term.kind == "glossary-foreign" {
+        result.push(foreign(gl(term.key)))
+      } else if term.kind == "text" {
+        result.push(term.text)
+      }
     }
   }
 
   result.join()
 }
+
+#let render-description(item) = {
+  if "terms" in item {
+    render-rich-text(item.description, item.terms)
+  } else {
+    item.description
+  }
+}
+
+#let render-objectives(data) = figure(
+  caption: "Tabella obiettivi stage",
+  table(
+    columns: (0.3fr, 1fr, 0.5fr),
+    align: (left, left, left),
+    table.header([*Codice*], [*Descrizione*], [*Fonte*]),
+    ..data
+      .objectives
+      .enumerate()
+      .map(pair => {
+        let i = pair.at(0)
+        let obj = pair.at(1)
+        (
+          [#metadata(none) #obj-label(obj.id) #objective-code(data.objectives, i)],
+          [#par(justify: false)[#render-description(obj)]],
+          [#par(justify: false)[#render-source(obj.source)]],
+        )
+      })
+      .flatten(),
+  ),
+)
+
+#let products-data = yaml("../specs/stage/products.yaml")
 
 #let render-products(data) = figure(
   caption: "Tabella prodotti attesi",
@@ -294,7 +380,7 @@
       .products
       .map(prod => (
         [#metadata(none) #prod-label(prod.code) #prod.code],
-        [#par(justify: false)[#prod.description]],
+        [#par(justify: false)[#render-description(prod)]],
         [
           #for (i, code) in prod.objectives.enumerate() [
             #if i > 0 [#linebreak()]
@@ -305,4 +391,3 @@
       .flatten(),
   ),
 )
-

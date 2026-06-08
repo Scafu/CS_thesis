@@ -1,31 +1,112 @@
 objectives:
-  - code: O-01
+  - id: apprendimento-tecnologie
     kind: mandatory
-    description: Apprendimento delle tecnologie di sviluppo come Flutter e Node.js con Fastify e versionamento del progetto con Git
+    description: Apprendimento delle tecnologie di sviluppo come %s e %s con %s e versionamento del progetto con %s
+    terms:
+      - kind: foreign
+        text: Flutter
+      - kind: foreign
+        text: Node.js
+      - kind: foreign
+        text: Fastify
+      - kind: foreign
+        text: Git
+    source:
+      - Piano di Lavoro
 
-  - code: O-02
+  - id: calibrazione-schermo
     kind: mandatory
     description: Analisi e studio delle tecniche di calibrazione dello schermo e di rilevazione della misura tramite interazione touch
+    source:
+      - us: schermata-misurazione-piede
+      - us: motore-misurazione-piede
 
-  - code: O-03
+  - id: motore-misurazione-piede
     kind: mandatory
-    description: Sviluppo del motore di misurazione del piede con guide mobili e calcolo della lunghezza in centimetri basato sui PPI del dispositivo
-  - code: O-04
+    description: Sviluppo del motore di misurazione del piede con guide mobili e calcolo della lunghezza in centimetri basato sui %s (%s) del dispositivo
+    terms:
+      - kind: foreign
+        text: Pixels Per Inch
+      - kind: glossary-foreign
+        key: PPI
+    source:
+      - us: schermata-misurazione-piede
+      - us: motore-misurazione-piede
+
+  - id: calcolo-percentile
+    kind: mandatory
+    description: Sviluppo del motore di calcolo del percentile e dell'interfaccia per la visualizzazione dei risultati
+    source:
+      - us: schermata-calcolo-percentile
+      - us: calcolo-percentile
+
+  - id: interfaccia-tutorial-risultato
     kind: mandatory
     description: Sviluppo dell'interfaccia per il tutorial di misurazione e per la visualizzazione del risultato
-  - code: O-05
+    source:
+      - us: tutorial-misurazione
+      - us: schermata-misurazione-piede
+      - us: schermata-calcolo-percentile
+      - us: schermata-informazioni-sanitarie
+      - us: schermata-contatti
+      - us: schermata-home
+      - us: splash-screen
+      - us: impostazioni-app
+
+  - id: persistenza-locale-storico
     kind: mandatory
     description: Sviluppo della persistenza locale delle misurazioni e dell'interfaccia per la consultazione dello storico
-  - code: D-01
+    source:
+      - us: motore-misurazione-piede
+      - us: calcolo-percentile
+      - us: schermata-informazioni-sanitarie
+      - us: diario-bambino
+      - us: gestione-bambini-registrati
+      - us: impostazioni-app
+
+  - id: autenticazione-auth0
     kind: desirable
-    description: Integrazione dell'autenticazione utente tramite Auth0
-  - code: D-02
+    description: Integrazione dell'autenticazione utente tramite %s
+    terms:
+      - kind: foreign
+        text: Auth0
+    source:
+      - us: autenticazione-auth0
+      - us: eliminazione-account-dati
+
+  - id: api-backend-cloud
     kind: desirable
-    description: Sviluppo di un'API backend per il salvataggio e il recupero delle misurazioni in cloud
-  - code: F-01
+    description: Sviluppo di un'%s (%s) %s per il salvataggio e il recupero delle misurazioni in cloud
+    terms:
+      - kind: foreign
+        text: Application Programming Interface
+      - kind: glossary-foreign
+        key: API
+      - kind: foreign
+        text: backend
+    source:
+      - us: motore-misurazione-piede
+      - us: calcolo-percentile
+      - us: schermata-informazioni-sanitarie
+      - us: diario-bambino
+      - us: gestione-bambini-registrati
+      - us: eliminazione-account-dati
+      - us: impostazioni-app
+
+  - id: andamento-misurazioni
     kind: facultative
     description: Sviluppo di un'interfaccia per la visualizzazione grafica dell'andamento delle misurazioni nel tempo
-  - code: F-02
+    source:
+      - us: diario-bambino
+
+  - id: sincronizzazione-backend
     kind: facultative
     description: Sincronizzazione automatica dei dati locali con il %s al ripristino della connessione
-    foreign: [backend]
+    terms:
+      - kind: foreign
+        text: backend
+    source:
+      - us: motore-misurazione-piede
+      - us: calcolo-percentile
+      - us: diario-bambino
+      - us: gestione-bambini-registrati

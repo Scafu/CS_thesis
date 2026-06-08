@@ -45,6 +45,12 @@ accepted_words:
   # Funzioni
   - glpl
   - deduplicate
+  - counter
+  - page
+  - heading
+  - objectives
+  - stories
+  - prod
 
   # Tecnologie
   - fastify
@@ -64,7 +70,37 @@ accepted_words:
   - ripianificare
   - configura
   - rifattorizzato
-  
+  - dell
+  - flow
+  - scrum
+  - products
+  - toolchain
+  - nullable
+  - framework
+  - ahead
+  - just
+  - logging
+  - null
+  - plugin
+  - reload
+  - runtime
+  - safety
+  - token
+  - toolkit
+  - source
+  - desirable
+  - mandatory
+  - push
+  - return 
+  - true
+  - dash
+  - glossary
+  - terms
+  - back
+  - versionamento
+  - verifier
+  - dell'
+  - challenge
 
   # Azienda
   - wavelop

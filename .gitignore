@@ -1,3 +1,6 @@
 *.pdf
 start.sh
 TODO.md
+out/
+*.puml
+.codex

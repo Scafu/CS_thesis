@@ -26,6 +26,11 @@
   - Josh Schneider
   - Ian Smalley
   url: https://www.ibm.com/think/topics/test-driven-development
+'tdd-5-fasi':
+  type: article
+  title: 5 steps of test-driven development
+  author: Grant Steinfeld
+  url: https://developer.ibm.com/articles/5-steps-of-test-driven-development/
   parent:
     type: blog
     title: IBM Think
@@ -56,3 +61,16 @@
   author: Robert C. Martin
   page-total: 432
   date: 2017
+'oauth2.0':
+  type: report
+  title: OAuth 2.0 Authorization Framework
+  author: D. Hardt
+  date: 2012
+  serial-number: RFC 6749
+  org: Internet Engineering Task Force (IETF)
+  url: https://datatracker.ietf.org/doc/html/rfc6749
+'gitflow':
+  type: web
+  title: Gitflow Workflow
+  url: https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
+  author: Atlassian

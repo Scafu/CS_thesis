@@ -1,17 +1,33 @@
 products:
   - code: PA-01
     description: Sviluppo di un documento di fattibilità per la realizzazione del motore di misurazione del piede e della persistenza locale dei dati
-    objectives: [O-02, O-03]
+    objectives: [calibrazione-schermo, motore-misurazione-piede]
 
   - code: PA-02
     description: Sviluppo di un documento di progettazione per la realizzazione della soluzione
-    objectives: [O-02, O-03]
+    objectives: [calibrazione-schermo, motore-misurazione-piede, calcolo-percentile]
+
   - code: PA-03
-    description: Sviluppo dell'interfaccia grafica per la misurazione del piede, il tutorial, la visualizzazione del risultato e la consultazione dello storico misurazioni
-    objectives: [O-03, O-04, O-05]
+    description: Sviluppo dell'interfaccia grafica per la misurazione del piede, il %s, la visualizzazione del risultato e la consultazione dello storico misurazioni
+    terms:
+      - kind: foreign
+        text: tutorial
+    objectives: [motore-misurazione-piede, calcolo-percentile, interfaccia-tutorial-risultato, persistenza-locale-storico]
+
   - code: PA-04
-    description: Sviluppo dell'autenticazione utente tramite Auth0 e delle API backend per il salvataggio e il recupero delle misurazioni
-    objectives: [D-01, D-02]
+    description: Sviluppo dell'autenticazione utente tramite %s e delle %s %s per il salvataggio e il recupero delle misurazioni
+    terms:
+      - kind: foreign
+        text: Auth0
+      - kind: foreign
+        text: API
+      - kind: foreign
+        text: backend
+    objectives: [autenticazione-auth0, api-backend-cloud]
+
   - code: PA-05
-    description: Sviluppo della visualizzazione grafica dell'andamento delle misurazioni nel tempo e della sincronizzazione automatica con il backend
-    objectives: [F-01, F-02]
+    description: Sviluppo della visualizzazione grafica dell'andamento delle misurazioni nel tempo e della sincronizzazione automatica con il %s
+    terms:
+      - kind: foreign
+        text: backend
+    objectives: [andamento-misurazioni, sincronizzazione-backend]
