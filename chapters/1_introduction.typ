@@ -57,8 +57,9 @@ capitoli:
 / #link(<cap:tecnologie>)[Il quarto capitolo]: descrive le tecnologie e gli strumenti adottati per lo sviluppo
   dell'applicazione, illustrando le motivazioni alla base della scelta e le caratteristiche principali di ciascuno;
   #v(0.5em)
-/ /*#link(<cap:progettazione-e-codifica>)[Il quinto capitolo]*/ Il quinto capitolo: descrive il progetto da un punto di
-  vista progettuale, illustrando le scelte architetturali, la progettazione dell'interfaccia utente;
+/ #link(<cap:progettazione-e-codifica>)[Il quinto capitolo]: descrive il progetto da un punto di vista progettuale,
+  illustrando le scelte architetturali e la codifica implementativa, con particolare attenzione alla struttura
+  dell'applicazione e alle funzionalità principali;
   #v(0.5em)
 / /*#link(<cap:test-e-validazione>)[Il sesto capitolo]*/ Il sesto capitolo: descrive i test effettuati per verificare la
   correttezza implementativa e la validazione del prodotto, mostrando i risultati ottenuti e le eventuali criticità

@@ -189,8 +189,8 @@ _stand up meeting_ giornalieri, in cui si discute dell'andamento ed eventuali di
 *Descrizione*: risulta altamente improbabile che il prodotto finale sia privo di bug o errori di programmazione, che
 potrebbero compromettere il corretto funzionamento dello stesso.
 
-*Mitigazione*: sarà necessario implementare un sistema di testing e debugging efficace, al fine di limitare al minimo la
-presenza di bug e garantire il funzionamento corretto del prodotto nella sua interezza.
+*Mitigazione*: sarà necessario implementare un sistema di _testing_ e _debugging_ efficace, al fine di limitare al
+minimo la presenza di bug e garantire il funzionamento corretto del prodotto nella sua interezza.
 
 
 === Rischi personali

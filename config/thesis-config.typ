@@ -108,7 +108,7 @@
 
   // Codly bootstrap and setup
   show: codly-init.with()
-  codly(languages: codly-languages, zebra-fill: gray.lighten(90%))
+  codly(languages: codly-languages, zebra-fill: gray.lighten(95%), display-icon: true)
 
   // LaTeX look https://typst.app/docs/guides/guide-for-latex-users#latex-look
   set page(
@@ -147,7 +147,7 @@
     numbering("1.1", chapter, n)
   })
 
-  show raw: set text(font: "DejaVu Sans Mono", size: 10pt)
+  show raw: set text(font: "DejaVu Sans Mono", size: 9pt)
   set par(spacing: 0.55em)
 
   show heading: set block(above: 2em, below: 1.4em)
