@@ -53,7 +53,7 @@ allOf:
           items:
             allOf:
               - $ref: "#/$defs/test"
-              - required: [service]
+              - required: [elemento]
   - if:
       properties:
         type:
@@ -64,7 +64,7 @@ allOf:
           items:
             allOf:
               - $ref: "#/$defs/test"
-              - required: [service]
+              - required: [elemento]
 
 $defs:
   # ---------------------------------------------------------------------------
@@ -72,15 +72,20 @@ $defs:
   # ---------------------------------------------------------------------------
   test:
     type: object
-    required: [id, description, requirements]
+    required: [description]
     additionalProperties: false
     properties:
       id:
         type: string
-        pattern: "^[a-z][a-z0-9_]*$"
         description: >
-          Unique slug identifier for cross-referencing.
-          Convention: snake_case, e.g. "validazione_email_login".
+          Opzionale. Se assente, l'ID viene generato automaticamente
+          dalla posizione e dal tipo/subtipo del file.
+
+      subtipo:
+        type: string
+        description: >
+          Suffisso alternativo per il prefisso ID. Esempio: "W" → TW{n}.
+          Se assente usa il prefisso del tipo file (TU, TI, TS).
 
       description:
         type: string
@@ -98,17 +103,35 @@ $defs:
 
       status:
         type: string
-        enum: [not_implemented, passed, failed]
+        enum: [not_implemented, implemented, passed, failed]
         default: not_implemented
         description: >
           Current execution status:
-            not_implemented → NI  (not yet implemented/executed)
+            not_implemented → NI  (non implementato)
+            implemented     → I   (implementato)
             passed          → S   (superato)
             failed          → NS  (non superato)
 
-      service:
+      terms:
+        type: array
+        items:
+          type: object
+          required: [kind]
+          properties:
+            kind:
+              type: string
+              enum: [foreign, glossary, glossary-foreign, text, code]
+            text:
+              type: string
+            key:
+              type: string
+        description: >
+          Termini per la sostituzione di %s nella descrizione.
+          Stessa struttura usata in objectives.yaml.
+
+      elemento:
         type: string
         description: >
-          Service this test belongs to.
-          Used to create nested subsections in test documentation.
-          Required for unit and integration tests.
+          Elemento/componente a cui appartiene il test.
+          Usato per creare sottosezioni nella documentazione.
+          Obbligatorio per test di unità e integrazione.

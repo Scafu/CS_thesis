@@ -2,8 +2,22 @@
 
 type: system
 tests:
-  - id: verifica_misurazione_base
-    description: Verifica che il simulatore produca una misurazione finale dopo la procedura guidata
-    requirements:
-      - misurazione_piede
+  - id: flusso_misurazione_completo
+    description: Verifica che l'utente possa completare l'intera procedura guidata di misurazione e visualizzare il risultato finale
+    status: not_implemented
+
+  - id: flusso_calibrazione_schermo
+    description: Verifica che l'utente possa eseguire la calibrazione dello schermo e che i PPI vengano salvati correttamente per le misurazioni successive
+    status: not_implemented
+
+  - id: visualizzazione_risultato_percentile
+    description: Verifica che al termine della misurazione venga mostrato il percentile corretto con le relative informazioni sanitarie
+    status: not_implemented
+
+  - id: consultazione_storico_misurazioni
+    description: Verifica che l'utente possa accedere allo storico delle misurazioni e consultare i dati salvati in precedenza
+    status: not_implemented
+
+  - id: flusso_autenticazione_auth0
+    description: Verifica che l'utente possa autenticarsi tramite Auth0 e accedere alle funzionalità riservate agli utenti autenticati
     status: not_implemented

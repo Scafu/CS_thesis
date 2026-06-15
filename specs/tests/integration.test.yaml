@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=../../.schemas/test.schema.yaml
+
+type: integration
+tests:
+  - id: salvataggio_post_misurazione
+    elemento: motore_misurazione
+    description: Verifica che al termine di una misurazione il risultato venga salvato correttamente nella persistenza locale
+    status: not_implemented
+
+  - id: recupero_storico_per_percentile
+    elemento: calcolo_percentile
+    description: Verifica che il modulo del percentile recuperi correttamente le misurazioni storiche dalla persistenza locale per la visualizzazione dell'andamento
+    status: not_implemented
+
+  - id: chiamata_api_autenticata
+    elemento: autenticazione
+    description: Verifica che una chiamata alle API backend avvenga con il token Auth0 valido e che la risposta venga gestita correttamente
+    status: not_implemented
+
+  - id: sincronizzazione_dati_backend
+    elemento: api_backend
+    description: Verifica che le misurazioni locali vengano inviate correttamente al backend e che i dati ricevuti vengano sincronizzati nella persistenza locale
+    status: not_implemented

@@ -23,8 +23,8 @@
   #include "chapters/4_technologies.typ"
   #blank-page()
   #include "chapters/5_prog_e_cod.typ"
-  //#blank-page()
-  //#include "chapters/6_test_e_validation.typ"
+  #blank-page()
+  #include "chapters/6_test_e_validation.typ"
   //#blank-page()
   //#include "chapters/7_conclusion.typ"
 ]

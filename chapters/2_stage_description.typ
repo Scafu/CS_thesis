@@ -100,7 +100,7 @@ I vantaggi principali dell'utilizzo delle _user stories_ #cite(<def-user-stories
   facilitando la comprensione reciproca e la collaborazione.
 
 #v(0.5em)
-== Test _driven_ _development_
+== Test _driven_ _development_ <sez-tdd>
 Oltre alle metodologie agili discusse in precedenza, Wavelop Srl adotta l'approccio di sviluppo _Test Driven
 Development_ (TDD) #cite(<tdd>). Questa metodologia prevede, prima di scrivere qualsiasi riga di codice, la scrittura di
 test volti a definire il comportamento atteso dalla determinata funzionalità da implementare. Sviluppare secondo questo

@@ -329,6 +329,8 @@
         result.push(gl(term.key))
       } else if term.kind == "glossary-foreign" {
         result.push(foreign(gl(term.key)))
+      } else if term.kind == "code" {
+        result.push(raw(term.text))
       } else if term.kind == "text" {
         result.push(term.text)
       }
@@ -369,6 +371,67 @@
 )
 
 #let products-data = yaml("../specs/stage/products.yaml")
+
+#let unit-tests-data = yaml("../specs/tests/unit.test.yaml")
+#let integration-tests-data = yaml("../specs/tests/integration.test.yaml")
+#let system-tests-data = yaml("../specs/tests/system.test.yaml")
+
+#let test-prefix(type) = {
+  if type == "unit" { "TU" } else if type == "integration" { "TI" } else { "TS" }
+}
+
+#let test-id(type, index) = {
+  let prefix = test-prefix(type)
+  let n = index + 1
+  if n < 10 { prefix + "-0" + str(n) } else { prefix + "-" + str(n) }
+}
+
+#let test-status(status) = {
+  if status == "passed" { "S" } else if status == "failed" { "NS" } else if status == "implemented" { "I" } else {
+    "NI"
+  }
+}
+
+#let render-tests(data, cap: "Tabella test") = {
+  let base-prefix = test-prefix(data.type)
+  let counters = (:)
+  let rows = ()
+
+  for t in data.tests {
+    let prefix = if "subtipo" in t {
+      "T" + upper(t.subtipo)
+    } else {
+      base-prefix
+    }
+    let n = counters.at(prefix, default: 0) + 1
+    counters.insert(prefix, n)
+    let id = if "id" in t { t.id } else { prefix + str(n) }
+
+    let all-terms = if "terms" in t { t.terms } else { () }
+    let elem-str = if "elemento" in t { t.elemento } else { "—" }
+    let elem-subs = elem-str.split("%s").len() - 1
+    let elem-terms = all-terms.slice(0, calc.min(elem-subs, all-terms.len()))
+    let desc-terms = all-terms.slice(calc.min(elem-subs, all-terms.len()))
+    let desc-str = if "description" in t { t.description } else { "" }
+
+    rows += (
+      [#id],
+      [#par(justify: false)[#render-rich-text(elem-str, elem-terms)]],
+      [#par(justify: false)[#render-rich-text(desc-str, desc-terms)]],
+      [#test-status(if "status" in t { t.status } else { "not_implemented" })],
+    )
+  }
+
+  figure(
+    caption: cap,
+    table(
+      columns: (0.11fr, 0.2fr, 0.4fr, 0.1fr),
+      align: (left, left, left, left),
+      table.header([*ID*], [*Elemento*], [*Descrizione*], [*Stato*]),
+      ..rows,
+    ),
+  )
+}
 
 #let render-products(data) = figure(
   caption: "Tabella prodotti attesi",

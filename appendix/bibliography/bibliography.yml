@@ -74,3 +74,18 @@
   title: Gitflow Workflow
   url: https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
   author: Atlassian
+'material-accessibility':
+  type: web
+  title: Material Design Accessibility Guidelines
+  author: Google
+  url: https://web.dev/accessibility
+'ios-accessibility':
+  type: web
+  title: Human Interface Guidelines
+  author: Apple
+  url: https://developer.apple.com/design/human-interface-guidelines
+'flutter-accessibility':
+  type: web
+  title: Accessibility Guidelines 
+  author: Google
+  url: https://api.flutter.dev/flutter/flutter_test/AccessibilityGuideline-class.html
