@@ -62,15 +62,15 @@ manutenibilità a lungo termine del sistema #cite(<clean-architecture>).
 ==== Model-View-ViewModel<sez:mvvm>
 #figure(
   caption: "Model-View-ViewModel",
-)[#image("../images/mvvm-pattern.png", width: 70%)]<fig:mvvm>
-Nel livello di presentazione dell'applicazione è presente il pattern architetturale _Model-View-ViewModel_ (MVVM).
-Questo pattern consente di separare in modo chiaro l'interfaccia utente dalla logica di business, strutturando ogni
-funzionalità in tre parti: _Model_, _ViewModel_ e la _View_. Il _Model_ è rappresentato dalle entità di dominio, mentre
-la _View_ e il _ViewModel_ costituiscono il livello di presentazione della funzionalità. Seguendo questo approccio, ogni
-modulo dispone di una propria _View_ (composta da una o più schermate) e del relativo _ViewModel_. Quest'ultimo ha il
-compito esclusivo di gestire e preservare lo stato della schermata; il _ViewModel_ non possiede alcun riferimento
-diretto ai componenti dell'interfaccia utente, ma si limita a esporre un flusso di stati discreti a cui la _View_
-reagisce in modo reattivo, aggiornando l'interfaccia utente di conseguenza.
+)[#image("../images/mvvm-pattern.png", width: 80%)]<fig:mvvm>
+Nel livello di presentazione dell'applicazione è presente il pattern architetturale _Model-View-ViewModel_ (MVVM). Come
+mostrato in @fig:mvvm, questo pattern consente di separare in modo chiaro l'interfaccia utente dalla logica di business,
+strutturando ogni funzionalità in tre parti: _Model_, _ViewModel_ e la _View_. Il _Model_ è rappresentato dalle entità
+di dominio, mentre la _View_ e il _ViewModel_ costituiscono il livello di presentazione della funzionalità. Seguendo
+questo approccio, ogni modulo dispone di una propria _View_ (composta da una o più schermate) e del relativo
+_ViewModel_. Quest'ultimo ha il compito esclusivo di gestire e preservare lo stato della schermata; il _ViewModel_ non
+possiede alcun riferimento diretto ai componenti dell'interfaccia utente, ma si limita a esporre un flusso di stati
+discreti a cui la _View_ reagisce in modo reattivo, aggiornando l'interfaccia utente di conseguenza.
 ===== Gestione dello stato <sez:prog-gestione-stato>
 L'utilizzo del pattern _MVVM_ necessita di particolare attenzione nel progettare un meccanismo per la gestione e la
 propagazione dello stato dei singoli componenti all'interno dell'applicazione. L'obiettivo progettuale di partenza è
@@ -236,8 +236,7 @@ reale dello schermo, mentre su _iOS_ è stato necessario progettare una strategi
 calibrazione predefinita, che associa i modelli di dispositivo a fattori di conversione specifici.
 
 === Codifica Applicazione
-==== Componenti tecnici
-===== Gestione dello stato
+==== Gestione dello stato
 La gestione dello stato è implementata tramite il _package_ _provider_, che realizza concretamente i _pattern_ _MVVM_ e
 _Observer_ descritti in @sez:prog-gestione-stato. Ogni _ViewModel_ è una classe che estende `ChangeNotifier`, fornita
 dal _framework_ _Flutter_, e comunica i cambiamenti di stato alle _View_ tramite chiamate esplicite al metodo
@@ -350,7 +349,7 @@ il sotto albero che effettivamente si ricostruisce ad esempio in @fig:consumer-e
   kind: raw,
 )<fig:consumer-example>
 
-===== Routing e navigazione
+==== Routing e navigazione
 La navigazione è gestita tramite il _package_ _go_router_, che implementa un sistema di routing dichiarativo basato su
 _URL_. Ogni schermata è associata a un percorso definito come `String`, e la navigazione avviene tramite metodi
 `context.push()` e `context.go()` che accettano il percorso come argomento. Il _router_ è istanziato in una classe
@@ -361,7 +360,7 @@ schermate accessibili dalla barra di navigazione inferiore, queste infatti vengo
 @fig:shell-route.
 #v(0.5em)
 #figure(
-  caption: "Esempio di `ShellRoute` per la barra di navigazione inferiore",
+  caption: "Implementazione di `ShellRoute` per la barra di navigazione inferiore",
   kind: raw,
 )[
   ```Dart
@@ -390,12 +389,13 @@ schermate accessibili dalla barra di navigazione inferiore, queste infatti vengo
   ```
 ]<fig:shell-route>
 #v(0.5em)
-Altrimenti vengono raggruppate in `ShellRoute` che le ricostruisce da zero a ogni navigazione. Attraverso questo
-meccanismo é possibile avere barre di navigazione differenti a seconda del contesto. Le schermate del profilo bambino
-utilizzano percorsi con parametri dinamici `:childId`, il cui valore viene estratto e passato al costruttore della
-schermata di destinazione. La possibilità di raggruppare le schermate permette di avere una struttura alla base
-condivisa tra le schermate di un gruppo, risparmiando codice duplicato e garantendo coerenza tra le schermate.
-===== Database e cifratura
+Altrimenti #highlight([le schermate vengono]) raggruppate in `ShellRoute` che le ricostruisce da zero a ogni
+navigazione. Attraverso questo meccanismo é possibile avere barre di navigazione differenti a seconda del contesto. Le
+schermate del profilo bambino utilizzano percorsi con parametri dinamici `:childId`, il cui valore viene estratto e
+passato al costruttore della schermata di destinazione. La possibilità di raggruppare le schermate permette di avere una
+struttura alla base condivisa tra le schermate di un gruppo, risparmiando codice duplicato e garantendo coerenza tra le
+schermate.
+==== Database e cifratura
 La persistenza locale è implementata con il _package_ _drift_, un _Object-Relational Mapping_ (_ORM_) _type-safe_ per
 _SQLite_ che genera codice _Dart_ a partire dalla definizione delle tabelle visibili in @fig:db-schema.
 #v(0.5em)
@@ -465,7 +465,7 @@ l'utente, dopo aver eseguito l'autenticazione, recupera la chiave esistente come
   }
 
   ```,
-  caption: [Esempio di gestione della chiave di cifratura in `DatabaseService`],
+  caption: [Gestione della chiave di cifratura in `DatabaseService`],
   kind: raw,
 )<fig:key-management>
 #v(0.5em)
@@ -491,7 +491,7 @@ operazione, attivando la cifratura _ChaCha20-Poly1305_ sull'intero file.
     return AppDatabase._(db);
   }
   ```,
-  caption: [Esempio di apertura del database con cifratura in `DatabaseService`],
+  caption: [Apertura del database con cifratura in `DatabaseService`],
   kind: raw,
 )<fig:database-open>
 #v(0.5em)
@@ -499,7 +499,7 @@ Come visibile in @fig:database-open, la funzione restituisce il database, il fil
 _sub_ tramite l'utilizzo di una funzione _custom_ `_fileNameFor()`, che sostituisce i caratteri non alfanumerici con
 _underscore_, producendo ad esempio `app_db_auth0_12345.sqlite`
 
-===== Autenticazione
+==== Autenticazione
 L'autenticazione è gestita tramite il servizio esterno _Auth0_ che fornisce un pacchetto ufficiale chiamato
 _auth0_flutter_. Il flusso implementato è _OAuth 2.0_, già descritto precedentemente nella @tech:oauth2.0, eseguito
 tramite _browser_ di sistema. Il meccanismo _DPoP_ viene abilitato tramite il parametro `useDPoP: true`, che lega i
@@ -521,7 +521,7 @@ a `auth0.webAuthentication()`. La distinzione tra _login_ e registrazione avvien
       .login(useDPoP: true, useHTTPS: true);
 
   ```,
-  caption: [Esempio di implementazione dei metodi di login e registrazione in `RemoteAuthDataSource`],
+  caption: [Implementazione dei metodi di login e registrazione in `RemoteAuthDataSource`],
   kind: raw,
 )<fig:auth-methods>
 #v(0.5em)
@@ -531,7 +531,7 @@ restituiscono un oggetto `Credentials` che contiene _access token_, _refresh tok
 pacchetto automaticamente gestisce il ciclo di vita dei _token_, rinnovandoli quando necessario. Al riavvio
 dell'applicazione, viene usato all'interno di `AuthViewModel` il _credentials manager_ di _Auth0_ per verificare se
 esistono credenziali valide salvate invocando `auth0.credentialsManager().hasValidCredentials()`.
-===== Internazionalizzazione
+==== Internazionalizzazione
 Le stringhe di testo nell'interfaccia sono gestite tramite il sistema di localizzazione di _Flutter_, basato su file
 _Application Resource Bundle_ (_ARB_). Per ogni lingua supportata esiste un file di risorse dedicato, ad esempio
 `app_it.arb` per l'italiano e `app_en.arb` per l'inglese, che contiene le coppie chiave-valore delle stringhe. Il
@@ -557,7 +557,7 @@ utilizzata la lingua di sistema se supportata, altrimenti l'inglese come _fallba
     notifyListeners();
   }
   ```,
-  caption: [Esempio di implementazione di `LocaleProvider`],
+  caption: [Implementazione di `LocaleProvider`],
   kind: raw,
 )<fig:locale-provider>
 #v(0.5em)
@@ -578,10 +578,10 @@ stata creata un'estensione di `BuildContext` visibile in @fig:localization-exten
 )<fig:localization-extension>
 #v(0.5em)
 L'estensione fornisce il _getter_ `tr` direttamente nel contesto, eliminando la necessità di scrivere
-`AppLocalizations.of(context)!` ogni volta che si vuole accedere a una stringa localizzata, migliorando la leggibilità
+`AppLocalizations.of(context)` ogni volta che si vuole accedere a una stringa localizzata, migliorando la leggibilità
 del codice. Le stringhe localizzate vengono quindi lette tramite `context.tr.someKey`, dove `someKey` è la chiave
 definita nei file _ARB_.
-===== Misurazione del piede e Calibrazione del dispositivo
+==== Misurazione del piede e Calibrazione del dispositivo
 Come descritto in @sez:calibrazione la misurazione del piede richiede che l'applicazione conosca la densità di _pixel_
 fisici dello schermo del dispositivo, espressa in _pixel_ per millimetro (px/mm). Questo valore non è recuperabile in
 modo uniforme tramite _API_ del _framework_, poiché questo espone solo il rapporto tra _pixel_ logici e fisici (_DPR_),
@@ -604,7 +604,7 @@ ma non la densità fisica effettiva. Seguendo la _Clean Architecture_ è stata d
         }
     }
     ```,
-    caption: [Esempio di implementazione del canale nativo per ottenere la densità fisica dello schermo su Android],
+    caption: [Implementazione del canale nativo per ottenere la densità fisica dello schermo su Android],
     kind: raw,
   )<fig:android-metrics>
 - *iOS*: non essendo possibile invocare metodi nativi, viene utilizzata una tabella statica `KIosPbiByModel` visibile in
@@ -619,7 +619,7 @@ ma non la densità fisica effettiva. Seguendo la _Clean Architecture_ è stata d
       'iPhone10,1': 326, 'iPhone10,4': 326,
       };
     ```,
-    caption: [Esempio di tabella di calibrazione per iOS],
+    caption: [Tabella di calibrazione per iOS],
     kind: raw,
   )<fig:ios-pbi-by-model>
 #v(0.5em)
@@ -696,7 +696,7 @@ risultato viene poi troncato all'intero inferiore
 
 `int call(double footLengthCm) => ((footLengthCm + 1.5) / 0.667).toInt();`
 
-===== Calcolo del percentile _BMI_
+==== Calcolo del percentile _BMI_
 Il calcolo del percentile _BMI_ è implementato in uno _use case_ dedicato `CalculateBmiPercentile`. Il flusso si
 articola in tre fasi, calcolo del _BMI_, selezione della riga di riferimento dalla tabella _OMS_ e interpolazione del
 percentile. Il calcolo del _BMI_ è eseguito con la formula `BMI = weightKg / (heightM * heightM)`. Essendo l'età
@@ -715,7 +715,7 @@ all'età calcolata come visibile in @fig:row-selection.
   }
 
   ```,
-  caption: [Esempio di selezione della riga di riferimento per il calcolo del percentile BMI],
+  caption: [Selezione della riga di riferimento per il calcolo del percentile BMI],
   kind: raw,
 )<fig:row-selection>
 #v(0.5em)
@@ -747,7 +747,7 @@ ricade il _BMI_ osservato, come visibile in @fig:percentile-calculation.
     return bmi < e.p3 ? 0 : 100;
   }
   ```,
-  caption: [Esempio di interpolazione lineare per il calcolo del percentile BMI],
+  caption: [Interpolazione lineare per il calcolo del percentile BMI],
   kind: raw,
 )<fig:percentile-calculation>
 #v(0.5em)
@@ -756,13 +756,25 @@ Infine il percentile risultante viene classificato in cinque categorie: criticam
 97°). Queste categorie vengono poi utilizzate per fornire feedback all'utente e per guidare le raccomandazioni
 personalizzate.
 
-==== Schermate realizzate
-===== _Home Page_
+==== Schermata - _Home Page_
 La _Home Page_ rappresenta la prima schermata visibile all'utente appena avviata l'applicazione. Il suo scopo principale
 è quello di fornire un punto di accesso centrale a tutte le funzionalità principali dell'applicazione, fungendo da _hub_
-di navigazione. #figure(
+di navigazione.
+
+#figure(
   caption: "Stati della Home Page",
-)[#image("../images/home-page.png", width: 100%)]<fig:home-page-states>
+)[
+  #box(width: 77%)[
+    #grid(
+      columns: 3,
+      column-gutter: 0.3em,
+
+      image("../images/home-page.png", width: 100%),
+      image("../images/home-page1.png", width: 100%),
+      image("../images/home-page2.png", width: 100%),
+    )
+  ]
+]<fig:home-page-states>
 #v(0.5em)
 Come mostrato in @fig:home-page-states, la _Home Page_ è progettata per adattarsi dinamicamente al contesto dell'utente.
 Nella parte inferiore della schermata sono sempre presenti i pulsanti di accesso rapido alle funzionalità di
@@ -776,11 +788,37 @@ in base al contesto:
 - *Utente autenticato con dati salvati*: viene mostrata la lista dei profili bambino registrati, con la possibilità di
   aggiungerne uno nuovo tramite il pulsante *+* in alto a destra.
 
-===== Creazione profilo bambino
+==== Schermata - Informazioni sanitarie
+La schermata delle informazioni sanitarie raccoglie contenuti informativi e divulgativi su diversi ambiti della salute e
+della crescità del bambino. La schermata è composta da un elenco verticale di _card_, ciascuna composta da un titolo che
+identifica l'argomento trattato e da una breve descrizione di sintesi. Quando una _card_ contiene altri sottoargomenti,
+sulla _card_ compare un'icona a freccia che ne segnala la navigabilità, toccando infatti la _card_ si apre una nuova
+schermata, con la stessa struttura a elenco, contenente le sue sotto-_card_. Questo meccanismo di navigazione,
+ripetibile su più livelli, permette di organizzare i contenuti in una gerarchia ad albero, in cui ogni nodo può
+funzionare sia da categoria (contenitore di sottoargomenti) sia da contenuto terminale, a seconda della profondità a cui
+ci si trova.
+
+#figure(
+  caption: "Schermata delle informazioni sanitarie",
+)[
+  #box(width: 59%)[
+    #grid(
+      columns: 2,
+      column-gutter: 0.3em,
+
+      image("../images/info-page.png", width: 100%), image("../images/info-page2.png", width: 100%),
+    )
+  ]
+]<fig:info-page>
+
+
+
+==== Schermata - Creazione profilo bambino
 La schermata di creazione del profilo bambino consente all'utente, in veste di genitore, di creare un nuovo profilo
 bambino per poter iniziare a monitorare le misurazioni del bambino. #figure(
   caption: "Schermata di creazione profilo bambino",
-)[#image("../images/creazione-bambino.png", width: 30%)]<fig:create-child-profile>
+)[#box(width: 40%)[
+  #image("../images/create-child.png", width: 100%)]]<fig:create-child-profile>
 #v(0.5em)
 Come visibile in @fig:create-child-profile, la schermata è composta da un form suddiviso in sezioni. La prima sezione
 consente di selezionare un _avatar_ tra quelli disponibili per rappresentare il profilo. La seconda raccoglie le
@@ -788,7 +826,7 @@ informazioni anagrafiche del bambino, quali nome, data di nascita e sesso. La te
 altezza e peso. Al momento della conferma, i dati vengono salvati localmente e contestualmente viene eseguito il calcolo
 del percentile, evitando di dover ripetere tale operazione alla prima visualizzazione del profilo.
 
-===== Impostazioni
+==== Schermata - Impostazioni
 La schermata di impostazioni consente all'utente di personalizzare il comportamento e l'aspetto dell'applicazione. Anche
 in questa schermata il contenuto varia in base allo stato di autenticazione, come si può vedere in @fig:settings. Se
 l'utente non è autenticato, non vengono mostrate le sezioni relative alla gestione dei dati. La schermata è organizzata
@@ -801,24 +839,38 @@ registrati, disconnessione ed eliminazione dell'account. L'eliminazione dei prof
 che elenca i profili disponibili con selezione multipla, consentendo all'utente di scegliere quali rimuovere prima di
 confermare l'operazione. #figure(
   caption: "Schermata di impostazioni",
-)[#image("../images/settings-page.png", width: 70%)]<fig:settings>
+)[#box(width: 60%)[#grid(
+  columns: 2,
+  column-gutter: 0.3em,
 
-===== Misurazione del piede e risultato
+  image("../images/settings-page.png", width: 100%), image("../images/settings-page1.png", width: 100%),
+)]]<fig:settings>
+
+==== Schermata - Misurazione del piede e risultato
 La schermata di misurazione del piede consente di rilevare la lunghezza del piede del bambino utilizzando direttamente
 lo schermo del dispositivo come strumento di misura. Il flusso si articola in due schermate distinte visibili in
 @fig:foot-measurement.
 #v(0.5em)
 #figure(
   caption: "Schermata di misurazione del piede e del risultato",
-)[#image("../images/misurazione-piede.png", width: 100%)]<fig:foot-measurement>
+)[#box(width: 100%)[#grid(
+  columns: 4,
+  column-gutter: 0.1em,
+
+  image("../images/foot-meas2.png", width: 100%),
+  image("../images/foot-meas4.png", width: 100%),
+  image("../images/foot-meas1.png", width: 100%),
+  image("../images/foot-meas3.png", width: 100%),
+)]]<fig:foot-measurement>
 #v(0.5em)
 - *Schermata di misurazione*: la schermata presenta un righello digitale calibrato sulla densità fisica dello schermo
   del dispositivo, come descritto nella @sez:calibrazione. Il righello é suddiviso in tacche millimetriche e
-  centimetriche, con etichette numeriche posizionate su entrambi i lati. In fondo allo schermo è presenta una linea di
-  riferimento fissa che indica il punto di appoggio del tallone. Una seconda linea mobile, trascinabile verticalmente
-  tramite _gesture_, indica il punto delle dita e determina la lunghezza rilevata, visualizzata in tempo reale in
-  centimetri. È possibile affinare il valore anche tramite input testuale diretto nella barra superiore. Tramite il
-  pulsante di conferma, la misurazione viene salvata temporaneamente e si accede alla schermata del risultato;
+  centimetriche, con etichette numeriche posizionate su entrambi i lati. In fondo allo schermo è present#highlight([e])
+  una linea di riferimento fissa che indica il punto di appoggio del tallone. Una seconda linea mobile, trascinabile
+  verticalmente tramite _gesture_, indica il punto delle dita e determina la lunghezza rilevata, visualizzata in tempo
+  reale in centimetri. È possibile affinare il valore anche tramite input testuale diretto nella barra superiore.
+  Tramite il pulsante di conferma, la misurazione viene salvata temporaneamente e si accede alla schermata del
+  risultato;
 - *Schermata del risultato*: la schermata mostra la lunghezza del piede rilevata e la corrispondente taglia di scarpe
   calcolata. Per gli utenti autenticati viene mostrato anche un consiglio dell'esperto contestualizzato in base all'età
   del bambino. Se la misurazione è associata a un profilo bambino, viene mostrato il grafico dell'andamento storico
@@ -828,13 +880,21 @@ lo schermo del dispositivo come strumento di misura. Il flusso si articola in du
   contenuti personalizzati e alla funzionalità di monitoraggio storico.
 
 
-===== Calcolo percentile e risultato
+==== Schermata - Calcolo percentile e risultato
 Il flusso di calcolo percentile si articola in due schermate distinte che seguono una logica simile a quella della
 misurazione del piede, visibili in @fig:calcolo-percentile.
 #v(0.5em)
 #figure(
-  caption: "Schermata di calcolo percentile e del risultato",
-)[#image("../images/calcolo-percentile.png", width: 100%)]<fig:calcolo-percentile>
+  caption: "Schermata di misurazione del piede e del risultato",
+)[#box(width: 100%)[#grid(
+  columns: 4,
+  column-gutter: 0.1em,
+
+  image("../images/percentile2.png", width: 100%),
+  image("../images/percentile.png", width: 100%),
+  image("../images/percentile3.png", width: 100%),
+  image("../images/percentile1.png", width: 100%),
+)]]<fig:calcolo-percentile>
 #v(0.5em)
 - *Schermata di inserimento dati*: la schermata presenta un form suddiviso in due sezioni. Se il calcolo percentile è
   avviato da un profilo bambino, la prima sezione raccoglie solamente l'altezza e il peso del bambino, mentre la data di
@@ -853,13 +913,20 @@ misurazione del piede, visibili in @fig:calcolo-percentile.
   i dati anagrafici e le misurazioni già inserite senza doverli reinserire.
 
 
-===== Diario di Bambino
+==== Schermata - Diario di Bambino
 Il diario costituisce la vista principale del profilo bambino ed è organizzato in sotto-schermate visibili in
 @fig:diario-bambino.
 #v(0.5em)
 #figure(
-  caption: "Diario di bambino",
-)[#image("../images/diario-bambino.png", width: 100%)]<fig:diario-bambino>
+  caption: "Schermata di misurazione del piede e del risultato",
+)[#box(width: 90%)[#grid(
+  columns: 3,
+  column-gutter: 0.1em,
+
+  image("../images/diary-page.png", width: 100%),
+  image("../images/diary-page1.png", width: 100%),
+  image("../images/diary-page2.png", width: 100%),
+)]]<fig:diario-bambino>
 #v(0.5em)
 - *Schermata del Diario*: la schermata del diario mostra nella parte superiore un'intestazione con le informazioni
   anagrafiche essenziali, data nascita e sesso, nella barra di navigazione il nome e l'_avatar_ del profilo, con la

@@ -425,7 +425,7 @@
   figure(
     caption: cap,
     table(
-      columns: (0.11fr, 0.15fr, 0.4fr, 0.1fr),
+      columns: (0.11fr, 0.16fr, 0.4fr, 0.1fr),
       align: (left, left, left, left),
       table.header([*ID*], [*Elemento*], [*Descrizione*], [*Stato*]),
       ..rows,

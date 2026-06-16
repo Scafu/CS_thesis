@@ -61,31 +61,29 @@ capitoli:
   illustrando le scelte architetturali e la codifica implementativa, con particolare attenzione alla struttura
   dell'applicazione e alle funzionalità principali;
   #v(0.5em)
-/ /*#link(<cap:test-e-validazione>)[Il sesto capitolo]*/ Il sesto capitolo: descrive i test effettuati per verificare la
-  correttezza implementativa e la validazione del prodotto, mostrando i risultati ottenuti e le eventuali criticità
-  riscontrate;
+/ #link(<cap:test-e-validazione>)[Il sesto capitolo]: descrive i _test_ effettuati per verificare la correttezza
+  implementativa e la validazione del prodotto, mostrando i risultati ottenuti e le eventuali criticità riscontrate;
   #v(0.5em)
-/ /*#link(<cap:conclusioni>)[Il settimo capitolo]*/ Il settimo capitolo: presenta le conclusioni del progetto di stage,
-  evidenziando i risultati raggiunti, le difficoltà incontrate e le prospettive future per l'applicazione sviluppata.
+/ #link(<cap:conclusioni>)[Il settimo capitolo]: presenta le conclusioni del progetto di stage, evidenziando i risultati
+  raggiunti, le difficoltà incontrate e le prospettive future per l'applicazione sviluppata.
 === Convenzioni tipografiche
 Durante la stesura del testo sono state adottate le seguenti convenzioni tipografiche:
 
-- #highlight("g")li acronimi, le abbreviazioni e i termini di uso non comune menzionati vengono definiti nel Glossario,
-  situato alla fine del documento (p. #link(<glossary>)[#context counter(page).at(<glossary>).at(0)]);
-- #highlight("p")er la prima occorrenza dei termini riportati nel glossario viene utilizzata la seguente nomenclatura:
-  Parola#sub[g];
+- gli acronimi, le abbreviazioni e i termini di uso non comune menzionati vengono definiti nel Glossario, situato alla
+  fine del documento (p. #link(<glossary>)[#context counter(page).at(<glossary>).at(0)]);
+- per la prima occorrenza dei termini riportati nel glossario viene utilizzata la seguente nomenclatura: Parola#sub[g];
 
 
-- #highlight("i") termini in lingua straniera non di uso comune o facenti parte del gergo tecnico sono evidenziati con
-  il carattere _corsivo_;
-- #highlight("i") nomi di funzioni o variabili appartenenti ad un linguaggio di programmazione vengono scritte con un
-  carattere `monospaziato`;
-- #highlight("l")e citazioni ad un libro o ad una risorsa presente nella Bibliografia (p. #link(
+- i termini in lingua straniera non di uso comune o facenti parte del gergo tecnico sono evidenziati con il carattere
+  _corsivo_;
+- i nomi di funzioni o variabili appartenenti ad un linguaggio di programmazione vengono scritte con un carattere
+  `monospaziato`;
+- le citazioni ad un libro o ad una risorsa presente nella Bibliografia (p. #link(
     <bibliography>,
   )[#context (
     counter(page).at(<bibliography>).at(0)
   )]) saranno in formato _IEEE_ affiancate dal rispettivo numero identificativo, es. $[1]$;
-- #highlight("i") blocchi di codice sono rappresentati nel seguente modo:
+- i blocchi di codice sono rappresentati nel seguente modo:
 
 #figure(
   ```Dart

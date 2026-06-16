@@ -17,13 +17,12 @@ supporta il tipo speciale `dynamic`, che consente di posticipare il controllo al
 maggiore flessibilità ove necessario. Un'altra importante caratteristica è la _null safety_ come funzionalità
 predefinita e questo comporta alcune implicazioni:
 #v(0.5em)
-- #highlight([i]) tipi sono non nulli per _default_; una variabile di tipo `String`, ad esempio, non potrà mai contenere
-  il valore `null` a meno che non venga esplicitamente dichiarata come _nullable_ tramite la notazione `String?`;
-- #highlight([l])e variabili di tipo non nullo devono quindi essere inizializzate prima di poter compilare e possono
-  essere assegnate esclusivamente a valori dello stesso tipo non nullo;
-- #highlight([i])l compilatore di _Dart_ è in grado, tramite analisi statica, di rilevare potenziali accessi o verifiche
-  su valori `null`, eliminando alla radice la possibilità di valori `null` inintenzionali che potrebbero casuare errori
-  _runtime_.
+- i tipi sono non nulli per _default_; una variabile di tipo `String`, ad esempio, non potrà mai contenere il valore
+  `null` a meno che non venga esplicitamente dichiarata come _nullable_ tramite la notazione `String?`;
+- le variabili di tipo non nullo devono quindi essere inizializzate prima di poter compilare e possono essere assegnate
+  esclusivamente a valori dello stesso tipo non nullo;
+- il compilatore di _Dart_ è in grado, tramite analisi statica, di rilevare potenziali accessi o verifiche su valori
+  `null`, eliminando alla radice la possibilità di valori `null` inintenzionali che potrebbero casuare errori _runtime_.
 #v(0.5em)
 Questo approccio rende il codice _Dart_ più robusto, leggibile e sicuro perchè sposta la verifica dall'esecuzione alla
 compilazione.
@@ -37,7 +36,7 @@ Dart può dunque essere utilizzato per sviluppare applicazioni su due principali
 #v(0.5em)
 - *Piattaforme native*: _Dart_ dispone di una macchina virtuale (#gl("VM")) con compilatore _just-in-time_ (#gl("JIT")),
   utilizzato principalmente in fase di sviluppo e di un compilatore _ahead-of-time_ (#gl("AOT")) per la produzione, che
-  genera codice macchina nativo altamente ottimizzato, garantendo prestazioni elevate#highlight(";")
+  genera codice macchina nativo altamente ottimizzato, garantendo prestazioni elevate;
 - *Piattaforme web*: oltre alle piattaforme native _Dart_ può essere convertito in _JavaScript_ oppure compilato
   direttamente in _WebAssembly_, un formato binario supportato da tutti i principali _browser_.
 #v(0.5em)
@@ -52,10 +51,10 @@ interfacce grafiche, _Flutter_ offre agli sviluppatori la possibilità di poter 
 dipendere necessariamente da quelli predefiniti.
 #v(0.5em)
 Il linguaggio di programmazione utilizzato da _Flutter_ è _Dart_, che mette a disposizione una funzionalità chiamata
-_hot reload_, #highlight("che permette") di visualizzare in modo immediato i cambiamenti apportati al codice sorgente
-senza dover ricompilare l'intera applicazione. Per il progetto questa funzionalità è stata particolarmente utile nella
-fase della progettazione delle componenti, perchè ha reso i test visivi più rapidi e immediati, facendo risparmiare
-tempo durante lo sviluppo.
+_hot reload_, che permette di visualizzare in modo immediato i cambiamenti apportati al codice sorgente senza dover
+ricompilare l'intera applicazione. Per il progetto questa funzionalità è stata particolarmente utile nella fase della
+progettazione delle componenti, perchè ha reso i test visivi più rapidi e immediati, facendo risparmiare tempo durante
+lo sviluppo.
 
 === Node JS
 _Node JS_ #cite(<nodejs>) è un ambiente di _runtime_ _JavaScript_ _open-source_ e multipiattaforma, progettato per
@@ -72,18 +71,17 @@ realizzazione di un server _HTTP_.
 _Fastify_ #cite(<fastify>) è un _framework web_ per _Node JS_ ideato e sviluppato dai programmatori italiani Matteo
 Collina e Tomas Della Vedova. Il _framework_ è stato concepito con l'obiettivo fondamentale di offrire un'eccellente
 esperienza di sviluppo senza scendere a compromessi sulle prestazioni, grazie a una potente architettura basata su
-_plugin_. _Fastify_ #highlight([è uno dei _framework_]) web più veloci nell'ecosistema _Node JS_, sfrutta schemi _JSON_
-per la validazione delle rotte e per l'ottimizzazione della serializzazione dei dati in uscita. Fornisce nativamente un
-sistema di _logging_ interno ad alte prestazioni e come principale caratteristica distintiva, offre uno sviluppo basato
-su _TypeScript_, #highlight("che garantisce") robustezza grazie al sistema di tipi statici.
+_plugin_. _Fastify_ è uno dei _framework_ web più veloci nell'ecosistema _Node JS_, sfrutta schemi _JSON_ per la
+validazione delle rotte e per l'ottimizzazione della serializzazione dei dati in uscita. Fornisce nativamente un sistema
+di _logging_ interno ad alte prestazioni e come principale caratteristica distintiva, offre uno sviluppo basato su
+_TypeScript_, che garantisce robustezza grazie al sistema di tipi statici.
 #v(0.5em)
 
 === OAuth 2.0 <tech:oauth2.0>
 L'OAuth 2.0 #cite(<oauth2.0>) è un protocollo di autorizzazione che dà la possibilità a un'applicazione di terze parti
-di #highlight("ottenere") un accesso limitato a particolare servizio _HTTP_. Questo avviene agendo per conto del
-proprietario di una risorsa, implementando un flusso di approvazione tra il proprietario e il servizio, oppure
-consentendo all'applicazione di ottenere l'accesso per proprio conto. Questo protocollo è una diretta evoluzione del
-precedente _OAuth 1.0_#highlight(".")
+di ottenere un accesso limitato a particolare servizio _HTTP_. Questo avviene agendo per conto del proprietario di una
+risorsa, implementando un flusso di approvazione tra il proprietario e il servizio, oppure consentendo all'applicazione
+di ottenere l'accesso per proprio conto. Questo protocollo è una diretta evoluzione del precedente _OAuth 1.0_.
 #v(0.5em)
 Il protocollo definisce un flusso di autorizzazione che coinvolge quattro ruoli principali:
 #v(0.5em)
@@ -109,8 +107,8 @@ autorizzazione (3); il server convalida l'autorizzazione e autentica il _client_
 di accesso (4). Il _client_ richiede la risorsa protetta al server che la detiene presentando il _token_ di accesso (5);
 infine, il server valida il _token_ e, se confermato, fornisce la risorsa protetta (6).
 #v(0.5em)
-#highlight([Per evitare possibili fraintendimenti terminologici]), è opportuno chiarire la differenza tra i termini
-*Autenticazione* e *Autorizzazione*:
+Per evitare possibili fraintendimenti terminologici, è opportuno chiarire la differenza tra i termini *Autenticazione* e
+*Autorizzazione*:
 #v(0.5em)
 - *Autenticazione*: è il processo che consente al server di verificare l'identità del l'utente, è un processo che
   risponde alla domanda: "Chi sei?";
@@ -171,9 +169,9 @@ righe di codice. Nato originariamente come strumento da riga di comando, nel cor
 numerose piattaforme e interfacce che lo implementano, rendendolo accessibile a sviluppatori con diversi livelli di
 esperienza.
 #v(0.5em)
-In particolare, per questo progetto di stage è stato adottato un flusso di lavoro denominato _Git Flow_, il quale,
-#highlight([come mostrato in @fig:gitflow]), prevede l'utilizzo di rami multipli per isolare le diverse fasi di sviluppo
-e ottimizzare la collaborazione tra più membri del team.
+In particolare, per questo progetto di stage è stato adottato un flusso di lavoro denominato _Git Flow_, il quale, come
+mostrato in @fig:gitflow, prevede l'utilizzo di rami multipli per isolare le diverse fasi di sviluppo e ottimizzare la
+collaborazione tra più membri del team.
 
 #figure(caption: [Flusso di lavoro Git Flow #[\
     #text()[Fonte dell'immagine: #cite(<gitflow>)]]<no-index>])[

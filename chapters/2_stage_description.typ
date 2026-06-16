@@ -83,18 +83,17 @@ I vantaggi principali dell'utilizzo delle _user stories_ #cite(<def-user-stories
 #v(1em)
 - *Mettono il focus sulla comunicazione verbale*: le _user stories_ hanno lo scopo di rappresentare in modo sintetico
   una funzionalità fungendo da supporto alle conversazioni tra cliente e team di sviluppo e favorendo quindi la
-  comunicazione tra le parti#highlight(";")
+  comunicazione tra le parti;
 - *Comprensibili da entrambe le parti*: le _user stories_ essendo scritte in un linguaggio semplice e non tecnico,
   risultano facilmente comprensibili sia dal cliente sia dal team di sviluppo, mettendo in evidenza il valore della
-  funzionalità o del requisito descritto#highlight(";")
+  funzionalità o del requisito descritto;
 - *Dimensione adatta alla pianificazione*: le _user stories_ hanno dimensioni adattabili e questo permette al team di
   pianificare il lavoro in base alle proprie capacità e necessità.
 - *Funzionano per lo sviluppo iterativo*: le _user stories_ non devono essere scritte tutte all'inizio del progetto, ma
   possono essere modificate e aggiunte in qualsiasi momento, questo permette al software di evolversi attraverso
-  iterazioni successive, permettendo di raffinare anche le singole _user stories_#highlight(";")
+  iterazioni successive, permettendo di raffinare anche le singole _user stories_;
 - *Incoraggiano il rinvio del dettaglio*: le _user stories_ non devono essere dettagliate completamente all'inizio del
-  progetto, ma possono rimanere volutamente vaghe e approfondite solo quando necessario, risparmiando tempo e
-  risorse#highlight(";")
+  progetto, ma possono rimanere volutamente vaghe e approfondite solo quando necessario, risparmiando tempo e risorse;
 - *Favoriscono la crescita della conoscenza tra le parti*: dato che le _user stories_ mettono l'enfasi sulla
   comunicazione verbale e ripetuta nel tempo, permettono una crescita sostanziale della conoscenza tra le parti,
   facilitando la comprensione reciproca e la collaborazione.
@@ -213,22 +212,20 @@ Srl:
 #v(1em)
 - *Azienda di piccole dimensioni e giovane*: essendo un'azienda di piccole dimensioni, Wavelop Srl offre l'opportunità
   di essere coinvolti a 360 gradi in tutte le fasi del processo di sviluppo, favorendo la comunicazione tra tutti i
-  membri del team, senza trascurare il tirocinante, considerandolo a tutti gli effetti un membro del team
-  stesso#highlight(";")
+  membri del team, senza trascurare il tirocinante, considerandolo a tutti gli effetti un membro del team stesso;
 
 - *Metodologie Agili*: l'adozione di metodologie agili, in particolare _Scrum_ e _user stories_, ha rappresentato un
   fattore chiave nella scelta del progetto. Tali pratiche forniscono uno stimolo costante, favorendo l'apprendimento
-  continuo e la crescita personale attraverso il confronto con i colleghi e con il tutor aziendale#highlight(";")
+  continuo e la crescita personale attraverso il confronto con i colleghi e con il tutor aziendale;
 
 - *Stesso percorso di studi universitari*: la condivisione dello stesso percorso di studi universitari dell'intero team
   di sviluppo, ha permesso a Wavelop Srl di strutturare il progetto di stage strettamente allineato alle esigenze
-  formative e alle tempistiche richieste dal corso di laurea#highlight(";")
+  formative e alle tempistiche richieste dal corso di laurea;
 
 - *Possibilità di inserimento in azienda*: lo svolgimento di colloqui diretti con i fondatori dell'azienda e la
   possibilità di confronto aperto hanno costituito elementi fondamentali per la scelta del progetto e nella valutazione
   di un futuro inserimento in azienda. Wavelop Srl si configura infatti come un'attività orientata primariamente
-  all'apprendimento e alla crescita del proprio personale, rispetto al mero raggiungimento di obiettivi di
-  business#highlight(";")
+  all'apprendimento e alla crescita del proprio personale, rispetto al mero raggiungimento di obiettivi di business;
 
 - *Possibilità di validare le conoscenze pregresse*: il progetto proposto ha offerto l'opportunità di verificare e
   consolidare le competenze acquisite nel percorso di studi antecedente allo stage. In particolare, durante la fase di
