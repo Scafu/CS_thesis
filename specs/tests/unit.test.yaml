@@ -336,3 +336,62 @@ tests:
     description: Verifica che tutti i componenti interattivi abbiano etichette semantiche non vuote
     status: implemented
 
+  - elemento: Informazioni mediche
+    description: Verifica che il modello venga costruito correttamente a partire da un %s piatto
+    status: implemented
+    terms:
+      - kind: foreign
+        text: JSON
+
+  - elemento: Informazioni mediche
+    description: Verifica che le sotto-schede annidate vengano analizzate ricorsivamente
+    status: implemented
+
+  - elemento: Informazioni mediche
+    description: Verifica che la conversione a entità preservi titolo, descrizione e sotto-schede
+    status: implemented
+
+  - elemento: Informazioni mediche
+    description: Verifica che la conversione a entità converta ricorsivamente le sotto-schede
+    status: implemented
+
+  - elemento: Informazioni mediche
+    description: Verifica che il %s carichi le schede al completamento e imposti %s su %s
+    status: implemented
+    terms:
+      - kind: foreign
+        text: viewmodel
+      - kind: foreign
+        text: isLoading
+      - kind: foreign
+        text: false
+
+  - elemento: Informazioni mediche
+    description: Verifica che il %s notifichi i %s con %s a %s poi %s durante il caricamento
+    status: implemented
+    terms:
+      - kind: foreign
+        text: viewmodel
+      - kind: foreign
+        text: listener
+      - kind: foreign
+        text: isLoading
+      - kind: foreign
+        text: true
+      - kind: foreign
+        text: false
+
+  - elemento: Informazioni mediche
+    description: Verifica che il %s imposti un errore e lasci le schede vuote in caso di fallimento
+    status: implemented
+    terms:
+      - kind: foreign
+        text: viewmodel
+
+  - elemento: Informazioni mediche
+    description: Verifica che le sotto-schede delle schede caricate siano preservate nel %s
+    status: implemented
+    terms:
+      - kind: foreign
+        text: viewmodel
+

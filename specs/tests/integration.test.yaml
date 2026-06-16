@@ -205,59 +205,81 @@ tests:
   # ---------------------------------------------------------------------------
 
   - elemento: Tutorial
-    description: Verifica che il %s carichi le pagine del tutorial %s dall'asset %s bundled
+    description: Verifica che il %s carichi le pagine del %s %s dall'asset %s bundled
     status: implemented
     terms:
       - kind: foreign
         text: datasource
+      - kind: foreign
+        text: tutorial
       - kind: foreign
         text: percentile
       - kind: foreign
         text: JSON
 
   - elemento: Tutorial
-    description: Verifica che il %s carichi le pagine del tutorial piede dall'asset %s bundled
+    description: Verifica che il %s carichi le pagine del %s piede dall'asset %s bundled
     status: implemented
     terms:
       - kind: foreign
         text: datasource
       - kind: foreign
+        text: tutorial
+      - kind: foreign
         text: JSON
 
   - elemento: Tutorial
-    description: Verifica che il %s mappi correttamente i modelli delle pagine del tutorial %s in entità
+    description: Verifica che il %s mappi correttamente i modelli delle pagine del %s %s in entità
     status: implemented
     terms:
       - kind: foreign
         text: repository
+      - kind: foreign
+        text: tutorial
       - kind: foreign
         text: percentile
 
   - elemento: Tutorial
-    description: Verifica che il %s mappi correttamente i modelli delle pagine del tutorial piede in entità
+    description: Verifica che il %s mappi correttamente i modelli delle pagine del %s piede in entità
     status: implemented
     terms:
       - kind: foreign
         text: repository
+      - kind: foreign
+        text: tutorial
 
   - elemento: Tutorial
-    description: Verifica che il %s persista il flag di tutorial visto per email utente e tipo di tutorial
+    description: Verifica che il %s persista il %s di %s visto per %s utente e tipo di %s
     status: implemented
     terms:
       - kind: foreign
         text: repository
+      - kind: foreign
+        text: flag
+      - kind: foreign
+        text: tutorial
+      - kind: foreign
+        text: email
+      - kind: foreign
+        text: tutorial
 
   - elemento: Tutorial
-    description: Verifica che il flag di tutorial visto nel %s sia isolato per ciascun utente
+    description: Verifica che il %s di tutorial visto nel %s sia isolato per ciascun utente
     status: implemented
     terms:
+      - kind: foreign
+        text: flag
       - kind: foreign
         text: repository
 
   - elemento: Tutorial
-    description: Verifica che i flag del tutorial %s e piede nel %s siano indipendenti per utente
+    description: Verifica che i % del %s %s e piede nel %s siano indipendenti per utente
     status: implemented
     terms:
+      - kind: foreign
+        text: flag
+      - kind: foreign
+        text: tutorial
       - kind: foreign
         text: percentile
       - kind: foreign
@@ -269,22 +291,26 @@ tests:
   # ---------------------------------------------------------------------------
 
   - elemento: Calcolo percentile
-    description: Verifica che il %s restituisca una lista non vuota di dati %s maschili dai dati bundled
+    description: Verifica che il %s restituisca una lista non vuota di dati %s maschili dai dati %s
     status: implemented
     terms:
       - kind: foreign
         text: repository
       - kind: foreign
         text: BMI
+      - kind: foreign
+        text: bundled
 
   - elemento: Calcolo percentile
-    description: Verifica che il %s restituisca una lista non vuota di dati %s femminili dai dati bundled
+    description: Verifica che il %s restituisca una lista non vuota di dati %s femminili dai dati %s
     status: implemented
     terms:
       - kind: foreign
         text: repository
       - kind: foreign
         text: BMI
+      - kind: foreign
+        text: bundled
 
   - elemento: Calcolo percentile
     description: Verifica che le voci %s restituite dal %s abbiano un ordinamento dei percentili valido
@@ -296,11 +322,13 @@ tests:
         text: repository
 
   - elemento: Calcolo percentile
-    description: Verifica che i dati %s bundled restituiti dal %s differiscano tra maschi e femmine
+    description: Verifica che i dati %s %s restituiti dal %s differiscano tra maschi e femmine
     status: implemented
     terms:
       - kind: foreign
         text: BMI
+      - kind: foreign
+        text: bundled
       - kind: foreign
         text: repository
 
@@ -310,10 +338,118 @@ tests:
   # ---------------------------------------------------------------------------
 
   - elemento: Misurazione piede
-    description: Verifica che il %s restituisca un valore positivo per %s dai dati bundled
+    description: Verifica che il %s restituisca un valore positivo per %s dai dati %s
     status: implemented
     terms:
       - kind: foreign
         text: repository
       - kind: foreign
         text: getPxPerMm
+      - kind: foreign
+        text: bundled
+
+  # ---------------------------------------------------------------------------
+  # Medical info datasource & repository
+  # (test/features/medical_info/data/medical_info_datasource_integration_test.dart)
+  # ---------------------------------------------------------------------------
+
+  - elemento: Informazioni mediche
+    description: Verifica che il %s %s si carichi come mappa non nulla con la chiave %s
+    status: implemented
+    terms:
+      - kind: foreign
+        text: datasource
+      - kind: foreign
+        text: bundled
+      - kind: foreign
+        text: cards
+
+  - elemento: Informazioni mediche
+    description: Verifica che l'%s %s contenga almeno una scheda
+    status: implemented
+    terms:
+      - kind: foreign
+        text: asset
+      - kind: foreign
+        text: bundled
+
+
+  - elemento: Informazioni mediche
+    description: Verifica che ogni scheda %s abbia i campi %s, %s e %s
+    status: implemented
+    terms:
+      - kind: foreign
+        text: bundled 
+      - kind: foreign
+        text: title
+      - kind: foreign
+        text: description
+      - kind: foreign
+        text: subcards
+
+  - elemento: Informazioni mediche
+    description: Verifica che %s sia %s prima di %s e %s dopo
+    status: implemented
+    terms:
+      - kind: foreign
+        text: cacheIsEmpty
+      - kind: foreign
+        text: true
+      - kind: foreign
+        text: setCache
+      - kind: foreign
+        text: false
+
+  - elemento: Informazioni mediche
+    description: Verifica che %s e %s effettuino un ciclo completo dei dati su disco
+    status: implemented
+    terms:
+      - kind: foreign
+        text: persistCache
+      - kind: foreign
+        text: loadPersistedCache
+
+  - elemento: Informazioni mediche
+    description: Verifica che %s sovrascriva i dati precedenti
+    status: implemented
+    terms:
+      - kind: foreign
+        text: persistCache
+
+  - elemento: Informazioni mediche
+    description: Verifica che il %s persistito si chiami %s
+    status: implemented
+    terms:
+      - kind: foreign
+        text: file
+      - kind: foreign
+        text: medical_info.json
+
+  - elemento: Informazioni mediche
+    description: Verifica che il %s carichi dall'%s %s quando non esiste %s persistita
+    status: implemented
+    terms:
+      - kind: foreign
+        text: repository
+      - kind: foreign
+        text: asset
+      - kind: foreign
+        text: bundled
+      - kind: foreign
+        text: cache
+
+  - elemento: Informazioni mediche
+    description: Verifica che le schede restituite dal %s abbiano titolo e descrizione non vuoti
+    status: implemented
+    terms:
+      - kind: foreign
+        text: repository
+
+  - elemento: Informazioni mediche
+    description: Verifica che il %s funzioni senza chiamare %s in anticipo
+    status: implemented
+    terms:
+      - kind: foreign
+        text: repository
+      - kind: foreign
+        text: init
