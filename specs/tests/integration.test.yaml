@@ -2,22 +2,318 @@
 
 type: integration
 tests:
-  - id: salvataggio_post_misurazione
-    elemento: motore_misurazione
-    description: Verifica che al termine di una misurazione il risultato venga salvato correttamente nella persistenza locale
-    status: not_implemented
 
-  - id: recupero_storico_per_percentile
-    elemento: calcolo_percentile
-    description: Verifica che il modulo del percentile recuperi correttamente le misurazioni storiche dalla persistenza locale per la visualizzazione dell'andamento
-    status: not_implemented
+  # ---------------------------------------------------------------------------
+  # Child ObjectBox datasource  (test/features/child/data/child_objectbox_integration_test.dart)
+  # ---------------------------------------------------------------------------
 
-  - id: chiamata_api_autenticata
-    elemento: autenticazione
-    description: Verifica che una chiamata alle API backend avvenga con il token Auth0 valido e che la risposta venga gestita correttamente
-    status: not_implemented
+  - elemento: Anagrafica bambino
+    description: Verifica che il %s aggiunga e filtri i bambini per email del genitore
+    status: implemented
+    terms:
+      - kind: foreign
+        text: datasource
 
-  - id: sincronizzazione_dati_backend
-    elemento: api_backend
-    description: Verifica che le misurazioni locali vengano inviate correttamente al backend e che i dati ricevuti vengano sincronizzati nella persistenza locale
-    status: not_implemented
+  - elemento: Anagrafica bambino
+    description: Verifica che il %s aggiorni correttamente i campi supportati del bambino
+    status: implemented
+    terms:
+      - kind: foreign
+        text: datasource
+
+  - elemento: Anagrafica bambino
+    description: Verifica che il %s lanci un'eccezione quando si tenta di aggiornare un bambino inesistente
+    status: implemented
+    terms:
+      - kind: foreign
+        text: datasource
+
+  - elemento: Anagrafica bambino
+    description: Verifica che il %s elimini un bambino tramite il suo %s
+    status: implemented
+    terms:
+      - kind: foreign
+        text: datasource
+      - kind: foreign
+        text: uuid
+
+  - elemento: Anagrafica bambino
+    description: Verifica che il %s restituisca i dettagli corretti del bambino
+    status: implemented
+    terms:
+      - kind: foreign
+        text: datasource
+
+  - elemento: Log misurazioni bambino
+    description: Verifica che il %s persista i %s del bambino correttamente
+    status: implemented
+    terms:
+      - kind: foreign
+        text: datasource
+      - kind: foreign
+        text: log
+
+  # ---------------------------------------------------------------------------
+  # Child Repository  (child_objectbox_integration_test.dart — repository test)
+  # ---------------------------------------------------------------------------
+
+  - elemento: Anagrafica bambino
+    description: Verifica che il %s persista e mappi correttamente le entità bambino attraverso il %s
+    status: implemented
+    terms:
+      - kind: foreign
+        text: repository
+      - kind: foreign
+        text: datasource
+
+  # ---------------------------------------------------------------------------
+  # Child Milestones repository  (test/features/child/data/repositories/child_milestones_integration_test.dart)
+  # ---------------------------------------------------------------------------
+
+  - elemento: Tappe di sviluppo
+    description: Verifica che il %s restituisca una lista non vuota di tappe di sviluppo quando è %s e senza %s
+    status: implemented
+    terms:
+      - kind: foreign
+        text: repository
+      - kind: foreign
+        text: offline
+      - kind: foreign
+        text: cache
+
+  - elemento: Tappe di sviluppo
+    description: Verifica che le tappe di sviluppo restituite dal %s abbiano intervalli di mesi validi
+    status: implemented
+    terms:
+      - kind: foreign
+        text: repository
+
+  - elemento: Tappe di sviluppo
+    description: Verifica che le tappe di sviluppo restituite dal %s abbiano %s ed %s non vuoti
+    status: implemented
+    terms:
+      - kind: foreign
+        text: repository
+      - kind: foreign
+        text: titleKey
+      - kind: foreign
+        text: emoji
+
+  - elemento: Tappe di sviluppo
+    description: Verifica che le tappe di sviluppo restituite dal %s siano in ordine cronologico
+    status: implemented
+    terms:
+      - kind: foreign
+        text: repository
+
+  # ---------------------------------------------------------------------------
+  # Bundled BMI assets  (test/features/measurement/data/bundled_assets_integration_test.dart)
+  # ---------------------------------------------------------------------------
+
+  - elemento: Tabelle BMI
+    description: Verifica che il file %s per maschi sia un array %s valido con i campi attesi
+    status: implemented
+    terms:
+      - kind: foreign
+        text: bmi_male.json
+      - kind: foreign
+        text: JSON
+
+  - elemento: Tabelle BMI
+    description: Verifica che il file %s per femmine sia un array %s valido con i campi attesi
+    status: implemented
+    terms:
+      - kind: foreign
+        text: bmi_female.json
+      - kind: foreign
+        text: JSON
+
+  - elemento: Tabelle BMI
+    description: Verifica che i valori dei mesi nel %s dei dati %s siano interi non negativi
+    status: implemented
+    terms:
+      - kind: foreign
+        text: datasource
+      - kind: foreign
+        text: BMI
+
+  - elemento: Tabelle BMI
+    description: Verifica che i valori dei percentili siano in ordine ascendente (%s < mediana < %s)
+    status: implemented
+    terms:
+      - kind: foreign
+        text: p3
+      - kind: foreign
+        text: p97
+
+  # ---------------------------------------------------------------------------
+  # Bundled ios_ppi asset  (bundled_assets_integration_test.dart)
+  # ---------------------------------------------------------------------------
+
+  - elemento: Calibrazione schermo
+    description: Verifica che il file %s sia un oggetto %s valido e non vuoto
+    status: implemented
+    terms:
+      - kind: foreign
+        text: ios_ppi.json
+      - kind: foreign
+        text: JSON
+
+  - elemento: Calibrazione schermo
+    description: Verifica che i valori %s nel file %s siano numeri positivi
+    status: implemented
+    terms:
+      - kind: foreign
+        text: PPI
+      - kind: foreign
+        text: ios_ppi.json
+
+  # ---------------------------------------------------------------------------
+  # Bundled expert_advice asset  (bundled_assets_integration_test.dart)
+  # ---------------------------------------------------------------------------
+
+  - elemento: Consigli degli esperti
+    description: Verifica che il file %s si carichi come mappa non nulla
+    status: implemented
+    terms:
+      - kind: foreign
+        text: expert_advice.json
+
+  - elemento: Consigli degli esperti
+    description: Verifica che il file %s contenga le sezioni %s e %s
+    status: implemented
+    terms:
+      - kind: foreign
+        text: expert_advice.json
+      - kind: foreign
+        text: percentile
+      - kind: foreign
+        text: foot
+
+  - elemento: Consigli degli esperti
+    description: Verifica che ogni voce dei consigli degli esperti abbia i campi %s e %s
+    status: implemented
+    terms:
+      - kind: foreign
+        text: expert_name
+      - kind: foreign
+        text: expertise_key
+
+  # ---------------------------------------------------------------------------
+  # Measurement local datasource — tutorial pages
+  # (test/features/measurement/data/measurement_local_datasource_integration_test.dart)
+  # ---------------------------------------------------------------------------
+
+  - elemento: Tutorial
+    description: Verifica che il %s carichi le pagine del tutorial %s dall'asset %s bundled
+    status: implemented
+    terms:
+      - kind: foreign
+        text: datasource
+      - kind: foreign
+        text: percentile
+      - kind: foreign
+        text: JSON
+
+  - elemento: Tutorial
+    description: Verifica che il %s carichi le pagine del tutorial piede dall'asset %s bundled
+    status: implemented
+    terms:
+      - kind: foreign
+        text: datasource
+      - kind: foreign
+        text: JSON
+
+  - elemento: Tutorial
+    description: Verifica che il %s mappi correttamente i modelli delle pagine del tutorial %s in entità
+    status: implemented
+    terms:
+      - kind: foreign
+        text: repository
+      - kind: foreign
+        text: percentile
+
+  - elemento: Tutorial
+    description: Verifica che il %s mappi correttamente i modelli delle pagine del tutorial piede in entità
+    status: implemented
+    terms:
+      - kind: foreign
+        text: repository
+
+  - elemento: Tutorial
+    description: Verifica che il %s persista il flag di tutorial visto per email utente e tipo di tutorial
+    status: implemented
+    terms:
+      - kind: foreign
+        text: repository
+
+  - elemento: Tutorial
+    description: Verifica che il flag di tutorial visto nel %s sia isolato per ciascun utente
+    status: implemented
+    terms:
+      - kind: foreign
+        text: repository
+
+  - elemento: Tutorial
+    description: Verifica che i flag del tutorial %s e piede nel %s siano indipendenti per utente
+    status: implemented
+    terms:
+      - kind: foreign
+        text: percentile
+      - kind: foreign
+        text: repository
+
+  # ---------------------------------------------------------------------------
+  # Measurement repository — BMI from bundled asset
+  # (test/features/measurement/data/repositories/measurement_repository_integration_test.dart)
+  # ---------------------------------------------------------------------------
+
+  - elemento: Calcolo percentile
+    description: Verifica che il %s restituisca una lista non vuota di dati %s maschili dai dati bundled
+    status: implemented
+    terms:
+      - kind: foreign
+        text: repository
+      - kind: foreign
+        text: BMI
+
+  - elemento: Calcolo percentile
+    description: Verifica che il %s restituisca una lista non vuota di dati %s femminili dai dati bundled
+    status: implemented
+    terms:
+      - kind: foreign
+        text: repository
+      - kind: foreign
+        text: BMI
+
+  - elemento: Calcolo percentile
+    description: Verifica che le voci %s restituite dal %s abbiano un ordinamento dei percentili valido
+    status: implemented
+    terms:
+      - kind: foreign
+        text: BMI
+      - kind: foreign
+        text: repository
+
+  - elemento: Calcolo percentile
+    description: Verifica che i dati %s bundled restituiti dal %s differiscano tra maschi e femmine
+    status: implemented
+    terms:
+      - kind: foreign
+        text: BMI
+      - kind: foreign
+        text: repository
+
+  # ---------------------------------------------------------------------------
+  # Measurement repository — ios_ppi from bundled asset
+  # (measurement_repository_integration_test.dart)
+  # ---------------------------------------------------------------------------
+
+  - elemento: Misurazione piede
+    description: Verifica che il %s restituisca un valore positivo per %s dai dati bundled
+    status: implemented
+    terms:
+      - kind: foreign
+        text: repository
+      - kind: foreign
+        text: getPxPerMm

@@ -2,22 +2,158 @@
 
 type: system
 tests:
-  - id: flusso_misurazione_completo
+
+  # ---------------------------------------------------------------------------
+  # Avvio app  (integration_test/app_launch_test.dart)
+  # ---------------------------------------------------------------------------
+
+  - elemento: Avvio app
+    description: Verifica che l'%s si avvii e la %s scompaia senza crash
+    status: implemented
+    terms:
+      - kind: foreign
+        text: app
+      - kind: foreign
+        text: splash screen
+
+  - elemento: Avvio app
+    description: Verifica che l'%s visualizzi una schermata principale dopo il lancio
+    status: implemented
+    terms:
+      - kind: foreign
+        text: app
+
+  # ---------------------------------------------------------------------------
+  # Misurazione piede  (integration_test/foot_measurement_test.dart)
+  # ---------------------------------------------------------------------------
+
+  - elemento: Misurazione piede
+    description: Verifica che la pagina di misurazione del piede mostri il righello e l'indicatore di misurazione
+    status: implemented
+
+  - elemento: Misurazione piede
+    description: Verifica che il campo di inserimento della pagina di misurazione del piede sia presente con valore predefinito %s
+    status: implemented
+    terms:
+      - kind: native
+        text: "0.0"
+
+  - elemento: Misurazione piede
+    description: Verifica che l'inserimento di un valore nella pagina di misurazione del piede aggiorni la visualizzazione della misurazione
+    status: implemented
+
+  - elemento: Misurazione piede
+    description: Verifica che la perdita del %s sul campo testo della pagina di misurazione del piede confermi il valore inserito
+    status: implemented
+    terms:
+      - kind: foreign
+        text: focus
+
+  - elemento: Misurazione piede
+    description: Verifica che il trascinamento del righello aggiorni l'indicatore di misurazione
+    status: implemented
+
+  - elemento: Misurazione piede
+    description: Verifica che la conferma della misurazione navighi alla schermata del risultato del piede
+    status: implemented
+
+  - elemento: Misurazione piede
+    description: Verifica che la schermata del risultato del piede venga visualizzata correttamente dopo la conferma
+    status: implemented
+
+  # ---------------------------------------------------------------------------
+  # Dati offline / bundled  (integration_test/offline_data_test.dart)
+  # ---------------------------------------------------------------------------
+
+  - elemento: Dati offline
+    description: Verifica che la schermata di misurazione del piede mostri il righello dai dati %s senza sincronizzazione di rete
+    status: implemented
+    terms:
+      - kind: foreign
+        text: bundled
+
+  - elemento: Dati offline
+    description: Verifica che la schermata di misurazione del piede non mostri uno %s quando i dati %s sono disponibili localmente
+    status: implemented
+    terms:
+      - kind: foreign
+        text: spinner
+      - kind: foreign
+        text: bundled
+
+  - elemento: Dati offline
+    description: Verifica che la schermata del risultato del piede si carichi dai consigli degli esperti %s senza crash
+    status: implemented
+    terms:
+      - kind: foreign
+        text: bundled
+
+  # ---------------------------------------------------------------------------
+  # Misurazione percentile  (integration_test/percentile_measurement_test.dart)
+  # ---------------------------------------------------------------------------
+
+  - elemento: Misurazione percentile
+    description: Verifica che la pagina del percentile presenti le sezioni e i controlli del %s di inserimento
+    status: implemented
+    terms:
+      - kind: foreign
+        text: form
+
+  - elemento: Misurazione percentile
+    description: Verifica che la pagina del percentile presenti tre campi di testo per data di nascita, altezza e peso
+    status: implemented
+
+  - elemento: Misurazione percentile
+    description: Verifica che dati validi nel %s del percentile vengano inviati con successo e navighino alla schermata del risultato
+    status: implemented
+    terms:
+      - kind: foreign
+        text: form
+
+  - elemento: Misurazione percentile
+    description: Verifica che la schermata del risultato del percentile venga visualizzata senza indicatori di caricamento bloccati
+    status: implemented
+
+  - elemento: Misurazione percentile
+    description: Verifica che la validazione del %s del percentile rifiuti l'invio con campi vuoti mostrando i relativi errori
+    status: implemented
+    terms:
+      - kind: foreign
+        text: form
+
+  - elemento: Misurazione percentile
+    description: Verifica che la validazione del %s del percentile rifiuti un valore di altezza non numerico
+    status: implemented
+    terms:
+      - kind: foreign
+        text: form
+
+  # ---------------------------------------------------------------------------
+  # Test pianificati (non ancora implementati)
+  # ---------------------------------------------------------------------------
+
+  - elemento: Misurazione piede
     description: Verifica che l'utente possa completare l'intera procedura guidata di misurazione e visualizzare il risultato finale
     status: not_implemented
 
-  - id: flusso_calibrazione_schermo
-    description: Verifica che l'utente possa eseguire la calibrazione dello schermo e che i PPI vengano salvati correttamente per le misurazioni successive
+  - elemento: Calibrazione schermo
+    description: Verifica che l'utente possa eseguire la calibrazione dello schermo e che i valori %s vengano salvati correttamente per le misurazioni successive
     status: not_implemented
+    terms:
+      - kind: foreign
+        text: PPI
 
-  - id: visualizzazione_risultato_percentile
+  - elemento: Misurazione percentile
     description: Verifica che al termine della misurazione venga mostrato il percentile corretto con le relative informazioni sanitarie
     status: not_implemented
 
-  - id: consultazione_storico_misurazioni
+  - elemento: Storico misurazioni
     description: Verifica che l'utente possa accedere allo storico delle misurazioni e consultare i dati salvati in precedenza
     status: not_implemented
 
-  - id: flusso_autenticazione_auth0
-    description: Verifica che l'utente possa autenticarsi tramite Auth0 e accedere alle funzionalità riservate agli utenti autenticati
+  - elemento: Autenticazione
+    description: Verifica che l'utente possa autenticarsi tramite %s e accedere alle funzionalità riservate
     status: not_implemented
+    terms:
+      - kind: foreign
+        text: Auth0

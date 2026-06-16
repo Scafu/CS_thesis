@@ -58,7 +58,7 @@ tests:
       - kind: foreign
         text: logout
 
-  - elemento: Settings
+  - elemento: Impostazioni
     description: Verifica che il %s restituisca le impostazioni di %s
     status: implemented
     terms:
@@ -67,51 +67,51 @@ tests:
       - kind: foreign
         text: default
 
-  - elemento: Settings 
+  - elemento: Impostazioni
     description: Verifica che il caricamento delle impostazioni aggiorni lo stato e notifichi i %s
     status: implemented
     terms:
       - kind: foreign
         text: listener
 
-  - elemento: Child
+  - elemento: Gestione bambino
     description: Verifica che la conversione da entità a modello preservi tutti i campi
     status: implemented
 
-  - elemento: Child 
+  - elemento: Gestione bambino 
     description: Verifica che la conversione da modello a entità e viceversa mantenga i dati invariati
     status: implemented
 
-  - elemento: Child 
+  - elemento: Gestione bambino 
     description: Verifica che utenti diversi vedano solo i propri figli
     status: implemented
 
-  - elemento: Child 
+  - elemento: Gestione bambino 
     description: Verifica che l'aggiunta di un figlio utilizzi i valori di %s corretti
     status: implemented
     terms:
       - kind: foreign
         text: default
 
-  - elemento: Child
+  - elemento: Gestione bambino
     description: Verifica che la rimozione di un figlio aggiorni il %s e lo stato locale
     status: implemented
     terms:
       - kind: foreign
         text: repository
 
-  - elemento: Child
+  - elemento: Gestione bambino
     description: Verifica che il caricamento dei figli gestisca correttamente lo stato di progresso
     status: implemented
 
-  - elemento: Child
+  - elemento: Gestione bambino
     description: Verifica che il %s azzeri la lista dei figli
     status: implemented
     terms:
       - kind: foreign
         text: logout
 
-  - elemento: Child
+  - elemento: Gestione bambino
     description: Verifica che la sincronizzazione con lo stesso %s non esegua richieste duplicate
     status: implemented
     terms:
@@ -167,71 +167,71 @@ tests:
       - kind: foreign
         text: tutorial
 
-  - elemento: FootMeasurement
+  - elemento: Misurazione piede
     description: Verifica che la calibrazione del dispositivo venga inizializzata correttamente
     status: implemented
 
-  - elemento: FootMeasurement
+  - elemento: Misurazione piede
     description: Verifica che la calibrazione non venga ripetuta se già eseguita
     status: implemented
 
-  - elemento: FootMeasurement
+  - elemento: Misurazione piede
     description: Verifica che un valore di lunghezza valido sposti l'indicatore nella posizione corretta
     status: implemented
 
-  - elemento: FootMeasurement
+  - elemento: Misurazione piede
     description: Verifica che un valore piccolo posizioni l'indicatore sopra la linea del tallone
     status: implemented
 
-  - elemento: FootMeasurement
+  - elemento: Misurazione piede
     description: Verifica che un %s vuoto non modifichi la posizione dell'indicatore
     status: implemented
     terms:
       - kind: foreign
         text: input
 
-  - elemento: FootMeasurement
+  - elemento: Misurazione piede
     description: Verifica che un %s non numerico non modifichi la posizione dell'indicatore
     status: implemented
     terms:
       - kind: foreign
         text: input
 
-  - elemento: FootMeasurement
+  - elemento: Misurazione piede
     description: Verifica che un valore pari a zero non modifichi la posizione dell'indicatore
     status: implemented
 
-  - elemento: FootMeasurement
+  - elemento: Misurazione piede
     description: Verifica che un valore negativo non modifichi la posizione dell'indicatore
     status: implemented
 
-  - elemento: FootMeasurement
+  - elemento: Misurazione piede
     description: Verifica che il %s azzeri i dati di misurazione preservando la calibrazione
     status: implemented
     terms:
       - kind: foreign
         text: reset
 
-  - elemento: FootMeasurement
+  - elemento: Misurazione piede
     description: Verifica che il valore visualizzato corrisponda alla lunghezza inserita manualmente
     status: implemented
 
-  - elemento: FootMeasurement
+  - elemento: Misurazione piede
     description: Verifica che il valore visualizzato sia zero in assenza di dati di misurazione
     status: implemented
 
-  - elemento: Routing
+  - elemento: Navigazione
     description: Verifica che un percorso protetto reindirizzi al %s se non ancora completato
     status: implemented
     terms:
       - kind: foreign
         text: tutorial
 
-  - elemento: Routing
+  - elemento: Navigazione
     description: Verifica che un percorso non protetto non venga reindirizzato
     status: implemented
 
-  - elemento: Routing
+  - elemento: Navigazione
     description: Verifica che il reindirizzamento non avvenga prima che lo stato del %s sia pronto
     status: implemented
     terms:
@@ -294,7 +294,7 @@ tests:
 
 
   - subtipo: W
-    elemento: ExpertCard
+    elemento: Scheda esperto
     description: Verifica che in assenza di immagine profilo venga mostrata l'immagine di %s
     status: implemented
     terms:
@@ -302,12 +302,12 @@ tests:
         text: fallback
 
   - subtipo: W
-    elemento: ExpertCard
+    elemento: Scheda esperto
     description: Verifica che un'immagine profilo remota venga caricata dalla rete
     status: implemented
 
   - subtipo: W
-    elemento: ExpertCard
+    elemento: Scheda esperto
     description: Verifica che nome e ruolo dell'esperto siano visualizzati correttamente
     status: implemented
 
