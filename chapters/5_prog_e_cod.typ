@@ -9,9 +9,7 @@ Per lo sviluppo dell'applicazione è stata adottata un'architettura multi-livell
 Architecture_. Questo paradigma integra e sintetizza i concetti di approcci preesistenti, quali _Hexagonal Architecture_
 e la _Onion Architecture_, con l'obiettivo di offrire linee guida per la progettazione di sistemi software
 caratterizzati da un'elevata modularità, una netta separazione delle responsabilità (_Separation of Concerns_) e
-un'ottima manutenibilità del codice sorgente. #figure(
-  caption: "Architettura dell'applicazione",
-)[#image("../images/app-architecture.png", width: 100%)]<fig:app-architecture>
+un'ottima manutenibilità del codice sorgente. #figure(caption: "Architettura dell'applicazione")[#image("../images/app-architecture.png", width: 100%)]<fig:app-architecture>
 
 #v(0.5em)
 Alla base della _Clean Architecture_ vi è il principio denominato _The Dependency Rule_ (Regola delle Dipendenze).
@@ -61,7 +59,7 @@ manutenibilità a lungo termine del sistema #cite(<clean-architecture>).
 
 ==== Model-View-ViewModel<sez:mvvm>
 #figure(
-  caption: "Model-View-ViewModel",
+  caption: [#highlight([Model-View-ViewModel])],
 )[#image("../images/mvvm-pattern.png", width: 80%)]<fig:mvvm>
 Nel livello di presentazione dell'applicazione è presente il pattern architetturale _Model-View-ViewModel_ (MVVM). Come
 mostrato in @fig:mvvm, questo pattern consente di separare in modo chiaro l'interfaccia utente dalla logica di business,
@@ -79,9 +77,7 @@ dati rigorosamente unidirezionale. A livello logico, il sistema è stato progett
 comporti come un componente passivo e reattivo. Invece di richiedere esplicitamente i dati, l'interfaccia si mette in
 ascolto, tramite l'implementazione del pattern _Observer_, dei cambiamenti di stato esposti dal _ViewModel_. L'accesso
 ai _ViewModel_ avviene tramite il pattern _provider_, che rende disponibili dipendenze a qualsiasi livello dell'albero
-dei componenti senza doverle passare esplicitamente, eliminando il cosiddetto _prop-drilling_. #figure(
-  caption: "Gestione dello stato via MVVM",
-)[#image("../images/state-management.png", width: 90%)]<fig:state-management>
+dei componenti senza doverle passare esplicitamente, eliminando il cosiddetto _prop-drilling_. #figure(caption: "Gestione dello stato via MVVM")[#image("../images/state-management.png", width: 90%)]<fig:state-management>
 #v(0.5em)
 Come mostrato in @fig:state-management, quando l'utente compie un'azione, come ad esempio avviare una misurazione, il
 _ViewModel_ elabora la richiesta e notifica la _View_ di aggiornare l'interfaccia. Ove necessario, il _ViewModel_ espone
@@ -815,9 +811,7 @@ ci si trova.
 
 ==== Schermata - Creazione profilo bambino
 La schermata di creazione del profilo bambino consente all'utente, in veste di genitore, di creare un nuovo profilo
-bambino per poter iniziare a monitorare le misurazioni del bambino. #figure(
-  caption: "Schermata di creazione profilo bambino",
-)[#box(width: 40%)[
+bambino per poter iniziare a monitorare le misurazioni del bambino. #figure(caption: "Schermata di creazione profilo bambino")[#box(width: 40%)[
   #image("../images/create-child.png", width: 100%)]]<fig:create-child-profile>
 #v(0.5em)
 Come visibile in @fig:create-child-profile, la schermata è composta da un form suddiviso in sezioni. La prima sezione
@@ -837,9 +831,7 @@ fornisce un accesso diretto alla schermata dell'informativa sulla _privacy_. Inf
 presente una sezione _Account_ che espone le operazioni di gestione, come eliminazione selettiva dei profili bambino
 registrati, disconnessione ed eliminazione dell'account. L'eliminazione dei profili bambino avviene tramite un dialogo
 che elenca i profili disponibili con selezione multipla, consentendo all'utente di scegliere quali rimuovere prima di
-confermare l'operazione. #figure(
-  caption: "Schermata di impostazioni",
-)[#box(width: 60%)[#grid(
+confermare l'operazione. #figure(caption: "Schermata di impostazioni")[#box(width: 60%)[#grid(
   columns: 2,
   column-gutter: 0.3em,
 
@@ -885,7 +877,7 @@ Il flusso di calcolo percentile si articola in due schermate distinte che seguon
 misurazione del piede, visibili in @fig:calcolo-percentile.
 #v(0.5em)
 #figure(
-  caption: "Schermata di misurazione del piede e del risultato",
+  caption: "Schermata del calcolo percentile e del risultato",
 )[#box(width: 100%)[#grid(
   columns: 4,
   column-gutter: 0.1em,
@@ -918,7 +910,7 @@ Il diario costituisce la vista principale del profilo bambino ed è organizzato 
 @fig:diario-bambino.
 #v(0.5em)
 #figure(
-  caption: "Schermata di misurazione del piede e del risultato",
+  caption: "Schermata del diario di bambino",
 )[#box(width: 90%)[#grid(
   columns: 3,
   column-gutter: 0.1em,
