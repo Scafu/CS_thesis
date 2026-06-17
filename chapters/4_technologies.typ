@@ -53,7 +53,7 @@ dipendere necessariamente da quelli predefiniti.
 Il linguaggio di programmazione utilizzato da _Flutter_ è _Dart_, che mette a disposizione una funzionalità chiamata
 _hot reload_, che permette di visualizzare in modo immediato i cambiamenti apportati al codice sorgente senza dover
 ricompilare l'intera applicazione. Per il progetto questa funzionalità è stata particolarmente utile nella fase della
-progettazione delle componenti, perchè ha reso i test visivi più rapidi e immediati, facendo risparmiare tempo durante
+progettazione delle componenti, perchè ha reso i _test_ visivi più rapidi e immediati, facendo risparmiare tempo durante
 lo sviluppo.
 
 === Node JS
@@ -141,9 +141,7 @@ Oltre a evitare l'implementazione del sistema di gestione delle identità, _Auth
 _Flutter_ chiamata _auth0_flutter_ che semplifica ulteriormente l'integrazione. All'interno di questo pacchetto oltre a
 essere implementato di _default_ il flusso di autorizzazione con _PKCE_, viene offerto un meccanismo avanzato di difesa
 contro attacchi di tipo _replay attack_ e _token theft_ denominato _Demonstrating Proof of Possession (DPoP)_. Questo
-standard, basato sempre sul protocollo _OAuth 2.0_, utilizza la crittografia asimmetrica e i _Json Web Token_ (#gl(
-  "JWT",
-)) per vincolare l'utilizzo dell'_token_ di accesso alle richieste provenienti esclusivamente dal _client_ legittimo.
+standard, basato sempre sul protocollo _OAuth 2.0_, utilizza la crittografia asimmetrica e i _Json Web Token_ (#gl("JWT")) per vincolare l'utilizzo dell'_token_ di accesso alle richieste provenienti esclusivamente dal _client_ legittimo.
 
 #figure(caption: [Flusso ad alto livello di autorizzazione con DPoP])[
   #image("../images/dpop.png")
@@ -220,7 +218,7 @@ avanzate di controllo di versione del codice, gestione dei progetti, integrazion
 #v(0.5em)
 All'interno di questa piattaforma sono state coordinate tutte le fasi del progetto, dalla pianificazione iniziale
 tramite la definizione di _user stories_ tracciate sotto forma di _issue_, passando per la gestione collaborativa del
-codice all'interno di una _repository_ _Git_, fino alla configurazione di _pipeline_ di test automatizzati. Queste
-ultime hanno permesso l'esecuzione dei flussi di test a ogni singolo _commit_ e il monitoraggio costante ad ogni
+codice all'interno di una _repository_ _Git_, fino alla configurazione di _pipeline_ di _test_ automatizzati. Queste
+ultime hanno permesso l'esecuzione dei flussi di _test_ a ogni singolo _commit_ e il monitoraggio costante ad ogni
 rilascio e avanzamento di versione del software, garantendo così un elevato standard di qualità e affidabilità del
 prodotto finale.

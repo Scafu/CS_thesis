@@ -117,6 +117,7 @@
   )
 
   set heading(numbering: myNumbering)
+  show heading.where(level: 1): set heading(supplement: chapter)
   show heading.where(level: 1): it => {
     pagebreak(weak: true)
 

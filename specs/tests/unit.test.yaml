@@ -325,11 +325,13 @@ tests:
 
   - subtipo: W
     elemento: Accessibilità
-    description: Verifica che gli elementi selezionabili espongano correttamente il %s semantico agli screen reader
+    description: Verifica che gli elementi selezionabili espongano correttamente il %s semantico agli %s
     status: implemented
     terms:
       - kind: code
         text: flag
+      - kind: foreign
+        text: screen reader
 
   - subtipo: W
     elemento: Accessibilità
@@ -363,8 +365,8 @@ tests:
         text: viewmodel
       - kind: foreign
         text: isLoading
-      - kind: foreign
-        text: false
+      - kind: code
+        text: 'false'
 
   - elemento: Informazioni mediche
     description: Verifica che il %s notifichi i %s con %s a %s poi %s durante il caricamento
@@ -376,10 +378,10 @@ tests:
         text: listener
       - kind: foreign
         text: isLoading
-      - kind: foreign
-        text: true
-      - kind: foreign
-        text: false
+      - kind: code
+        text: 'true'
+      - kind: code
+        text: 'false'
 
   - elemento: Informazioni mediche
     description: Verifica che il %s imposti un errore e lasci le schede vuote in caso di fallimento

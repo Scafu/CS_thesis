@@ -145,7 +145,7 @@ L'adozione del _Repository Pattern_ comporta numerosi vantaggi:
   di codice;
 - *Flessibilità e manutenibilità*: rende possibile la sostituzione o l'aggiornamento delle tecnologie di persistenza
   intervenendo unicamente sul livello dati senza dover modificare la logica di dominio;
-- *Testabilità*: agevola la scrittura di test unitari per il livello di dominio, consentendo l'iniezione di
+- *Testabilità*: agevola la scrittura di _test_ unitari per il livello di dominio, consentendo l'iniezione di
   implementazioni simulate del _Repository_ che restituiscono dati predefiniti, facilitando così la verifica della
   logica di business in isolamento.
 #v(0.5em)

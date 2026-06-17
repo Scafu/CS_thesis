@@ -3,7 +3,7 @@
 = Verifica e Validazione<cap:test-e-validazione>
 #text(style: "italic", [
   In questo capitolo vengono riportate le attività di verifica e validazione svolte durante lo sviluppo
-  dell'applicazione, con particolare attenzione ai test implementati per garantire la qualità del software e alla fase di
+  dell'applicazione, con particolare attenzione ai _test_ implementati per garantire la qualità del software e alla fase di
   collaudo ed accettazione del prodotto finale.
 ])
 

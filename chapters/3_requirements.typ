@@ -232,7 +232,7 @@ Di seguito vengono riportate le _user stories_ relative alle principali funziona
   #p 2
 ]
 
-== Gli obiettivi dello stage<cap:obiettivi-stage>
+== Gli obiettivi dello stage<sez:obiettivi-stage>
 All'inizio di ogni periodo di stage, Wavelop Srl definisce un insieme di obiettivi da perseguire. Tali obiettivi hanno
 una duplice finalità: permettere al tirocinante di comprendere gli aspetti su cui focalizzare maggiormente il proprio
 lavoro e fornire all'azienda criteri utili alla valutazione delle attività svolte, anche in vista di un eventuale

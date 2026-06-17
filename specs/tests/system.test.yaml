@@ -82,12 +82,13 @@ tests:
         text: bundled
 
   - elemento: Dati offline
-    description: Verifica che la schermata del risultato del piede si carichi dai consigli degli esperti %s senza crash
+    description: Verifica che la schermata del risultato del piede si carichi dai consigli degli esperti %s senza %s
     status: implemented
     terms:
       - kind: foreign
         text: bundled
-
+      - kind: foreign
+        text: crash
   # ---------------------------------------------------------------------------
   # Misurazione percentile  (integration_test/percentile_measurement_test.dart)
   # ---------------------------------------------------------------------------

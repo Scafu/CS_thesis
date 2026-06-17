@@ -8,11 +8,13 @@ tests:
   # ---------------------------------------------------------------------------
 
   - elemento: Anagrafica bambino
-    description: Verifica che il %s aggiunga e filtri i bambini per email del genitore
+    description: Verifica che il %s aggiunga e filtri i bambini per %s del genitore
     status: implemented
     terms:
       - kind: foreign
         text: datasource
+      - kind: foreign
+        text: email
 
   - elemento: Anagrafica bambino
     description: Verifica che il %s aggiorni correttamente i campi supportati del bambino
@@ -205,7 +207,7 @@ tests:
   # ---------------------------------------------------------------------------
 
   - elemento: Tutorial
-    description: Verifica che il %s carichi le pagine del %s %s dall'asset %s bundled
+    description: Verifica che il %s carichi le pagine del %s %s dall'asset %s %s
     status: implemented
     terms:
       - kind: foreign
@@ -216,9 +218,11 @@ tests:
         text: percentile
       - kind: foreign
         text: JSON
+      - kind: foreign
+        text: bundled
 
   - elemento: Tutorial
-    description: Verifica che il %s carichi le pagine del %s piede dall'asset %s bundled
+    description: Verifica che il %s carichi le pagine del %s piede dall'asset %s %s
     status: implemented
     terms:
       - kind: foreign
@@ -227,6 +231,8 @@ tests:
         text: tutorial
       - kind: foreign
         text: JSON
+      - kind: foreign
+        text: bundled
 
   - elemento: Tutorial
     description: Verifica che il %s mappi correttamente i modelli delle pagine del %s %s in entità
@@ -254,7 +260,7 @@ tests:
     terms:
       - kind: foreign
         text: repository
-      - kind: foreign
+      - kind: code
         text: flag
       - kind: foreign
         text: tutorial
@@ -267,16 +273,16 @@ tests:
     description: Verifica che il %s di tutorial visto nel %s sia isolato per ciascun utente
     status: implemented
     terms:
-      - kind: foreign
+      - kind: code
         text: flag
       - kind: foreign
         text: repository
 
   - elemento: Tutorial
-    description: Verifica che i % del %s %s e piede nel %s siano indipendenti per utente
+    description: Verifica che i %s del %s %s e piede nel %s siano indipendenti per utente
     status: implemented
     terms:
-      - kind: foreign
+      - kind: code
         text: flag
       - kind: foreign
         text: tutorial
@@ -393,12 +399,12 @@ tests:
     terms:
       - kind: foreign
         text: cacheIsEmpty
-      - kind: foreign
-        text: true
+      - kind: code
+        text: 'true'
       - kind: foreign
         text: setCache
-      - kind: foreign
-        text: false
+      - kind: code
+        text: 'false'
 
   - elemento: Informazioni mediche
     description: Verifica che %s e %s effettuino un ciclo completo dei dati su disco

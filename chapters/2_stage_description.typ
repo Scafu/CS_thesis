@@ -58,7 +58,7 @@ aspetti:
 1. *Carta*: descrizione sintetica scritta della funzionalità, utilizzata come riferimento durante la pianificazione e
   come promemoria;
 2. *Conversazione*: confronto tra le parti coinvolte per chiarire i dettagli della storia;
-3. *Conferma*: insieme di test o criteri di accettazione che determinano quando la storia può essere considerata
+3. *Conferma*: insieme di _test_ o criteri di accettazione che determinano quando la storia può essere considerata
   completata.
 #v(1em)
 Nonostante la loro efficacia, le _user stories_ presentano un'elevata astrazione e, se non adeguatamente definite,
@@ -101,29 +101,29 @@ I vantaggi principali dell'utilizzo delle _user stories_ #cite(<def-user-stories
 #v(0.5em)
 == Test _driven_ _development_ <sez-tdd>
 Oltre alle metodologie agili discusse in precedenza, Wavelop Srl adotta l'approccio di sviluppo _Test Driven
-Development_ (TDD) #cite(<tdd>). Questa metodologia prevede, prima di scrivere qualsiasi riga di codice, la scrittura di
-test volti a definire il comportamento atteso dalla determinata funzionalità da implementare. Sviluppare secondo questo
+Development_ (_TDD_) #cite(<tdd>). Questa metodologia prevede, prima di scrivere qualsiasi riga di codice, la scrittura di
+_test_ volti a definire il comportamento atteso dalla determinata funzionalità da implementare. Sviluppare secondo questo
 paradigma costringe dunque lo sviluppatore a rallentare il processo di sviluppo, focalizzandosi sulla validazione e
 perfezionamento del codice in cicli di feedback più brevi. Anche se inizialmente questo approccio può sembrare
-controintuitivo, in realtà rafforza la relazione tra codice, test e design, traducendosi in benefici a lungo termine,
+controintuitivo, in realtà rafforza la relazione tra codice, _test_ e _design_, traducendosi in benefici a lungo termine,
 gli errori vengono identificati in modo immediato, evitandone una propagazione nel corso dello sviluppo. Di conseguenza
-il TDD favorisce il miglioramento della qualità e della leggibilità del codice, strutturando flussi di lavoro che
+il _TDD_ favorisce il miglioramento della qualità e della leggibilità del codice, strutturando flussi di lavoro che
 garantiscono software stabile e ad alta affidabilità a livello di unità.
 #v(1em)
-Come mostrato nella @fig:tdd, il processo di sviluppo basato sui test prevede 5 fasi cicliche:
-1. *Scrivere test di unità*: prima di implementare una funzionalità, lo sviluppatore scrive un test di unità specifico
+Come mostrato nella @fig:tdd, il processo di sviluppo basato sui _test_ prevede 5 fasi cicliche:
+1. *Scrivere _test_ di unità*: prima di implementare una funzionalità, lo sviluppatore scrive un _test_ di unità specifico
   per essa;
-2. *Eseguire i test*: dopo la scrittura, lo sviluppatore esegue il test con l'aspettativa che fallisca, questa fase è
+2. *Eseguire i _test_*: dopo la scrittura, lo sviluppatore esegue il _test_ con l'aspettativa che fallisca, questa fase è
   chiamata _"Red"_;
-3. *Scrivere codice*: una volta riscontrato che il test è fallito, si scrive il minimo di codice necessario a far
-  superare il test, entrando così nella fase _"Green"_;
-4. *Rifattorizzare*: superato il test, si passa alla fase di _Refactor_, nella quale si ristruttura il codice scritto e
-  i relativi test, eliminando ridondanze e migliorandone la qualità generale;
-5. *Ripetere*: una volta che anche il codice rifattorizzato supera il test, lo sviluppatore può passare alla
+3. *Scrivere codice*: una volta riscontrato che il _test_ è fallito, si scrive il minimo di codice necessario a far
+  superare il _test_, entrando così nella fase _"Green"_;
+4. *Rifattorizzare*: superato il _test_, si passa alla fase di _Refactor_, nella quale si ristruttura il codice scritto e
+  i relativi _test_, eliminando ridondanze e migliorandone la qualità generale;
+5. *Ripetere*: una volta che anche il codice rifattorizzato supera il _test_, lo sviluppatore può passare alla
   funzionalità successiva, ripetendo l'intero ciclo.
 #v(1em)
 #figure(
-  caption: [Le 5 fasi del TDD, diagramma rielaborato#[\
+  caption: [Le 5 fasi del _TDD_, diagramma rielaborato#[\
       #text()[Fonte dell'immagine: #cite(<tdd-5-fasi>)]]<no-index>],
 )[#image(
   "../images/tdd.png",
@@ -134,34 +134,34 @@ Come mostrato nella @fig:tdd, il processo di sviluppo basato sui test prevede 5 
 Sebbene la produzione del codice secondo questo approccio offra notevoli benefici a lungo termine, essa introduce anche
 un certo grado di complessità. I principali benefici di questo approccio sono:
 - *Strumento di documentazione*: i cicli iterativi di sviluppo permettono di ottenere una documentazione completa che si
-  aggiorna in modo dinamico, poiché l'intero codice prodotto è coperto da almeno un test;
+  aggiorna in modo dinamico, poiché l'intero codice prodotto è coperto da almeno un _test_;
 - *Integrazione Continua (#gl("CI"))*: questo approccio si integra perfettamente con le pratiche di Integrazione
-  Continua, poiché i test possono essere eseguiti automaticamente ad ogni rilascio, intercettando tempestivamente
+  Continua, poiché i _test_ possono essere eseguiti automaticamente ad ogni rilascio, intercettando tempestivamente
   eventuali regressioni causate da modifiche frequenti;
-- *Rafforzamento del design*: la fase di _Refactor_ forza gli sviluppatori a semplificare la struttura del codice
+- *Rafforzamento del _design_*: la fase di _Refactor_ forza gli sviluppatori a semplificare la struttura del codice
   costantemente, incrementandone la qualità;
 - *Consolidamento dei modelli mentali*: parallelamente al punto precedente, lo sviluppatore è costretto a comprendere a
   fondo i requisiti prima di poter scrivere codice, rafforzando così la visione d'insieme delle funzionalità da
   implementare.
 #v(1em)
-Di contro, l'adozione del TDD porta con sé alcune problematiche non trascurabili:
+Di contro, l'adozione del _TDD_ porta con sé alcune problematiche non trascurabili:
 #v(0.5em)
-- *Codice Boilerplate*: la necessità di scrivere test per ogni singola funzionalità comporta un aumento volumetrico del
+- *Codice Boilerplate*: la necessità di scrivere _test_ per ogni singola funzionalità comporta un aumento volumetrico del
   codice totale, incrementando complessivamente la base di codice da dover mantenere;
-- *Falso senso di sicurezza*: la copertura dei test non garantisce necessariamente codice di qualità e questo può
+- *Falso senso di sicurezza*: la copertura dei _test_ non garantisce necessariamente codice di qualità e questo può
   portare a sottostimare la complessità delle funzionalità;
 - *Perdita della visione d'insieme*: l'estrema focalizzazione sui singoli componenti può talvolta far perdere di vista
-  l'integrazione generale del sistema, portando a problemi di integrazione qualora non fossero stati scritti test
+  l'integrazione generale del sistema, portando a problemi di integrazione qualora non fossero stati scritti _test_
   adeguati.
 #v(0.5em)
 Durante lo stage, lo sviluppo si è svolto seguendo questo approccio laddove possibile, cercando di bilanciare i benefici
 e le criticità sopra elencate, con l'obiettivo di ottenere un prodotto finale di qualità e mantenibile nel tempo.
-== Analisi dei rischi
+== Analisi dei rischi <sez:analisi-rischi>
 In questa fase iniziale, i rischi identificati sono stati suddivisi in tre aree principali: organizzativi, tecnologici e
 personali.
 
 === Rischi organizzativi
-I rischi organizzativi sono legati alle stime e all'assegnazione delle attività all'interno di un determinato sprint.
+I rischi organizzativi sono legati alle stime e all'assegnazione delle attività all'interno di un determinato _sprint_.
 Questa tipologia di criticità può essere mitigata attraverso le _sprint review_, durante le quali si analizzano i
 risultati raggiunti, si pianificano le attività per lo _sprint_ successivo e si ricalibrano quelle non completate.
 #v(1em)
