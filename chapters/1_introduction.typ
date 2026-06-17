@@ -62,7 +62,7 @@ capitoli:
   dell'applicazione e alle funzionalità principali;
   #v(0.5em)
 / #link(<cap:test-e-validazione>)[Il sesto capitolo]: descrive i _test_ effettuati per verificare la correttezza
-  implementativa e la validazione del prodotto, mostrando i risultati ottenuti e le eventuali criticità riscontrate;
+  implementativa e la validazione del prodotto;
   #v(0.5em)
 / #link(<cap:conclusioni>)[Il settimo capitolo]: presenta le conclusioni del progetto di stage, evidenziando i risultati
   raggiunti, le difficoltà incontrate e le prospettive future per l'applicazione sviluppata.
@@ -78,9 +78,7 @@ Durante la stesura del testo sono state adottate le seguenti convenzioni tipogra
   _corsivo_;
 - i nomi di funzioni o variabili appartenenti ad un linguaggio di programmazione vengono scritte con un carattere
   `monospaziato`;
-- le citazioni ad un libro o ad una risorsa presente nella Bibliografia (p. #link(
-    <bibliography>,
-  )[#context (
+- le citazioni ad un libro o ad una risorsa presente nella Bibliografia (p. #link(<bibliography>)[#context (
     counter(page).at(<bibliography>).at(0)
   )]) saranno in formato _IEEE_ affiancate dal rispettivo numero identificativo, es. $[1]$;
 - i blocchi di codice sono rappresentati nel seguente modo:

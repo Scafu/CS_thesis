@@ -4,9 +4,9 @@
   dei pattern adottati per la realizzazione del prodotto finale.
 ])
 == Progettazione
-=== Architettura e pattern dell'applicazione
+=== Architettura dell'applicazione
 Per lo sviluppo dell'applicazione è stata adottata un'architettura multi-livello ispirata ai principi della _Clean
-Architecture_. Questo paradigma integra e sintetizza i concetti di approcci preesistenti, quali _Hexagonal Architecture_
+Architecture_. Questo paradigma integra e sintetizza i concetti di approcci preesistenti, quali l'_Hexagonal Architecture_
 e la _Onion Architecture_, con l'obiettivo di offrire linee guida per la progettazione di sistemi software
 caratterizzati da un'elevata modularità, una netta separazione delle responsabilità (_Separation of Concerns_) e
 un'ottima manutenibilità del codice sorgente. #figure(caption: "Architettura dell'applicazione")[#image("../images/app-architecture.png", width: 100%)]<fig:app-architecture>
@@ -16,19 +16,19 @@ Alla base della _Clean Architecture_ vi è il principio denominato _The Dependen
 Secondo tale principio, le dipendenze tra i diversi livelli del software devono essere unidirezionali e rivolte verso
 l'interno. I componenti dei livelli più interni non devono possedere alcuna conoscenza delle implementazioni o dei
 dettagli presenti nei livelli più esterni. In modo analogo, gli elementi definiti esternamente non possono essere
-referenziati nei livelli più interni, inclusi i formati dei dati utilizzati, variabili, funzioni e strutture dati.
+referenziati nei livelli più interni, inclusi i formati dei dati utilizzati, le variabili, le funzioni e le strutture dati.
 Questa separazione risulta evidente nell'architettura dell'applicazione illustrata in @fig:app-architecture, in cui i
 livelli di presentazione e dati rispettano il principio delle dipendenze con il livello di dominio. Grazie a questa
 divisione le entità di dominio rimangono completamente agnostiche sia rispetto ai modelli di dati esterni, sia rispetto
 alle operazioni di basso livello effettuate su di essi.
 #v(0.5em)
-Per quanto riguarda il flusso di controllo e lo scambio dei dati, la direzione delle dipendenze risulta opposta rispetto
+Per quanto riguarda il flusso di controllo e lo scambio dei dati, la direzione delle dipendenze procede in modo opposto rispetto
 al flusso logico. Questa caratteristica deriva dall'applicazione del principio _Dependency Inversion Principle_
 (Principio di Inversione delle Dipendenze), strutturalmente necessario per garantire il rispetto della regola delle
 dipendenze precedentemente descritta.
 #v(0.5em)
 Anche i dati che attraversano i confini tra i vari livelli devono sottostare alla medesima regola, essi devono essere
-passati sotto forma di oggetti strutturati o come parametri di funzione, evitando così di passare valori primitivi
+passati sotto forma di oggetti strutturati o come parametri di funzione, evitando così di trasmettere valori primitivi
 isolati. Questo approccio consente ai livelli interni di mantenere la propria indipendenza dai dettagli implementativi
 dei livelli esterni, garantendo che ogni livello possa manipolare i dati nella forma più appropriata alle proprie
 esigenze.
@@ -38,9 +38,9 @@ L'adozione di questa architettura comporta diversi vantaggi:
   livelli interni, incrementando la flessibilità del sistema rispetto a evoluzioni future;
 - l'applicazione del _Single Responsibility Principle_ (Principio della Responsabilità Singola) favorisce una maggiore
   testabilità, rendendo i livelli interni testabili tramite l'utilizzo di oggetti simulati (_mock_) o implementazioni
-  simulate;
-- l'organizzazione modulare del codice favorisce un riutilizzo frequente dei componenti e ottimizza la collaborazione
-  tra più sviluppatori del progetto.
+  fittizie;
+- l'organizzazione modulare del codice agevola un riutilizzo frequente dei componenti e ottimizza la collaborazione
+  tra più sviluppatori all'interno del progetto.
 #v(0.5em)
 Di contro la _Clean Architecture_ presenta anche alcuni svantaggi da non sottovalutare:
 - l'introduzione di molteplici livelli architetturali incrementa il livello di astrazione e l'onere progettuale
@@ -48,7 +48,7 @@ Di contro la _Clean Architecture_ presenta anche alcuni svantaggi da non sottova
 - questo paradigma richiede un investimento iniziale di tempo e di risorse maggiore per l'apprendimento delle logiche e
   dei principi alla base;
 - il rispetto rigoroso della separazione delle responsabilità richiede spesso differenti rappresentazioni dei dati per
-  ciascun livello, comportando la scrittura di codice aggiuntivo per la conversione dei dati tra i vari livelli, oltre
+  ciascun livello, comportando la scrittura di codice aggiuntivo per la conversione (_mapping_) tra i vari livelli, oltre
   alla scrittura di interfacce e implementazioni relative.
 #v(0.5em)
 Nonostante tali criticità suggeriscano l'utilizzo del paradigma per progetti complessi, nel sistema sviluppato durante
@@ -57,7 +57,7 @@ punto di vista tecnologico sia funzionale, ha reso prioritario un approccio che 
 manutenibilità a lungo termine del sistema #cite(<clean-architecture>).
 
 
-==== Model-View-ViewModel<sez:mvvm>
+=== Model-View-ViewModel<sez:mvvm>
 #figure(
   caption: [#highlight([Model-View-ViewModel])],
 )[#image("../images/mvvm-pattern.png", width: 80%)]<fig:mvvm>
@@ -69,7 +69,7 @@ questo approccio, ogni modulo dispone di una propria _View_ (composta da una o p
 _ViewModel_. Quest'ultimo ha il compito esclusivo di gestire e preservare lo stato della schermata; il _ViewModel_ non
 possiede alcun riferimento diretto ai componenti dell'interfaccia utente, ma si limita a esporre un flusso di stati
 discreti a cui la _View_ reagisce in modo reattivo, aggiornando l'interfaccia utente di conseguenza.
-===== Gestione dello stato <sez:prog-gestione-stato>
+==== Gestione dello stato <sez:prog-gestione-stato>
 L'utilizzo del pattern _MVVM_ necessita di particolare attenzione nel progettare un meccanismo per la gestione e la
 propagazione dello stato dei singoli componenti all'interno dell'applicazione. L'obiettivo progettuale di partenza è
 stato quello di disaccoppiare completamente la logica di _business_ dall'interfaccia utente, garantendo un flusso di
@@ -85,14 +85,14 @@ stati intermedi di caricamento, portando la _View_ a uno stato finale di success
 dell'operazione. Alcuni _ViewModel_ dipendono inoltre dallo stato di altri; ad esempio, i componenti che gestiscono i
 dati utente reagiscono automaticamente ai cambiamenti dello stato di autenticazione, realizzando una composizione tra
 _Observer_ che mantiene la coerenza dell'applicazione senza introdurre accoppiamento diretto tra i componenti.
-==== Command Pattern e gli Use Case
+=== Command Pattern e gli Use Case
 Nel livello di dominio, dove risiedono i contratti che utilizzano i livelli esterni, è stato adottato il pattern
 architetturale _Command Pattern_. Il _Command Pattern_ è un pattern comportamentale che consente di incapsulare una
 richiesta o una specifica operazione all'interno di un oggetto a sé stante. L'obiettivo principale di questo pattern è
 disaccoppiare l'oggetto che invoca l'operazione dall'oggetto che possiede la conoscenza per eseguirla concretamente. Nel
 contesto della _Clean Architecture_ esposta in precedenza, il _Command Pattern_ trova la sua applicazione pratica
-nell'implementazione degli _Use Case_ (Casi d'uso), definiti come interazioni che danno la possibilità al livello di
-presentazione di interagire con il resto dei livelli. All'interno del livello di dominio, un _Use Case_ è un componente
+nell'implementazione degli _Use Case_ (Casi d'uso), definiti come interazioni che consentono al livello di
+presentazione di dialogare con il resto dei livelli. All'interno del livello di dominio, un _Use Case_ è un componente
 architetturale che incapsula una singola e ben definita regola di business o una specifica azione offerta
 dall'applicazione (ad esempio, "Autenticazione dell'utente" o "Calcolo del percentile"). L'_Use Case_ funge da
 orchestratore centrale per quella specifica funzionalità, riceve dati di input dal livello di presentazione, nel nostro
@@ -101,7 +101,7 @@ _Repository_ e infine elabora la logica e restituisce un risultato strutturato c
 dettagli dell'interfaccia utente e della persistenza dei dati.
 #v(0.5em)
 Ogni _Use Case_ viene progettato come una classe indipendente, la quale espone verso l'esterno un unico metodo pubblico,
-ad esempio `call()`, il _ViewModel_ si limita a richiamare tale metodo passandogli i parametri necessari, senza doversi
+(ad esempio `call()`). Il _ViewModel_ si limita a richiamare tale metodo passandogli i parametri necessari, senza doversi
 preoccupare della complessità sottostante. L'utilizzo di questo accoppiamento tra _Command Pattern_ e _Use Case_ porta a
 significativi vantaggi:
 - *Rispetto del _Single Responsibility Principle_*: ogni _Use Case_ gestisce un'unica funzionalità e ha un solo motivo
@@ -115,7 +115,7 @@ significativi vantaggi:
   esporre alla _View_.
 
 
-==== Repository Pattern
+=== Repository Pattern
 Per la comunicazione tra livello dati e di dominio è stato adottato il _Repository Pattern_. Questo _pattern_ è
 progettato per mediare e separare in modo netto la logica di accesso ai dati dalla logica di business dell'applicazione.
 Il _Repository_ funge da interfaccia tra i due livelli, offrendo un'astrazione che consente di nascondere i dettagli
@@ -150,7 +150,7 @@ L'adozione del _Repository Pattern_ comporta numerosi vantaggi:
   logica di business in isolamento.
 #v(0.5em)
 
-==== Persistenza dei dati e Strategia _Offline-First_
+=== Persistenza dei dati e Strategia _Offline-First_
 Parallelamente alla definizione dei flussi dell'applicazione, la fase di progettazione ha richiesto un'attenta
 modellazione anche della gestione e della persistenza dei dati. Invece di vincolare il funzionamento del sistema alla
 disponibilità iniziale di un'infrastruttura di rete, si è adottato un paradigma _Offline-First_. In questo modello, il
@@ -170,7 +170,7 @@ Nella versione attuale dell'applicazione, la persistenza è interamente locale: 
 descritto costituisce un'estensione architetturale pianificata per sviluppi futuri.
 
 
-==== _Routing_ dichiarativo
+=== _Routing_ dichiarativo
 Per quanto riguarda la navigazione tra le schermate dell'applicazione, è stato adottato un approccio di _routing_
 dichiarativo. Questo paradigma consente di definire in modo chiaro e centralizzato tutte le rotte e transizioni tra le
 schermate, migliorando sia la leggibilità del codice sia la comprensione della struttura dell'applicazione. Le rotte
@@ -188,7 +188,7 @@ identificare le risorse, come ad esempio il profilo di uno specifico bambino. Qu
 #v(0.5em)
 Tale approccio favorisce la prevedibilità del comportamento dell'interfaccia utente, riduce l'accoppiamento tra i
 componenti e semplifica le attività di manutenzione ed evoluzione del sistema.
-==== Internazionalizzazione
+=== Internazionalizzazione
 L'internazionalizzazione (_i18n_) e la relativa localizzazione (_l10n_) rappresentano requisiti non funzionali
 fondamentali per garantire l'accessibilità e l'usabilità dell'applicazione a un pubblico globale. Nel contesto del
 progetto sviluppato, è stato concepito un sistema dinamico in grado non solo di supportare molteplici lingue, ma anche
@@ -203,7 +203,7 @@ mettersi in ascolto passivo delle variazioni di stato: un cambio della lingua al
 sistema operativo comporta un aggiornamento automatico di tutte le stringhe visualizzate, senza la necessità di
 interventi manuali o di ricaricare l'applicazione.
 
-==== Privacy by Design
+=== Privacy by Design
 L'applicazione è stata progettata per garantire il rispetto dei paradigmi _Privacy by Design_ e _Privacy by Default_,
 che stabiliscono come la tutela della privacy debba essere integrata nelle scelte architetturali sin dalle prime fasi di
 sviluppo, garantendo il massimo livello di protezione dei dati senza richiedere alcuna azione aggiuntiva da parte
@@ -213,7 +213,7 @@ forniti dal sistema operativo utilizzato, senza mai transitare in chiaro attrave
 utente autenticato dispone inoltre di un database e di una chiave indipendenti, consentendo all'applicazione di poter
 gestire più utenti senza compromettere la sicurezza dei dati.
 
-==== Conversione delle misure e Calibrazione del dispositivo <sez:calibrazione>
+=== Conversione delle misure e Calibrazione del dispositivo <sez:calibrazione>
 Una delle sfide progettuali principali affrontate nello sviluppo dell'applicazione riguarda la conversione delle misure
 rilevate tramite lo schermo del dispositivo in unità fisiche reali. Il problema nasce da una caratteristica intrinseca
 dei dispositivi mobili, ovvero la variabilità di densità di _pixel_ degli schermi differenti. La densità è espressa in
@@ -231,8 +231,8 @@ piattaforme supportate. Su _Android_ è possibile interrogare direttamente l'_Ha
 reale dello schermo, mentre su _iOS_ è stato necessario progettare una strategia alternativa basata su una tabella di
 calibrazione predefinita, che associa i modelli di dispositivo a fattori di conversione specifici.
 
-=== Codifica Applicazione
-==== Gestione dello stato
+== Codifica
+=== Gestione dello stato
 La gestione dello stato è implementata tramite il _package_ _provider_, che realizza concretamente i _pattern_ _MVVM_ e
 _Observer_ descritti in @sez:prog-gestione-stato. Ogni _ViewModel_ è una classe che estende `ChangeNotifier`, fornita
 dal _framework_ _Flutter_, e comunica i cambiamenti di stato alle _View_ tramite chiamate esplicite al metodo
@@ -345,7 +345,7 @@ il sotto albero che effettivamente si ricostruisce ad esempio in @fig:consumer-e
   kind: raw,
 )<fig:consumer-example>
 
-==== Routing e navigazione
+=== Routing e navigazione
 La navigazione è gestita tramite il _package_ _go_router_, che implementa un sistema di routing dichiarativo basato su
 _URL_. Ogni schermata è associata a un percorso definito come `String`, e la navigazione avviene tramite metodi
 `context.push()` e `context.go()` che accettano il percorso come argomento. Il _router_ è istanziato in una classe
@@ -386,12 +386,12 @@ schermate accessibili dalla barra di navigazione inferiore, queste infatti vengo
 ]<fig:shell-route>
 #v(0.5em)
 Altrimenti #highlight([le schermate vengono]) raggruppate in `ShellRoute` che le ricostruisce da zero a ogni
-navigazione. Attraverso questo meccanismo é possibile avere barre di navigazione differenti a seconda del contesto. Le
+navigazione. Attraverso questo meccanismo è possibile avere barre di navigazione differenti a seconda del contesto. Le
 schermate del profilo bambino utilizzano percorsi con parametri dinamici `:childId`, il cui valore viene estratto e
 passato al costruttore della schermata di destinazione. La possibilità di raggruppare le schermate permette di avere una
 struttura alla base condivisa tra le schermate di un gruppo, risparmiando codice duplicato e garantendo coerenza tra le
 schermate.
-==== Database e cifratura
+=== Database e cifratura
 La persistenza locale è implementata con il _package_ _drift_, un _Object-Relational Mapping_ (_ORM_) _type-safe_ per
 _SQLite_ che genera codice _Dart_ a partire dalla definizione delle tabelle visibili in @fig:db-schema.
 #v(0.5em)
@@ -429,7 +429,7 @@ _SQLite_ che genera codice _Dart_ a partire dalla definizione delle tabelle visi
   ```
 ]<fig:db-schema>
 #v(0.5em)
-In particolare, la colonna `birth_date` è definita come `INTEGER` perché _drift_ serializza `DateTime` come _UNIX_
+In particolare, la colonna `birth_date` è definita come `INTEGER` perchè _drift_ serializza `DateTime` come _UNIX_
 _timestamp_ in millisecondi.
 
 Per la questione della cifratura il pacchetto mette a disposizione una libreria interna chiamata _SQLite Multiple
@@ -439,7 +439,7 @@ dispositivo in caso di furto o smarrimento. L'algoritmo di cifratura utilizzato 
 di cifratura autenticata con dati associati (_AEAD_) che unisce la cifratura ad alta velocità _ChaCha20_ e
 l'autenticatore di dati _Poly1305_. La gestione del ciclo di vita della chiave usata per la cifratura è affidata ad una
 classe dedicata `DatabaseService`. Al primo accesso, genera 32 _byte_ casuali tramite la funzione `Random.secure()` e li
-converte in stringa esadecimale. La stringa viene poi memorizzata in un _keystore_ del sistema operativo, cioé un
+converte in stringa esadecimale. La stringa viene poi memorizzata in un _keystore_ del sistema operativo, cioè un
 contenitore dedicato dal sistema operativo alla conservazione delle chiavi crittografiche. Agli accessi successivi
 l'utente, dopo aver eseguito l'autenticazione, recupera la chiave esistente come illustrato in @fig:key-management.
 #v(0.5em)
@@ -495,7 +495,7 @@ Come visibile in @fig:database-open, la funzione restituisce il database, il fil
 _sub_ tramite l'utilizzo di una funzione _custom_ `_fileNameFor()`, che sostituisce i caratteri non alfanumerici con
 _underscore_, producendo ad esempio `app_db_auth0_12345.sqlite`
 
-==== Autenticazione
+=== Autenticazione
 L'autenticazione è gestita tramite il servizio esterno _Auth0_ che fornisce un pacchetto ufficiale chiamato
 _auth0_flutter_. Il flusso implementato è _OAuth 2.0_, già descritto precedentemente nella @tech:oauth2.0, eseguito
 tramite _browser_ di sistema. Il meccanismo _DPoP_ viene abilitato tramite il parametro `useDPoP: true`, che lega i
@@ -527,7 +527,7 @@ restituiscono un oggetto `Credentials` che contiene _access token_, _refresh tok
 pacchetto automaticamente gestisce il ciclo di vita dei _token_, rinnovandoli quando necessario. Al riavvio
 dell'applicazione, viene usato all'interno di `AuthViewModel` il _credentials manager_ di _Auth0_ per verificare se
 esistono credenziali valide salvate invocando `auth0.credentialsManager().hasValidCredentials()`.
-==== Internazionalizzazione
+=== Internazionalizzazione
 Le stringhe di testo nell'interfaccia sono gestite tramite il sistema di localizzazione di _Flutter_, basato su file
 _Application Resource Bundle_ (_ARB_). Per ogni lingua supportata esiste un file di risorse dedicato, ad esempio
 `app_it.arb` per l'italiano e `app_en.arb` per l'inglese, che contiene le coppie chiave-valore delle stringhe. Il
@@ -577,13 +577,13 @@ L'estensione fornisce il _getter_ `tr` direttamente nel contesto, eliminando la 
 `AppLocalizations.of(context)` ogni volta che si vuole accedere a una stringa localizzata, migliorando la leggibilità
 del codice. Le stringhe localizzate vengono quindi lette tramite `context.tr.someKey`, dove `someKey` è la chiave
 definita nei file _ARB_.
-==== Misurazione del piede e Calibrazione del dispositivo
+=== Misurazione del piede e Calibrazione del dispositivo
 Come descritto in @sez:calibrazione la misurazione del piede richiede che l'applicazione conosca la densità di _pixel_
 fisici dello schermo del dispositivo, espressa in _pixel_ per millimetro (px/mm). Questo valore non è recuperabile in
-modo uniforme tramite _API_ del _framework_, poiché questo espone solo il rapporto tra _pixel_ logici e fisici (_DPR_),
+modo uniforme tramite _API_ del _framework_, poichè questo espone solo il rapporto tra _pixel_ logici e fisici (_DPR_),
 ma non la densità fisica effettiva. Seguendo la _Clean Architecture_ è stata definita una classe
 `DeviceMetricsDataSource` che adotta strategie diverse in base al sistema operativo del dispositivo in uso:
-- *Android*: é stato necessario implementare un canale di comunicazione nativo `MethodChannel` per interrogare
+- *Android*: è stato necessario implementare un canale di comunicazione nativo `MethodChannel` per interrogare
   direttamente il sistema operativo. La classe `MainActivity` registra questo canale con un nome univoco che se
   utilizzato restituisce il valore di densità fisica reale dello schermo sull'asse orizzontale.
   #v(0.5em)
@@ -619,7 +619,7 @@ ma non la densità fisica effettiva. Seguendo la _Clean Architecture_ è stata d
     kind: raw,
   )<fig:ios-pbi-by-model>
 #v(0.5em)
-In entrambi i casi, se il valore specifico non é disponibile, si utilizza come _fallback_ `dpr * 160` per _Android_ e
+In entrambi i casi, se il valore specifico non è disponibile, si utilizza come _fallback_ `dpr * 160` per _Android_ e
 `dpr * 163` per _iOS_. Il valore finale della densità fisica viene calcolata con la formula
 `pxPerMm = physicalDpi / dpr / 25.4`, dove il divisore `dpr` converte i _DPI_ fisici in _DPI_ logici, mentre `25.4`
 converte da pollici a millimetri. Il risultato è il numero di _pixel_ logici corrispondenti a 1 mm fisico sullo schermo.
@@ -692,7 +692,7 @@ risultato viene poi troncato all'intero inferiore
 
 `int call(double footLengthCm) => ((footLengthCm + 1.5) / 0.667).toInt();`
 
-==== Calcolo del percentile _BMI_
+=== Calcolo del percentile _BMI_
 Il calcolo del percentile _BMI_ è implementato in uno _use case_ dedicato `CalculateBmiPercentile`. Il flusso si
 articola in tre fasi, calcolo del _BMI_, selezione della riga di riferimento dalla tabella _OMS_ e interpolazione del
 percentile. Il calcolo del _BMI_ è eseguito con la formula `BMI = weightKg / (heightM * heightM)`. Essendo l'età
@@ -752,13 +752,13 @@ Infine il percentile risultante viene classificato in cinque categorie: criticam
 97°). Queste categorie vengono poi utilizzate per fornire feedback all'utente e per guidare le raccomandazioni
 personalizzate.
 
-==== Schermata - _Home Page_
+=== Schermata - _Home Page_
 La _Home Page_ rappresenta la prima schermata visibile all'utente appena avviata l'applicazione. Il suo scopo principale
 è quello di fornire un punto di accesso centrale a tutte le funzionalità principali dell'applicazione, fungendo da _hub_
 di navigazione.
 
 #figure(
-  caption: "Stati della Home Page",
+  caption: "Schermata della Home Page",
 )[
   #box(width: 77%)[
     #grid(
@@ -784,7 +784,7 @@ in base al contesto:
 - *Utente autenticato con dati salvati*: viene mostrata la lista dei profili bambino registrati, con la possibilità di
   aggiungerne uno nuovo tramite il pulsante *+* in alto a destra.
 
-==== Schermata - Informazioni sanitarie
+=== #highlight([Schermata - Informazioni sanitarie])
 La schermata delle informazioni sanitarie raccoglie contenuti informativi e divulgativi su diversi ambiti della salute e
 della crescità del bambino. La schermata è composta da un elenco verticale di _card_, ciascuna composta da un titolo che
 identifica l'argomento trattato e da una breve descrizione di sintesi. Quando una _card_ contiene altri sottoargomenti,
@@ -809,7 +809,7 @@ ci si trova.
 
 
 
-==== Schermata - Creazione profilo bambino
+=== Schermata - Creazione profilo bambino
 La schermata di creazione del profilo bambino consente all'utente, in veste di genitore, di creare un nuovo profilo
 bambino per poter iniziare a monitorare le misurazioni del bambino. #figure(caption: "Schermata di creazione profilo bambino")[#box(width: 40%)[
   #image("../images/create-child.png", width: 100%)]]<fig:create-child-profile>
@@ -820,7 +820,7 @@ informazioni anagrafiche del bambino, quali nome, data di nascita e sesso. La te
 altezza e peso. Al momento della conferma, i dati vengono salvati localmente e contestualmente viene eseguito il calcolo
 del percentile, evitando di dover ripetere tale operazione alla prima visualizzazione del profilo.
 
-==== Schermata - Impostazioni
+=== Schermata - Impostazioni
 La schermata di impostazioni consente all'utente di personalizzare il comportamento e l'aspetto dell'applicazione. Anche
 in questa schermata il contenuto varia in base allo stato di autenticazione, come si può vedere in @fig:settings. Se
 l'utente non è autenticato, non vengono mostrate le sezioni relative alla gestione dei dati. La schermata è organizzata
@@ -838,7 +838,7 @@ confermare l'operazione. #figure(caption: "Schermata di impostazioni")[#box(widt
   image("../images/settings-page.png", width: 100%), image("../images/settings-page1.png", width: 100%),
 )]]<fig:settings>
 
-==== Schermata - Misurazione del piede e risultato
+=== Schermata - Misurazione del piede e risultato
 La schermata di misurazione del piede consente di rilevare la lunghezza del piede del bambino utilizzando direttamente
 lo schermo del dispositivo come strumento di misura. Il flusso si articola in due schermate distinte visibili in
 @fig:foot-measurement.
@@ -856,7 +856,7 @@ lo schermo del dispositivo come strumento di misura. Il flusso si articola in du
 )]]<fig:foot-measurement>
 #v(0.5em)
 - *Schermata di misurazione*: la schermata presenta un righello digitale calibrato sulla densità fisica dello schermo
-  del dispositivo, come descritto nella @sez:calibrazione. Il righello é suddiviso in tacche millimetriche e
+  del dispositivo, come descritto nella @sez:calibrazione. Il righello è suddiviso in tacche millimetriche e
   centimetriche, con etichette numeriche posizionate su entrambi i lati. In fondo allo schermo è present#highlight([e])
   una linea di riferimento fissa che indica il punto di appoggio del tallone. Una seconda linea mobile, trascinabile
   verticalmente tramite _gesture_, indica il punto delle dita e determina la lunghezza rilevata, visualizzata in tempo
@@ -872,7 +872,7 @@ lo schermo del dispositivo come strumento di misura. Il flusso si articola in du
   contenuti personalizzati e alla funzionalità di monitoraggio storico.
 
 
-==== Schermata - Calcolo percentile e risultato
+=== Schermata - Calcolo percentile e risultato
 Il flusso di calcolo percentile si articola in due schermate distinte che seguono una logica simile a quella della
 misurazione del piede, visibili in @fig:calcolo-percentile.
 #v(0.5em)
@@ -905,7 +905,7 @@ misurazione del piede, visibili in @fig:calcolo-percentile.
   i dati anagrafici e le misurazioni già inserite senza doverli reinserire.
 
 
-==== Schermata - Diario di Bambino
+=== Schermata - Diario di Bambino
 Il diario costituisce la vista principale del profilo bambino ed è organizzato in sotto-schermate visibili in
 @fig:diario-bambino.
 #v(0.5em)
