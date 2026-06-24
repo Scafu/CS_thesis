@@ -59,7 +59,7 @@ manutenibilità a lungo termine del sistema #cite(<clean-architecture>).
 
 === Model-View-ViewModel<sez:mvvm>
 #figure(
-  caption: [#highlight([Model-View-ViewModel])],
+  caption: [Model-View-ViewModel],
 )[#image("../images/mvvm-pattern.png", width: 80%)]<fig:mvvm>
 Nel livello di presentazione dell'applicazione è presente il pattern architetturale _Model-View-ViewModel_ (MVVM). Come
 mostrato in @fig:mvvm, questo pattern consente di separare in modo chiaro l'interfaccia utente dalla logica di business,
@@ -385,7 +385,7 @@ schermate accessibili dalla barra di navigazione inferiore, queste infatti vengo
   ```
 ]<fig:shell-route>
 #v(0.5em)
-Altrimenti #highlight([le schermate vengono]) raggruppate in `ShellRoute` che le ricostruisce da zero a ogni
+Altrimenti le schermate vengono raggruppate in `ShellRoute` che le ricostruisce da zero a ogni
 navigazione. Attraverso questo meccanismo è possibile avere barre di navigazione differenti a seconda del contesto. Le
 schermate del profilo bambino utilizzano percorsi con parametri dinamici `:childId`, il cui valore viene estratto e
 passato al costruttore della schermata di destinazione. La possibilità di raggruppare le schermate permette di avere una
@@ -784,7 +784,7 @@ in base al contesto:
 - *Utente autenticato con dati salvati*: viene mostrata la lista dei profili bambino registrati, con la possibilità di
   aggiungerne uno nuovo tramite il pulsante *+* in alto a destra.
 
-=== #highlight([Schermata - Informazioni sanitarie])
+=== Schermata - Informazioni sanitarie
 La schermata delle informazioni sanitarie raccoglie contenuti informativi e divulgativi su diversi ambiti della salute e
 della crescità del bambino. La schermata è composta da un elenco verticale di _card_, ciascuna composta da un titolo che
 identifica l'argomento trattato e da una breve descrizione di sintesi. Quando una _card_ contiene altri sottoargomenti,
@@ -857,7 +857,7 @@ lo schermo del dispositivo come strumento di misura. Il flusso si articola in du
 #v(0.5em)
 - *Schermata di misurazione*: la schermata presenta un righello digitale calibrato sulla densità fisica dello schermo
   del dispositivo, come descritto nella @sez:calibrazione. Il righello è suddiviso in tacche millimetriche e
-  centimetriche, con etichette numeriche posizionate su entrambi i lati. In fondo allo schermo è present#highlight([e])
+  centimetriche, con etichette numeriche posizionate su entrambi i lati. In fondo allo schermo è presente
   una linea di riferimento fissa che indica il punto di appoggio del tallone. Una seconda linea mobile, trascinabile
   verticalmente tramite _gesture_, indica il punto delle dita e determina la lunghezza rilevata, visualizzata in tempo
   reale in centimetri. È possibile affinare il valore anche tramite input testuale diretto nella barra superiore.

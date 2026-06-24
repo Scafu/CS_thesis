@@ -10,7 +10,7 @@
 == Accessibilità e le linee guida utilizzate
 Al fine di rendere l'applicazione accessibile su entrambe le piattaforme di utilizzo, si è deciso di aderire alle linee
 guida fornite da _Google_ per _Android_ (_Material Design Accessibility Guidelines_) #cite(<material-accessibility>), e da _Apple_ per _iOS_ (_Human Interface Guidelines_) #cite(<ios-accessibility>), integrandole con le funzionalità di
-accessibilità native del _framework_ _Flutter_. Quest'ultimo gestisce l'accessibilità attraverso un albero semantico parallelo all'albero dei _widget_. Tale struttura viene sfruttata dai servizi di assistenza delle rispettive
+accessibilità native del _framework_ _Flutter_. Quest'ultimo gestisce l'accessibilità attraverso un albero semantico parallelo all'albero dei _widget_. Tale struttura viene sfruttata #highlight([dalle tecnologie assistive]) delle rispettive
 piattaforme, ovvero _TalkBack_ per _Android_ e _VoiceOver_ per _iOS_, per fornire feedback vocali e altre forme di
 supporto. Ogni componente interattivo dell'applicazione espone etichette semantiche e, ove applicabile, un _flag_
 `isSelected` per indicarne lo stato. Ciò riguarda in particolare i componenti di navigazione, come la
@@ -33,7 +33,10 @@ operazioni (come la modifica, l'aggiunta di un elemento o il completamento di un
 tramite _snackbar_, fornendo un riscontro visivo immediato. Un controllo complessivo dell'accessibilità è stato
 effettuato mediante la _suite_ di _test_ automatizzata descritta in questo capitolo, la quale ha permesso di individuare e
 correggere tempestivamente le non conformità riscontrate, ove possibile, o di fornire soluzioni alternative per garantire un'esperienza inclusiva.
-
+#highlight(
+  [Al fine di validare l'effettiva accessibilità dell'applicazione, ai controlli automatizzati sono stati affiancati _test_ manuali su dispositivi fisici. Impiegando le tecnologie assistive già descritte, si è adottata la prospettiva di utenti con specifiche disabilità. In particolare, le prove di navigazione effettuate tramite _voice commands_ e _switch control_ hanno consentito di valutare l'interazione _touchless_. I risultati di tali verifiche hanno confermato la corretta esposizione delle etichette semantiche e la piena navigabilità dei componenti, validando dunque le tecniche adottate per rendere l'applicazione accessibile.],
+)
+#v(0.5em)
 I _test_ descritti di seguito nei paragrafi successivi sono stati implementati avvalendosi della libreria nativa di _flutter_test_, la quale espone i costruttori utilizzati per la configurazione e l'esecuzione degli ambienti di collaudo.
 
 == _Test_ di Unità
